@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Auralis</title>
+  
+  <meta name="description" content="Official Privacy Policy for Auralis open-source music streaming client. Details on YouTube API Services compliance, Google user data handling, Firebase infrastructure, zero telemetry, and GDPR/CCPA data rights." />
+  <meta name="author" content="Auralis Team" />
+  <meta name="theme-color" content="#09090b" />
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <link rel="stylesheet" href="/src/styles/variables.css" />
+  <link rel="stylesheet" href="/src/styles/base.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
+  <link rel="stylesheet" href="/src/styles/legal.css" />
+  <link rel="stylesheet" href="/src/styles/responsive.css" />
+</head>
+<body>
+  <div class="ambient-mesh" aria-hidden="true">
+    <div class="ambient-blob ambient-blob-1"></div>
+    <div class="ambient-blob ambient-blob-2"></div>
+  </div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <div class="site-wrapper">
+    <!-- Header -->
+    <header class="site-header scrolled">
+      <div class="container header-container">
+        <a href="/" class="brand-link" aria-label="Auralis Homepage">
+          <div class="brand-logo-wrap">
+            <img src="/favicon.svg" alt="Auralis Logo" class="brand-logo" width="28" height="28" />
+          </div>
+          <span class="brand-wordmark">Auralis</span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Navigation">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/#features" class="nav-link">Features</a>
+          <a href="/#download" class="nav-link">Download</a>
+          <a href="/privacy" class="nav-link active">Privacy Policy</a>
+          <a href="/terms" class="nav-link">Terms of Service</a>
+        </nav>
+
+        <div class="header-actions">
+          <a href="https://github.com/shreyanshchoubey09/Auralis" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm header-cta-desktop">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
+          <a href="/#download" class="btn btn-primary btn-sm header-cta-desktop">Get App</a>
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open mobile menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="mobile-drawer-head">
+        <div class="brand-link">
+          <div class="brand-logo-wrap">
+            <img src="/favicon.svg" alt="Auralis Logo" class="brand-logo" width="24" height="24" />
+          </div>
+          <span class="brand-wordmark">Auralis</span>
+        </div>
+        <button class="btn btn-player-icon" id="mobileDrawerCloseBtn" aria-label="Close menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="mobile-drawer-links">
+        <a href="/" class="mobile-nav-link">Home</a>
+        <a href="/#features" class="mobile-nav-link">Features</a>
+        <a href="/#download" class="mobile-nav-link">Download</a>
+        <a href="/privacy" class="mobile-nav-link active">Privacy Policy</a>
+        <a href="/terms" class="mobile-nav-link">Terms of Service</a>
+      </div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="legal-page-header">
+      <div class="container">
+        <nav class="legal-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span>/</span>
+          <span>Privacy Policy</span>
+        </nav>
+        <h1 class="legal-header-title">Privacy Policy</h1>
+        <div class="legal-header-meta">
+          <span><strong>Effective Date:</strong> August 24, 2026</span>
+          <span><strong>Application:</strong> Auralis (Web, Mobile & Desktop)</span>
+          <span><strong>License:</strong> 100% Free & Open-Source (MIT)</span>
+          <span><strong>Compliance:</strong> GDPR, CCPA/CPRA, COPPA, YouTube API Policies</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legal Content Area -->
+    <main class="container legal-layout">
+      <!-- Sidebar Table of Contents -->
+      <aside class="legal-toc-sidebar" aria-label="Table of Contents">
+        <div class="legal-toc-title">Table of Contents</div>
+        <div class="legal-toc-list">
+          <a href="#summary" class="legal-toc-link active">1. Plain-English Summary</a>
+          <a href="#scope" class="legal-toc-link">2. Scope & Applicability</a>
+          <a href="#youtube-disclosure" class="legal-toc-link">3. YouTube API & Google Data</a>
+          <a href="#data-collected" class="legal-toc-link">4. Information We Collect</a>
+          <a href="#data-not-collected" class="legal-toc-link">5. Data We Explicitly DO NOT Collect</a>
+          <a href="#data-usage" class="legal-toc-link">6. How We Use Data & Legal Bases</a>
+          <a href="#sub-processors" class="legal-toc-link">7. Third-Party Sub-processors</a>
+          <a href="#storage-caching" class="legal-toc-link">8. Local Storage & Caching</a>
+          <a href="#listen-together" class="legal-toc-link">9. Listen Together Real-Time Sync</a>
+          <a href="#retention-deletion" class="legal-toc-link">10. Data Retention & Deletion</a>
+          <a href="#transfers-security" class="legal-toc-link">11. Transfers & Security</a>
+          <a href="#privacy-rights" class="legal-toc-link">12. Your Global Privacy Rights</a>
+          <a href="#children-privacy" class="legal-toc-link">13. Children’s Privacy (COPPA)</a>
+          <a href="#policy-changes" class="legal-toc-link">14. Changes to This Policy</a>
+          <a href="#contact" class="legal-toc-link">15. Contact & DPO Inquiries</a>
+        </div>
+      </aside>
+
+      <!-- Main Legal Content -->
+      <article class="legal-content">
+        <!-- 1. Plain-English Summary -->
+        <section class="legal-section" id="summary">
+          <h2 class="legal-section-title">1. Plain-English Summary</h2>
+          <p>
+            Welcome to the Privacy Policy for <strong>Auralis</strong> ("we", "us", "our", or the "Auralis Project"). Auralis is an open-source, community-driven music streaming client, playlist manager, and synchronized lyrics visualizer accessible at <a href="https://auralis-music.web.app/" target="_blank" rel="noopener noreferrer">https://auralis-music.web.app/</a> and distributed across web, Android, and desktop platforms.
+          </p>
+          <div class="legal-highlight-box">
+            <div class="legal-highlight-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Our Uncompromising Privacy Commitments</span>
+            </div>
+            <p>
+              • <strong>100% Free & Open-Source (FOSS):</strong> No subscription paywalls, no hidden fees, and no monetization of personal data.<br />
+              • <strong>Zero Third-Party Advertising / Tracking:</strong> We run no commercial ad networks (No Google AdSense, No AdMob), no tracking pixels, and zero behavioral telemetry.<br />
+              • <strong>Minimal Data by Architecture:</strong> You can use Auralis completely anonymously without signing in. If you sign in, data is used strictly for cross-device library synchronization.<br />
+              • <strong>Strict Read-Only Third-Party APIs:</strong> All YouTube access is user-directed, strictly read-only, never cached beyond active playback, never shared, and never used to train machine learning models.<br />
+              • <strong>Zero Data Brokerage:</strong> We never sell, rent, monetize, or trade your personal information.
+            </p>
+          </div>
+        </section>
+
+        <!-- 2. Scope & Applicability -->
+        <section class="legal-section" id="scope">
+          <h2 class="legal-section-title">2. Scope & Applicability</h2>
+          <p>
+            This Privacy Policy governs the collection, processing, and storage of information across all distributions of the Auralis software ecosystem, including:
+          </p>
+          <ul>
+            <li>The <strong>Auralis Web Application</strong> and Progressive Web App (PWA) hosted at <a href="https://auralis-music.web.app/">https://auralis-music.web.app/</a>;</li>
+            <li>The <strong>Auralis Android Application (APK)</strong> and native mobile packages;</li>
+            <li>Any standalone desktop builds or client utilities distributed via our official GitHub repository (<a href="https://github.com/shreyanshchoubey09/Auralis" target="_blank" rel="noopener noreferrer">https://github.com/shreyanshchoubey09/Auralis</a>);</li>
+            <li>Associated backend cloud services, including Google Firebase Authentication and Cloud Firestore synchronization channels.</li>
+          </ul>
+          <p>
+            By accessing or using Auralis, you acknowledge that you have read, understood, and agreed to the data practices outlined herein. If you do not agree, you should discontinue using Auralis and clear your local client cache.
+          </p>
+        </section>
+
+        <!-- 3. YouTube API Services & Google Data Disclosure -->
+        <section class="legal-section" id="youtube-disclosure">
+          <h2 class="legal-section-title">3. Mandatory YouTube API Services & Google User Data Disclosure</h2>
+          <p>
+            Auralis incorporates and utilizes <strong>YouTube API Services</strong> to facilitate optional user-directed playlist importation, music discovery, search metadata queries, and streaming playback.
+          </p>
+          <div class="legal-highlight-box">
+            <div class="legal-highlight-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15l5-3-5-3v6z"/><rect width="20" height="14" x="2" y="5" rx="2"/></svg>
+              <span>Mandatory Third-Party Agreements</span>
+            </div>
+            <p>
+              By accessing YouTube-powered capabilities or importing YouTube playlists into Auralis, you explicitly agree to be bound by the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer"><strong>YouTube Terms of Service</strong></a>.
+              <br /><br />
+              Please review the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer"><strong>Google Privacy Policy</strong></a> to understand how Google processes and protects your data when interfacing with YouTube API Services.
+            </p>
+          </div>
+
+          <h3 class="legal-subsection-title">A. Minimum Scope & Read-Only Limitation</h3>
+          <p>
+            When you authenticate with Google to import your YouTube library, Auralis requests access strictly to the following read-only OAuth 2.0 scope:
+          </p>
+          <p>
+            <code>https://www.googleapis.com/auth/youtube.readonly</code>
+          </p>
+          <p>
+            This permission allows Auralis only to retrieve the titles, descriptions, and video lists of your public and unlisted YouTube playlists. Auralis <strong>never</strong> requests write permissions, channel management rights, private watch/search history, comment privileges, or financial transaction access.
+          </p>
+
+          <h3 class="legal-subsection-title">B. Data Storage, AI Training & Sharing Prohibitions</h3>
+          <ul>
+            <li><strong>No Persistent YouTube Profile Storage:</strong> Auralis does not persist your personal YouTube profile credentials or OAuth refresh tokens on central project servers. All tokens reside strictly in client-side secure local storage on your device.</li>
+            <li><strong>No Third-Party Sharing:</strong> Google/YouTube user data retrieved through the API is never transferred, disclosed, or sold to external third parties, advertising exchanges, or data brokers.</li>
+            <li><strong>Zero AI Model Training:</strong> Under no circumstances is user data derived from YouTube API Services used to train, fine-tune, or develop artificial intelligence or machine learning models.</li>
+            <li><strong>Ephemeral Playback Caching:</strong> Track identifiers and metadata imported from YouTube are cached locally in your browser's IndexedDB or personal authenticated Firestore document solely for your individual playback and playlist organization.</li>
+          </ul>
+
+          <h3 class="legal-subsection-title">C. Revocation of Google & YouTube Permissions</h3>
+          <p>
+            You retain absolute, continuous control over your Google credentials. You may inspect or immediately revoke Auralis’s access to your Google account and YouTube data at any time via the official <strong>Google Security Permissions Dashboard</strong>:
+          </p>
+          <div class="contact-card-legal">
+            <div>
+              <h4>Google Security Settings</h4>
+              <p>Manage third-party app access and revoke OAuth permissions</p>
+            </div>
+            <a href="https://security.google.com/settings/security/permissions" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+              <span>Revoke Access on Google</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 4. Information We Collect -->
+        <section class="legal-section" id="data-collected">
+          <h2 class="legal-section-title">4. Information We Collect</h2>
+          <p>
+            We adhere strictly to the principle of <em>Data Minimization</em> (GDPR Article 5(1)(c)). Depending on how you interact with Auralis, the following categories of data may be processed:
+          </p>
+          <div class="legal-table-wrap">
+            <table class="legal-table">
+              <thead>
+                <tr>
+                  <th>Data Category</th>
+                  <th>Specific Data Points</th>
+                  <th>Collection Method</th>
+                  <th>Storage Location & Retention</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Identity & Authentication (Optional)</strong></td>
+                  <td>Display Name, Email Address, Avatar URL, Unique Firebase User ID (UID)</td>
+                  <td>Directly provided via Google Sign-In or Email Authentication</td>
+                  <td>Stored in Google Firebase Auth. Retained until account deletion.</td>
+                </tr>
+                <tr>
+                  <td><strong>User Music Library Data</strong></td>
+                  <td>Custom playlist names, favorite track IDs, track order, playback queues, sound equalization preferences</td>
+                  <td>Generated in-app through user listening and organization actions</td>
+                  <td>Stored client-side in browser <code>IndexedDB</code> / <code>localStorage</code>; mirrored to Cloud Firestore under <code>users/{uid}</code> if signed in.</td>
+                </tr>
+                <tr>
+                  <td><strong>Real-Time Session Data ("Listen Together")</strong></td>
+                  <td>Room Code (6 characters), Host UID, Participant UIDs, Current Track ID, Position (ms), Playback State (Playing/Paused), Heartbeat timestamp</td>
+                  <td>Generated ephemerally upon creating or joining a synchronized room</td>
+                  <td>Transient Firestore document in <code>rooms/{roomId}</code>. Purged immediately upon session termination or after 1 hour of host inactivity.</td>
+                </tr>
+                <tr>
+                  <td><strong>YouTube Imported Metadata</strong></td>
+                  <td>Playlist titles, track names, artist names, duration, YouTube Video IDs, thumbnail image URLs</td>
+                  <td>Retrieved from YouTube API upon user-directed playlist import request</td>
+                  <td>Stored locally in client IndexedDB; synced to user's personal Firestore document if authenticated.</td>
+                </tr>
+                <tr>
+                  <td><strong>Technical & Network Logs</strong></td>
+                  <td>User-agent string, operating system version, browser family, anonymized routing IP address, HTTP request status</td>
+                  <td>Transmitted automatically via standard TCP/IP and HTTP network protocols</td>
+                  <td>Ephemeral edge server logs maintained by Firebase Hosting / Google Cloud for CDN delivery and DDoS mitigation (purged within 30-90 days).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 5. Information We Explicitly DO NOT Collect -->
+        <section class="legal-section" id="data-not-collected">
+          <h2 class="legal-section-title">5. Information We Explicitly DO NOT Collect</h2>
+          <p>
+            To provide complete transparency and eliminate ambiguity, Auralis explicitly declares that we do <strong>NOT</strong> collect, request, process, or store any of the following sensitive data categories:
+          </p>
+          <div class="legal-highlight-box warning">
+            <div class="legal-highlight-title" style="color: #f87171;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              <span>Strictly Prohibited & Non-Collected Data</span>
+            </div>
+            <p>
+              • <strong>Audio / Microphone Recordings:</strong> Auralis never accesses your microphone, inputs, ambient audio, or voice streams.<br />
+              • <strong>Precise Geolocation Data:</strong> We never request GPS, Wi-Fi triangulation, or precise physical location coordinates.<br />
+              • <strong>Biometric Information:</strong> We do not collect fingerprint, facial geometry, retina scans, or biometric data.<br />
+              • <strong>Financial & Payment Information:</strong> Auralis is 100% free. We never request credit card numbers, bank accounts, or billing addresses.<br />
+              • <strong>Address Book / Contacts:</strong> We never access or upload contacts, phone numbers, or social graphs.<br />
+              • <strong>Clipboard / File System:</strong> We never scan personal files, documents, photos, or unprompted clipboard contents.
+            </p>
+          </div>
+        </section>
+
+        <!-- 6. How We Use Data & Legal Bases for Processing -->
+        <section class="legal-section" id="data-usage">
+          <h2 class="legal-section-title">6. How We Use Data & Legal Bases for Processing (GDPR Art. 6)</h2>
+          <p>
+            Under the European Union General Data Protection Regulation (GDPR) and UK GDPR, every processing activity must rest upon an established lawful basis. We process personal data according to the following legal framework:
+          </p>
+          <div class="legal-table-wrap">
+            <table class="legal-table">
+              <thead>
+                <tr>
+                  <th>Processing Purpose</th>
+                  <th>Applicable Data</th>
+                  <th>GDPR Lawful Basis</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Providing Core App Features & Playback</strong></td>
+                  <td>Selected tracks, local playback queue, audio settings, lyrics lookup queries</td>
+                  <td><strong>Performance of a Contract</strong> (Art. 6(1)(b) GDPR) — Essential to deliver requested software functionality.</td>
+                </tr>
+                <tr>
+                  <td><strong>Cloud Library Synchronization</strong></td>
+                  <td>Firebase UID, email, custom playlists, saved favorite tracks</td>
+                  <td><strong>Performance of a Contract</strong> (Art. 6(1)(b) GDPR) — Fulfilling multi-device sync requested by logged-in users.</td>
+                </tr>
+                <tr>
+                  <td><strong>YouTube Playlist Import & Metadata Retrieval</strong></td>
+                  <td>OAuth authorization token, read-only playlist IDs, video IDs</td>
+                  <td><strong>Explicit Consent</strong> (Art. 6(1)(a) GDPR) — Freely given and revocable at any time by disconnecting the account.</td>
+                </tr>
+                <tr>
+                  <td><strong>"Listen Together" Synchronized Playback</strong></td>
+                  <td>Ephemeral room code, current track timecode, participant display names</td>
+                  <td><strong>Performance of a Contract</strong> (Art. 6(1)(b) GDPR) & <strong>Consent</strong> — Required to synchronize live state.</td>
+                </tr>
+                <tr>
+                  <td><strong>Platform Integrity, DDoS Mitigation & Security</strong></td>
+                  <td>Standard network connection logs, request headers, error stack traces</td>
+                  <td><strong>Legitimate Interests</strong> (Art. 6(1)(f) GDPR) — Protecting open-source infrastructure from abuse, spam, and outages.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 7. Third-Party Sub-processors & Services -->
+        <section class="legal-section" id="sub-processors">
+          <h2 class="legal-section-title">7. Third-Party Sub-processors & External Services</h2>
+          <p>
+            To power cloud synchronization, lyric visualization, and audio resolution without hosting proprietary servers, Auralis integrates with vetted third-party service providers:
+          </p>
+          <ul>
+            <li>
+              <strong>Google Firebase (Google LLC / Google Ireland Ltd.):</strong> Provides secure user authentication, Firestore cloud database storage for cross-device playlist syncing, and fast edge-cached web hosting. Certified under ISO 27001, SOC 2, and compliant with EU Standard Contractual Clauses (SCCs). Privacy Policy: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">https://firebase.google.com/support/privacy</a>.
+            </li>
+            <li>
+              <strong>Google / YouTube API Services (Google LLC):</strong> Used to search music metadata, resolve public video identifiers, and import user playlists upon request. Subject to the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a> and <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a>.
+            </li>
+            <li>
+              <strong>LRCLIB API:</strong> A public, community-maintained open database used to retrieve time-synchronized and plain-text lyrics (`.lrc` files). Queries consist purely of song title and artist strings; no personally identifiable information (PII) or user identifiers are ever transmitted to LRCLIB.
+            </li>
+            <li>
+              <strong>GitHub (GitHub, Inc. / Microsoft):</strong> Hosts the open-source codebase, release distributions (Android APK binaries), and public issue tracker. Interacting on GitHub is governed by the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub Privacy Statement</a>.
+            </li>
+          </ul>
+        </section>
+
+        <!-- 8. Local Storage, Caching & Session State -->
+        <section class="legal-section" id="storage-caching">
+          <h2 class="legal-section-title">8. Local Storage, Caching & Session State</h2>
+          <p>
+            Auralis relies on modern browser storage technologies rather than traditional tracking cookies:
+          </p>
+          <ul>
+            <li><strong>IndexedDB:</strong> Stores your local music library, downloaded/cached lyrics, album artwork thumbnails, and playback history directly on your physical device for rapid offline loading.</li>
+            <li><strong>LocalStorage:</strong> Retains your interface preferences (e.g., dark theme state, visualizer modes, audio volume, repeat/shuffle status).</li>
+            <li><strong>Auth Token Storage:</strong> Stores short-lived Firebase Authentication JWT tokens and Google OAuth tokens in secure browser storage to maintain active sign-in status.</li>
+            <li><strong>No Third-Party Advertising Cookies:</strong> Auralis does not place tracking cookies, cross-site trackers, or advertising beacons on your browser.</li>
+          </ul>
+        </section>
+
+        <!-- 9. Real-Time "Listen Together" Ephemeral Synchronization -->
+        <section class="legal-section" id="listen-together">
+          <h2 class="legal-section-title">9. "Listen Together" Real-Time Group Playback</h2>
+          <p>
+            The "Listen Together" feature enables multiple users to listen to music in synchronized harmony:
+          </p>
+          <ul>
+            <li><strong>Room Architecture:</strong> A user creates a room, generating an ephemeral document in Cloud Firestore identified by a random 6-character room code.</li>
+            <li><strong>Data Transmitted:</strong> Room state includes the host’s current track, playback progress in milliseconds, play/pause state, and participant display names.</li>
+            <li><strong>Ephemeral Lifespan:</strong> Room documents are strictly temporary. When the host leaves or closes the room, all member records are immediately deleted. Inactive rooms are automatically purged after 60 minutes. No chat logs, voice transcripts, or listening histories from shared rooms are archived.</li>
+          </ul>
+        </section>
+
+        <!-- 10. Data Retention & Account Deletion Procedures -->
+        <section class="legal-section" id="retention-deletion">
+          <h2 class="legal-section-title">10. Data Retention & Account Deletion Procedures</h2>
+          <p>
+            We retain personal data only for as long as necessary to fulfill the operational purposes described in this policy:
+          </p>
+          <ul>
+            <li><strong>Local Device Data:</strong> Cleared instantly whenever you clear your browser data/cache, uninstall the application, or click "Reset Library" in Auralis Settings.</li>
+            <li><strong>Cloud Account & Synced Playlists:</strong> Retained in Cloud Firestore as long as your account remains active.</li>
+            <li><strong>Self-Service Account Deletion:</strong> You can delete individual playlists directly within the app. To request permanent, irreversible deletion of your entire Firebase account profile and associated <code>users/{uid}</code> Firestore data, you may trigger in-app deletion or submit an email to <a href="mailto:privacy@auralis.app">privacy@auralis.app</a>.</li>
+            <li><strong>Deletion Processing Window:</strong> Account deletion requests are processed automatically or within thirty (30) calendar days upon receipt.</li>
+          </ul>
+        </section>
+
+        <!-- 11. International Data Transfers & Security Measures -->
+        <section class="legal-section" id="transfers-security">
+          <h2 class="legal-section-title">11. International Data Transfers & Security Measures</h2>
+          <p>
+            Auralis utilizes Google Firebase infrastructure hosted primarily in the United States and global edge locations. For users residing in the European Economic Area (EEA), United Kingdom, or Switzerland:
+          </p>
+          <ul>
+            <li><strong>Standard Contractual Clauses (SCCs):</strong> All cross-border data transfers to Google Cloud servers comply with the European Commission's approved Standard Contractual Clauses (Controller-to-Processor and Processor-to-Processor modules).</li>
+            <li><strong>Encryption in Transit:</strong> All communications between the Auralis client, Firebase backend, and external APIs are enforced via Transport Layer Security (TLS 1.3 / HTTPS).</li>
+            <li><strong>Firestore Security Rules:</strong> Our Cloud Firestore database is locked down with strict declarative rules ensuring that only authenticated users can read or write their own private document paths (<code>/users/{uid}</code>).</li>
+          </ul>
+        </section>
+
+        <!-- 12. Your Global Privacy Rights -->
+        <section class="legal-section" id="privacy-rights">
+          <h2 class="legal-section-title">12. Your Global Privacy Rights</h2>
+          <p>
+            Regardless of your geographical location, Auralis upholds comprehensive privacy rights:
+          </p>
+
+          <h3 class="legal-subsection-title">A. European Union & UK Residents (GDPR / UK GDPR Rights)</h3>
+          <ul>
+            <li><strong>Right of Access (Art. 15):</strong> You have the right to request a copy of the personal data we hold about you.</li>
+            <li><strong>Right to Rectification (Art. 16):</strong> You have the right to correct inaccurate or incomplete personal information.</li>
+            <li><strong>Right to Erasure / "Right to be Forgotten" (Art. 17):</strong> You may request complete erasure of your cloud library and account records.</li>
+            <li><strong>Right to Data Portability (Art. 20):</strong> You have the right to export your library and playlists in a structured, machine-readable format (e.g., JSON).</li>
+            <li><strong>Right to Restrict or Object to Processing (Arts. 18 & 21):</strong> You may object to or restrict certain data processing activities.</li>
+            <li><strong>Right to Withdraw Consent (Art. 7(3)):</strong> You may withdraw your consent for Google/YouTube integration at any moment without penalty.</li>
+            <li><strong>Right to Lodge a Complaint:</strong> You have the right to lodge a formal complaint with your national Data Protection Authority (DPA) or Supervisory Authority.</li>
+          </ul>
+
+          <h3 class="legal-subsection-title">B. California Consumers (CCPA / CPRA Disclosures)</h3>
+          <p>
+            Under the California Consumer Privacy Act (CCPA) and California Privacy Rights Act (CPRA):
+          </p>
+          <ul>
+            <li><strong>No Sale or Sharing of Personal Information:</strong> Auralis <strong>does not sell</strong> and <strong>has never sold</strong> personal information. Auralis <strong>does not share</strong> personal information for cross-context behavioral advertising.</li>
+            <li><strong>Categories Disclosed in Preceding 12 Months:</strong> Basic identifiers (Firebase UID, email) and internet activity (playlists, playback state) solely to provide cloud sync and playback services.</li>
+            <li><strong>Right to Non-Discrimination:</strong> We will never deny services, degrade quality, or charge different prices for exercising your privacy rights.</li>
+          </ul>
+        </section>
+
+        <!-- 13. Children's Privacy -->
+        <section class="legal-section" id="children-privacy">
+          <h2 class="legal-section-title">13. Children’s Privacy (COPPA & Age Verification)</h2>
+          <p>
+            Auralis is designed and intended for general audiences and is strictly not directed to children under thirteen (13) years of age (or under 16 where required by applicable European Union member state laws).
+          </p>
+          <p>
+            We do not knowingly collect, solicit, or store personal information from children under these age thresholds. If you are a parent or legal guardian and discover that your minor child has created an account or submitted personal data without consent, please notify us immediately at <a href="mailto:privacy@auralis.app">privacy@auralis.app</a>. Upon verification, we will promptly purge all associated records from our systems.
+          </p>
+        </section>
+
+        <!-- 14. Changes to This Privacy Policy -->
+        <section class="legal-section" id="policy-changes">
+          <h2 class="legal-section-title">14. Changes to This Privacy Policy</h2>
+          <p>
+            We may update this Privacy Policy from time to time to reflect architectural updates, new open-source capabilities, or evolving legal and regulatory standards.
+          </p>
+          <p>
+            When changes are made, the "Effective Date" at the top of this document will be revised accordingly. Substantial or material changes will be highlighted with a prominent notice on the Auralis homepage or through our official GitHub release notes. We encourage you to review this policy periodically.
+          </p>
+        </section>
+
+        <!-- 15. Contact Information & Maintainers -->
+        <section class="legal-section" id="contact">
+          <h2 class="legal-section-title">15. Contact Information & Data Protection Requests</h2>
+          <p>
+            For questions, legal inquiries, GDPR/CCPA data subject requests, or feedback regarding our privacy engineering practices, please contact our designated privacy team:
+          </p>
+          <div class="contact-card-legal">
+            <div>
+              <h4>Privacy Officer & Maintainers</h4>
+              <p>Email: <a href="mailto:privacy@auralis.app">privacy@auralis.app</a> &bull; Support: <a href="mailto:support@auralis.app">support@auralis.app</a></p>
+            </div>
+            <a href="https://github.com/shreyanshchoubey09/Auralis/issues" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+              <span>Open GitHub Issue</span>
+            </a>
+          </div>
+          <p style="margin-top: 24px; font-size: 0.85rem; color: var(--text-subtle);">
+            <strong>Non-Affiliation Notice:</strong> Auralis is an independent open-source project and is not affiliated with, sponsored by, or endorsed by Google LLC, YouTube, Alphabet Inc., or LRCLIB.
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="/" class="brand-link">
+              <div class="brand-logo-wrap">
+                <img src="/favicon.svg" alt="Auralis Logo" class="brand-logo" width="28" height="28" />
+              </div>
+              <span class="brand-wordmark">Auralis</span>
+            </a>
+            <p>A modern, fluid open-source music streaming experience built with React, TypeScript, and Capacitor.</p>
+          </div>
+          <div>
+            <h4 class="footer-col-title">Navigation</h4>
+            <div class="footer-links">
+              <a href="/" class="footer-link">Home</a>
+              <a href="/#features" class="footer-link">Features</a>
+              <a href="/#download" class="footer-link">Download</a>
+              <a href="/privacy" class="footer-link">Privacy Policy</a>
+              <a href="/terms" class="footer-link">Terms of Service</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-col-title">Project</h4>
+            <div class="footer-links">
+              <a href="https://github.com/shreyanshchoubey09/Auralis" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub Repository</a>
+              <a href="https://github.com/shreyanshchoubey09/Auralis/releases" target="_blank" rel="noopener noreferrer" class="footer-link">Releases</a>
+              <a href="https://github.com/shreyanshchoubey09/Auralis/issues" target="_blank" rel="noopener noreferrer" class="footer-link">Issue Tracker</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-col-title">Legal</h4>
+            <div class="footer-links">
+              <a href="/privacy" class="footer-link">Privacy Policy</a>
+              <a href="/terms" class="footer-link">Terms of Service</a>
+              <a href="https://github.com/shreyanshchoubey09/Auralis/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="footer-link">MIT License</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-disclaimer">
+            Auralis is an independent open-source project and is not affiliated with, endorsed by, or sponsored by Google LLC or YouTube.
+          </p>
+          <div class="footer-copyright-row">
+            <span>&copy; 2026 Auralis Project. Released under the MIT License.</span>
+            <div style="display: flex; gap: 16px;">
+              <a href="/privacy" class="footer-link">Privacy</a>
+              <a href="/terms" class="footer-link">Terms</a>
+              <a href="https://github.com/shreyanshchoubey09/Auralis" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/scripts/main.ts"></script>
+</body>
+</html>

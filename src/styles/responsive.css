@@ -1,0 +1,246 @@
+/* Responsive Breakpoints & Viewport Optimizations */
+
+/* Large Desktop (1440px - 1920px+) */
+@media (min-width: 1440px) {
+  :root {
+    --max-content-width: 1320px;
+  }
+}
+
+/* Laptops & Standard Desktops (1024px - 1280px) */
+@media (max-width: 1200px) {
+  .hero-grid {
+    gap: 40px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .feature-card.featured-wide {
+    grid-column: span 2;
+  }
+
+  .download-platforms-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+/* Tablets & Landscape Tablets (768px - 1023px) */
+@media (max-width: 1023px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-desc {
+    margin-inline: auto;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hero-stats-row {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    margin-top: 16px;
+  }
+
+  .desktop-nav, .header-cta-desktop {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .youtube-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .download-platforms-grid {
+    grid-template-columns: 1fr;
+    max-width: 540px;
+    margin-inline: auto;
+  }
+
+  .build-source-box {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .legal-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .legal-toc-sidebar {
+    display: none;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  .footer-brand {
+    grid-column: span 2;
+  }
+}
+
+/* Mobile Devices (480px - 767px) */
+@media (max-width: 767px) {
+  :root {
+    --header-height: 64px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card.featured-wide {
+    grid-column: span 1;
+  }
+
+  .section-padding {
+    padding-block: 56px;
+  }
+
+  .section-head {
+    margin-bottom: 40px;
+  }
+
+  .open-source-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-brand {
+    grid-column: span 1;
+  }
+
+  .footer-copyright-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+}
+
+/* Small & Modern Phones (360px - 414px: iPhone SE, Pixel 7, Galaxy S21, iPhone 14 Pro Max) */
+@media (max-width: 480px) {
+  .container {
+    padding-inline: 16px;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+  }
+
+  .hero-stats-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .player-showcase-card {
+    padding: 16px;
+    border-radius: var(--radius-lg);
+  }
+
+  .player-controls {
+    gap: 4px;
+  }
+
+  .ctrl-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .ctrl-btn-play {
+    width: 46px;
+    height: 46px;
+  }
+
+  .speed-dial-chips {
+    gap: 6px;
+  }
+
+  .speed-dial-chip {
+    padding: 4px 10px;
+    font-size: 0.725rem;
+  }
+
+  .youtube-card-main {
+    padding: 24px 16px;
+    border-radius: var(--radius-lg);
+  }
+
+  .scope-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .legal-header-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .legal-highlight-box {
+    padding: 16px;
+  }
+
+  .contact-card-legal {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-card-legal .btn {
+    width: 100%;
+  }
+}
+
+/* Extra Compact Phones (360px) */
+@media (max-width: 365px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .brand-wordmark {
+    font-size: 1.15rem;
+  }
+
+  .player-header-title {
+    font-size: 0.75rem;
+  }
+
+  .track-title {
+    font-size: 1.1rem;
+  }
+}

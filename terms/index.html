@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Auralis</title>
+  
+  <meta name="description" content="Official Terms of Service for Auralis open-source music streaming application. Covers non-hosting intermediary disclaimers, YouTube API terms, MIT licensing, DMCA safe harbor, and acceptable use." />
+  <meta name="author" content="Auralis Team" />
+  <meta name="theme-color" content="#09090b" />
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <link rel="stylesheet" href="/src/styles/variables.css" />
+  <link rel="stylesheet" href="/src/styles/base.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
+  <link rel="stylesheet" href="/src/styles/legal.css" />
+  <link rel="stylesheet" href="/src/styles/responsive.css" />
+</head>
+<body>
+  <div class="ambient-mesh" aria-hidden="true">
+    <div class="ambient-blob ambient-blob-1"></div>
+    <div class="ambient-blob ambient-blob-2"></div>
+  </div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <div class="site-wrapper">
+    <!-- Header -->
+    <header class="site-header scrolled">
+      <div class="container header-container">
+        <a href="/" class="brand-link" aria-label="Auralis Homepage">
+          <div class="brand-logo-wrap">
+            <img src="/favicon.svg" alt="Auralis Logo" class="brand-logo" width="28" height="28" />
+          </div>
+          <span class="brand-wordmark">Auralis</span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Navigation">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/#features" class="nav-link">Features</a>
+          <a href="/#download" class="nav-link">Download</a>
+          <a href="/privacy" class="nav-link">Privacy Policy</a>
+          <a href="/terms" class="nav-link active">Terms of Service</a>
+        </nav>
+
+        <div class="header-actions">
+          <a href="https://github.com/shreyanshchoubey09/Auralis" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm header-cta-desktop">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
+          <a href="/#download" class="btn btn-primary btn-sm header-cta-desktop">Get App</a>
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open mobile menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="mobile-drawer-head">
+        <div class="brand-link">
+          <div class="brand-logo-wrap">
+            <img src="/favicon.svg" alt="Auralis Logo" class="brand-logo" width="24" height="24" />
+          </div>
+          <span class="brand-wordmark">Auralis</span>
+        </div>
+        <button class="btn btn-player-icon" id="mobileDrawerCloseBtn" aria-label="Close menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="mobile-drawer-links">
+        <a href="/" class="mobile-nav-link">Home</a>
+        <a href="/#features" class="mobile-nav-link">Features</a>
+        <a href="/#download" class="mobile-nav-link">Download</a>
+        <a href="/privacy" class="mobile-nav-link">Privacy Policy</a>
+        <a href="/terms" class="mobile-nav-link active">Terms of Service</a>
+      </div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="legal-page-header">
+      <div class="container">
+        <nav class="legal-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span>/</span>
+          <span>Terms of Service</span>
+        </nav>
+        <h1 class="legal-header-title">Terms of Service</h1>
+        <div class="legal-header-meta">
+          <span><strong>Effective Date:</strong> August 24, 2026</span>
+          <span><strong>Source License:</strong> MIT Open Source License</span>
+          <span><strong>Jurisdiction:</strong> California, United States</span>
+          <span><strong>DMCA Contact:</strong> dmca@auralis.app</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legal Content Area -->
+    <main class="container legal-layout">
+      <!-- Sidebar Table of Contents -->
+      <aside class="legal-toc-sidebar" aria-label="Table of Contents">
+        <div class="legal-toc-title">Table of Contents</div>
+        <div class="legal-toc-list">
+          <a href="#acceptance" class="legal-toc-link active">1. Acceptance & Eligibility</a>
+          <a href="#youtube-integration" class="legal-toc-link">2. YouTube Terms Integration</a>
+          <a href="#nature-of-service" class="legal-toc-link">3. Streaming & Non-Hosting Disclaimers</a>
+          <a href="#licensing-trademarks" class="legal-toc-link">4. Licensing vs. Brand Assets</a>
+          <a href="#user-accounts" class="legal-toc-link">5. Accounts & Cloud Sync</a>
+          <a href="#listen-together-rules" class="legal-toc-link">6. Listen Together Rules</a>
+          <a href="#acceptable-use" class="legal-toc-link">7. Acceptable Use Policy</a>
+          <a href="#dmca-policy" class="legal-toc-link">8. DMCA Copyright Policy</a>
+          <a href="#third-party-links" class="legal-toc-link">9. Third-Party Content & Lyrics</a>
+          <a href="#warranty-disclaimer" class="legal-toc-link">10. Warranty Disclaimers ("AS IS")</a>
+          <a href="#limitation-liability" class="legal-toc-link">11. Limitation of Liability</a>
+          <a href="#indemnification" class="legal-toc-link">12. Indemnification</a>
+          <a href="#termination" class="legal-toc-link">13. Termination & Suspension</a>
+          <a href="#non-affiliation" class="legal-toc-link">14. Non-Affiliation Statement</a>
+          <a href="#governing-law" class="legal-toc-link">15. Governing Law & Dispute Venue</a>
+          <a href="#severability" class="legal-toc-link">16. Severability & Entire Agreement</a>
+          <a href="#contact" class="legal-toc-link">17. Contact & Official Notice</a>
+        </div>
+      </aside>
+
+      <!-- Main Legal Content -->
+      <article class="legal-content">
+        <!-- 1. Acceptance & Eligibility -->
+        <section class="legal-section" id="acceptance">
+          <h2 class="legal-section-title">1. Acceptance of Terms & Eligibility</h2>
+          <p>
+            These Terms of Service ("Terms") constitute a legally binding agreement between you ("User", "you", or "your") and the <strong>Auralis Open Source Project</strong> ("Auralis", "we", "us", or "our") governing your access to and use of the Auralis web application (<a href="https://auralis-music.web.app/">https://auralis-music.web.app/</a>), Android APK packages, desktop applications, source code, and associated online synchronization services.
+          </p>
+          <div class="legal-highlight-box">
+            <div class="legal-highlight-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Mandatory Age Gate</span>
+            </div>
+            <p>
+              By accessing or using Auralis, you represent and warrant that you are at least <strong>thirteen (13) years of age</strong> (or at least sixteen (16) years of age where required under European Union member state laws). If you are under the legal age of majority in your jurisdiction, you represent that you have obtained the consent of your parent or legal guardian to enter into these Terms.
+            </p>
+          </div>
+          <p>
+            If you do not agree to all provisions of these Terms, you must immediately cease accessing and using Auralis and uninstall any client software from your devices.
+          </p>
+        </section>
+
+        <!-- 2. Integration with YouTube Terms of Service -->
+        <section class="legal-section" id="youtube-integration">
+          <h2 class="legal-section-title">2. Integration with YouTube Terms of Service</h2>
+          <p>
+            Auralis incorporates and interfaces with <strong>YouTube API Services</strong> to provide music metadata discovery, playlist search, and user-directed playlist importation.
+          </p>
+          <div class="legal-highlight-box">
+            <div class="legal-highlight-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15l5-3-5-3v6z"/><rect width="20" height="14" x="2" y="5" rx="2"/></svg>
+              <span>Binding Agreement with YouTube Terms</span>
+            </div>
+            <p>
+              By utilizing any YouTube-integrated feature within Auralis, importing YouTube playlists, or streaming audio derived via YouTube API endpoints, you explicitly acknowledge and agree to be bound by the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer"><strong>YouTube Terms of Service</strong></a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer"><strong>Google Privacy Policy</strong></a>.
+            </p>
+          </div>
+          <p>
+            You may revoke Auralis’s access to your Google/YouTube account permissions at any time through the <a href="https://security.google.com/settings/security/permissions" target="_blank" rel="noopener noreferrer">Google Security Settings Page</a>.
+          </p>
+        </section>
+
+        <!-- 3. Nature of Service & Streaming Disclaimers -->
+        <section class="legal-section" id="nature-of-service">
+          <h2 class="legal-section-title">3. Nature of Service & Music Streaming Disclaimers</h2>
+          <p>
+            Auralis is strictly a client-side player application, playlist curation utility, and lyrics synchronization visualizer.
+          </p>
+          <div class="legal-highlight-box warning">
+            <div class="legal-highlight-title" style="color: #f87171;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span>Non-Hosting & Intermediary Status Notice</span>
+            </div>
+            <p>
+              <strong>Auralis DOES NOT host, store, index, upload, or transmit any audio files, sound recordings, MP3s, musical compositions, or copyrighted video files on its servers.</strong>
+              <br /><br />
+              All audio streams, song metadata, album artwork, and video identifiers accessed through Auralis are resolved dynamically from third-party public web endpoints, public APIs, and user-provided URLs. Auralis operates strictly as an intermediary technological tool.
+            </p>
+          </div>
+          <p>
+            All intellectual property rights, copyrights, trademarks, and performance rights in musical works, sound recordings, and cover artwork belong exclusively to their respective artists, record labels, songwriters, publishers, and streaming providers.
+          </p>
+        </section>
+
+        <!-- 4. Open-Source Licensing vs. Proprietary Brand Assets -->
+        <section class="legal-section" id="licensing-trademarks">
+          <h2 class="legal-section-title">4. Open-Source Licensing vs. Proprietary Brand Assets</h2>
+          <h3 class="legal-subsection-title">A. Codebase License (MIT)</h3>
+          <p>
+            The underlying source code of the Auralis project is licensed under the permissive <strong>MIT License</strong> and is publicly available at <a href="https://github.com/shreyanshchoubey09/Auralis" target="_blank" rel="noopener noreferrer">https://github.com/shreyanshchoubey09/Auralis</a>.
+          </p>
+          <p>
+            Subject to the conditions of the MIT License, you are permitted to view, clone, modify, merge, publish, and distribute copies of the software code, provided that the copyright notice and permission notice are included in all copies or substantial portions of the Software.
+          </p>
+
+          <h3 class="legal-subsection-title">B. Brand Assets, Trademarks & Logos</h3>
+          <p>
+            The open-source code license <strong>does NOT</strong> grant you any trademark rights. The name "Auralis", the Auralis wordmark, logo design, visual icons, brand domain names (<code>auralis-music.web.app</code>), and proprietary artwork remain the intellectual property of the project maintainers. You may not use the Auralis trademarks or logos in any commercial manner or in any manner that falsely implies sponsorship, endorsement, or affiliation without prior written consent.
+          </p>
+        </section>
+
+        <!-- 5. User Accounts & Cloud Synchronization -->
+        <section class="legal-section" id="user-accounts">
+          <h2 class="legal-section-title">5. User Accounts & Cloud Synchronization</h2>
+          <p>
+            Creating an account via Google Sign-In or Email is entirely optional. You may use Auralis in guest/anonymous mode on any device.
+          </p>
+          <ul>
+            <li><strong>Account Security:</strong> If you authenticate, you are responsible for maintaining the confidentiality of your credentials and for all activities that occur under your account.</li>
+            <li><strong>Cloud Storage:</strong> When authenticated, your custom playlists, favorite tracks, and listening preferences are synchronized to Google Cloud Firestore (<code>users/{uid}</code>).</li>
+            <li><strong>Termination of Sync:</strong> We reserve the right to prune or purge inactive guest records or accounts that violate our acceptable use standards to conserve open-source infrastructure resources.</li>
+          </ul>
+        </section>
+
+        <!-- 6. Listen Together Rules & Room Conduct -->
+        <section class="legal-section" id="listen-together-rules">
+          <h2 class="legal-section-title">6. "Listen Together" Real-Time Group Playback Rules</h2>
+          <p>
+            Auralis includes a real-time synchronized playback feature called "Listen Together". By hosting or participating in a shared session room, you agree to the following rules:
+          </p>
+          <ul>
+            <li><strong>Host Authority:</strong> The room host retains administrative control over track selection, play/pause state, and playback positioning.</li>
+            <li><strong>Room Code Privacy:</strong> Room codes (6 characters) are public to anyone with whom you share them. You are solely responsible for distributing your room code.</li>
+            <li><strong>No Unlawful Broadcasts:</strong> You may not use room titles, participant names, or shared queues to promote hate speech, harassment, sexually explicit material, or illegal content.</li>
+            <li><strong>Session Ephemerality:</strong> We do not store persistent logs of shared room listening histories. Rooms automatically close upon host departure or after 60 minutes of inactivity.</li>
+          </ul>
+        </section>
+
+        <!-- 7. Acceptable Use Policy -->
+        <section class="legal-section" id="acceptable-use">
+          <h2 class="legal-section-title">7. Acceptable Use Policy & Prohibited Conduct</h2>
+          <p>
+            You agree to use Auralis solely for lawful, personal, non-commercial media playback and playlist management. You expressly agree that you will NOT:
+          </p>
+          <ul>
+            <li>Circumvent, disable, or tamper with security-related features, digital rights management (DRM) technologies, or API rate limiters;</li>
+            <li>Deploy automated bots, spiders, scrapers, or flood scripts against Auralis hosting infrastructure or connected third-party APIs (Firebase, YouTube, LRCLIB);</li>
+            <li>Attempt to gain unauthorized access to backend Firestore databases, other users' accounts, or private server infrastructure;</li>
+            <li>Use Auralis to infringe upon the patents, trademarks, trade secrets, copyrights, or other proprietary rights of any artist or entity;</li>
+            <li>Redistribute modified binaries under the "Auralis" brand name that contain malicious telemetry, adware, spyware, or harmful payloads.</li>
+          </ul>
+        </section>
+
+        <!-- 8. DMCA Copyright Policy & Notice Procedures -->
+        <section class="legal-section" id="dmca-policy">
+          <h2 class="legal-section-title">8. DMCA Copyright Infringement Policy & Statutory Notice Procedures</h2>
+          <p>
+            Auralis respects the intellectual property rights of content creators and complies with the Digital Millennium Copyright Act (17 U.S.C. § 512).
+          </p>
+          <div class="legal-highlight-box">
+            <div class="legal-highlight-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span>Designated Copyright Agent</span>
+            </div>
+            <p>
+              Because Auralis does not host any audio files or videos, copyright holders seeking takedown of underlying sound recordings or video files should contact the original hosting platform (such as YouTube or the applicable web host directly).
+              <br /><br />
+              However, if you believe that any material or software distributed directly on the Auralis website or repository infringes upon your copyright, you may submit a formal DMCA Notice to our Designated Copyright Agent:
+              <br /><br />
+              <strong>DMCA Agent Email:</strong> <a href="mailto:dmca@auralis.app">dmca@auralis.app</a>
+            </p>
+          </div>
+
+          <h3 class="legal-subsection-title">Required DMCA Notice Elements</h3>
+          <p>
+            Pursuant to 17 U.S.C. § 512(c)(3), your notification must include:
+          </p>
+          <ol>
+            <li>A physical or electronic signature of a person authorized to act on behalf of the copyright owner;</li>
+            <li>Identification of the copyrighted work claimed to have been infringed;</li>
+            <li>Identification of the material claimed to be infringing, including the specific URL or location on the Auralis site/repository;</li>
+            <li>Contact information of the complaining party (address, telephone number, and email address);</li>
+            <li>A statement that the complaining party has a good faith belief that use of the material is not authorized by the copyright owner, its agent, or the law;</li>
+            <li>A statement, under penalty of perjury, that the information in the notification is accurate and that the complaining party is authorized to act on behalf of the owner.</li>
+          </ol>
+        </section>
+
+        <!-- 9. Third-Party Content, Lyrics & External Links -->
+        <section class="legal-section" id="third-party-links">
+          <h2 class="legal-section-title">9. Third-Party Content, Lyrics & External Links</h2>
+          <p>
+            Auralis visualizes time-synced lyrics obtained from public community databases (e.g., LRCLIB) and displays metadata and video thumbnails retrieved via public web APIs.
+          </p>
+          <ul>
+            <li><strong>Accuracy of Lyrics:</strong> We do not guarantee the timing accuracy, completeness, or textual correctness of community-provided lyrics.</li>
+            <li><strong>External Links:</strong> Auralis may contain links to external third-party websites or services (e.g., GitHub, Google, YouTube). We exercise no editorial control over and assume no liability for the content, privacy practices, or availability of third-party platforms.</li>
+          </ul>
+        </section>
+
+        <!-- 10. Disclaimer of Warranties -->
+        <section class="legal-section" id="warranty-disclaimer">
+          <h2 class="legal-section-title">10. Disclaimer of Warranties ("AS IS" and "AS AVAILABLE")</h2>
+          <div class="legal-highlight-box warning">
+            <div class="legal-highlight-title" style="color: #f87171;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>Statutory Warranty Disclaimer</span>
+            </div>
+            <p>
+              AURALIS, ITS WEB PLATFORM, AND ALL ASSOCIATED CLIENT APPLICATIONS ARE PROVIDED ON AN <strong>"AS IS"</strong> AND <strong>"AS AVAILABLE"</strong> BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE.
+              <br /><br />
+              TO THE FULLEST EXTENT PERMISSIBLE UNDER APPLICABLE LAW, THE MAINTAINERS, CONTRIBUTORS, AND AFFILIATES OF AURALIS DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, ACCURACY OF METADATA, NON-INFRINGEMENT, AND CONTINUOUS API AVAILABILITY. WE DO NOT WARRANT THAT AURALIS WILL OPERATE ERROR-FREE, UNINTERRUPTED, OR FREE OF DEFECTS, OR THAT THIRD-PARTY APIS WILL REMAIN ACCESSIBLE.
+            </p>
+          </div>
+        </section>
+
+        <!-- 11. Limitation of Liability -->
+        <section class="legal-section" id="limitation-liability">
+          <h2 class="legal-section-title">11. Limitation of Liability</h2>
+          <p>
+            TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE AURALIS PROJECT, ITS CREATORS, MAINTAINERS, CONTRIBUTORS, OR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, LOSS OF DATA, LOSS OF GOODWILL, SERVICE INTERRUPTION, COMPUTER OR DEVICE MALFUNCTION, OR LOSS OF ANTICIPATED PROFITS) ARISING OUT OF OR IN CONNECTION WITH:
+          </p>
+          <ul>
+            <li>YOUR USE OF OR INABILITY TO USE AURALIS;</li>
+            <li>ANY MODIFICATIONS, DOWNTIME, OR TERMINATION OF THIRD-PARTY APIS (INCLUDING YOUTUBE OR FIREBASE);</li>
+            <li>ANY CONTENT OR BEHAVIOR EXHIBITED WITHIN USER-GENERATED "LISTEN TOGETHER" ROOMS;</li>
+            <li>UNAUTHORIZED ACCESS TO OR ALTERATION OF YOUR TRANSMISSIONS OR DATA.</li>
+          </ul>
+        </section>
+
+        <!-- 12. Indemnification -->
+        <section class="legal-section" id="indemnification">
+          <h2 class="legal-section-title">12. Indemnification</h2>
+          <p>
+            You agree to defend, indemnify, and hold harmless the Auralis project, its maintainers, developers, and open-source contributors from and against any claims, liabilities, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising out of or in any way connected with: (a) your access to or use of Auralis; (b) your violation of these Terms; (c) your violation of any third-party right, including any intellectual property or privacy right; or (d) any conduct occurring within a "Listen Together" session hosted by you.
+          </p>
+        </section>
+
+        <!-- 13. Termination & Account Suspension -->
+        <section class="legal-section" id="termination">
+          <h2 class="legal-section-title">13. Termination & Account Suspension</h2>
+          <p>
+            You may terminate your agreement with Auralis at any time by simply ceasing use of the application and clearing your local client data.
+          </p>
+          <p>
+            We reserve the right, without prior notice or liability, to suspend, disable, or terminate access to our hosted backend services (Firebase synchronization channels) for any user who violates these Terms, abuses infrastructure quotas, or engages in unauthorized automated scraping.
+          </p>
+        </section>
+
+        <!-- 14. Non-Affiliation Statement -->
+        <section class="legal-section" id="non-affiliation">
+          <h2 class="legal-section-title">14. Independence & Non-Affiliation Statement</h2>
+          <div class="legal-highlight-box">
+            <div class="legal-highlight-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <span>Notice of Trademark Independence</span>
+            </div>
+            <p>
+              <strong>Auralis is an independent, community-driven open-source project.</strong> Auralis is not sponsored, endorsed, affiliated with, or associated in any manner with Google LLC, YouTube, Alphabet Inc., LRCLIB, or any other trademark owner. All referenced trademarks belong to their respective proprietors.
+            </p>
+          </div>
+        </section>
+
+        <!-- 15. Governing Law, Jurisdiction & Dispute Resolution -->
+        <section class="legal-section" id="governing-law">
+          <h2 class="legal-section-title">15. Governing Law, Jurisdiction & Dispute Resolution</h2>
+          <p>
+            These Terms and any dispute or claim arising out of or in connection with them shall be governed by and construed in accordance with the laws of the <strong>State of California, United States</strong>, without regard to its conflict of law principles.
+          </p>
+          <p>
+            Any legal suit, action, or proceeding arising out of or related to these Terms or Auralis shall be instituted exclusively in the federal or state courts located in California, United States. You waive any objection to the exercise of jurisdiction over you by such courts and to venue in such courts.
+          </p>
+        </section>
+
+        <!-- 16. Severability & Entire Agreement -->
+        <section class="legal-section" id="severability">
+          <h2 class="legal-section-title">16. Severability & Entire Agreement</h2>
+          <p>
+            If any provision of these Terms is held to be invalid, illegal, or unenforceable by a court of competent jurisdiction, such provision shall be eliminated or modified to the minimum extent necessary, and the remaining provisions of these Terms will continue in full force and effect.
+          </p>
+          <p>
+            These Terms, together with the <a href="/privacy">Privacy Policy</a> and the MIT Open Source License, constitute the entire agreement between you and Auralis regarding the use of the application and supersede all prior understandings.
+          </p>
+        </section>
+
+        <!-- 17. Contact Information -->
+        <section class="legal-section" id="contact">
+          <h2 class="legal-section-title">17. Contact Information & Maintainers</h2>
+          <p>
+            If you have questions, feedback, or legal inquiries regarding these Terms of Service, please contact the maintainers:
+          </p>
+          <div class="contact-card-legal">
+            <div>
+              <h4>Auralis Legal & Support Inquiries</h4>
+              <p>Email: <a href="mailto:support@auralis.app">support@auralis.app</a> &bull; DMCA: <a href="mailto:dmca@auralis.app">dmca@auralis.app</a></p>
+            </div>
+            <a href="https://github.com/shreyanshchoubey09/Auralis/issues" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+              <span>Open GitHub Issue</span>
+            </a>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="/" class="brand-link">
+              <div class="brand-logo-wrap">
+                <img src="/favicon.svg" alt="Auralis Logo" class="brand-logo" width="28" height="28" />
+              </div>
+              <span class="brand-wordmark">Auralis</span>
+            </a>
+            <p>A modern, fluid open-source music streaming experience built with React, TypeScript, and Capacitor.</p>
+          </div>
+          <div>
+            <h4 class="footer-col-title">Navigation</h4>
+            <div class="footer-links">
+              <a href="/" class="footer-link">Home</a>
+              <a href="/#features" class="footer-link">Features</a>
+              <a href="/#download" class="footer-link">Download</a>
+              <a href="/privacy" class="footer-link">Privacy Policy</a>
+              <a href="/terms" class="footer-link">Terms of Service</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-col-title">Project</h4>
+            <div class="footer-links">
+              <a href="https://github.com/shreyanshchoubey09/Auralis" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub Repository</a>
+              <a href="https://github.com/shreyanshchoubey09/Auralis/releases" target="_blank" rel="noopener noreferrer" class="footer-link">Releases</a>
+              <a href="https://github.com/shreyanshchoubey09/Auralis/issues" target="_blank" rel="noopener noreferrer" class="footer-link">Issue Tracker</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-col-title">Legal</h4>
+            <div class="footer-links">
+              <a href="/privacy" class="footer-link">Privacy Policy</a>
+              <a href="/terms" class="footer-link">Terms of Service</a>
+              <a href="https://github.com/shreyanshchoubey09/Auralis/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="footer-link">MIT License</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-disclaimer">
+            Auralis is an independent open-source project and is not affiliated with, endorsed by, or sponsored by Google LLC or YouTube.
+          </p>
+          <div class="footer-copyright-row">
+            <span>&copy; 2026 Auralis Project. Released under the MIT License.</span>
+            <div style="display: flex; gap: 16px;">
+              <a href="/privacy" class="footer-link">Privacy</a>
+              <a href="/terms" class="footer-link">Terms</a>
+              <a href="https://github.com/shreyanshchoubey09/Auralis" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/scripts/main.ts"></script>
+</body>
+</html>
