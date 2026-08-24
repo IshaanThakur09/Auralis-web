@@ -1,11 +1,16 @@
 import { initPlayerDemo } from './player-demo';
+import { initDownloadHandler } from './download';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Player Demo if canvas is present (Homepage)
   initPlayerDemo();
 
-  // 2. Header scroll detection
+  // 2. Initialize Direct APK Download Handlers
+  initDownloadHandler();
+
+  // 3. Header scroll detection
   const header = document.querySelector('.site-header');
+
   const handleScroll = () => {
     if (!header) return;
     if (window.scrollY > 20) {

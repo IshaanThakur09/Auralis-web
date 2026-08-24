@@ -21,9 +21,8 @@
     grid-column: span 2;
   }
 
-  .download-platforms-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+  .apk-hub-container {
+    max-width: 100%;
   }
 }
 
@@ -68,11 +67,11 @@
     gap: 40px;
   }
 
-  .download-platforms-grid {
-    grid-template-columns: 1fr;
-    max-width: 540px;
+  .apk-hub-container {
+    max-width: 680px;
     margin-inline: auto;
   }
+
 
   .build-source-box {
     grid-template-columns: 1fr;
