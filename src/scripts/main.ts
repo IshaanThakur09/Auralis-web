@@ -1,111 +1,113 @@
-import { initPlayerDemo } from './player-demo';
-import { initDownloadHandler } from './download';
+import { APP_CONFIG } from './config';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize Player Demo if canvas is present (Homepage)
-  initPlayerDemo();
+  initDownloadHandlers();
+  initMobileDrawer();
+  initPreviewCard();
+});
 
-  // 2. Initialize Direct APK Download Handlers
-  initDownloadHandler();
+/**
+ * Handle APK Download clicks & placeholder fallbacks
+ */
+function initDownloadHandlers() {
+  const downloadBtns = document.querySelectorAll<HTMLElement>('[data-action="download-apk"]');
+  const toast = document.getElementById('toastMsg');
+  const toastText = document.getElementById('toastText');
 
-  // 3. Header scroll detection
-  const header = document.querySelector('.site-header');
+  downloadBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
 
-  const handleScroll = () => {
-    if (!header) return;
-    if (window.scrollY > 20) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  };
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll();
-
-  // 3. Mobile Drawer Controls
-  const menuBtn = document.getElementById('mobileMenuBtn');
-  const closeBtn = document.getElementById('mobileDrawerCloseBtn');
-  const drawer = document.getElementById('mobileDrawer');
-  const backdrop = document.getElementById('mobileDrawerBackdrop');
-  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-
-  const openDrawer = () => {
-    drawer?.classList.add('open');
-    backdrop?.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeDrawer = () => {
-    drawer?.classList.remove('open');
-    backdrop?.classList.remove('open');
-    document.body.style.overflow = '';
-  };
-
-  menuBtn?.addEventListener('click', openDrawer);
-  closeBtn?.addEventListener('click', closeDrawer);
-  backdrop?.addEventListener('click', closeDrawer);
-  mobileLinks.forEach((link) => {
-    link.addEventListener('click', closeDrawer);
-  });
-
-  // 4. FAQ Accordion
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach((item) => {
-    const questionBtn = item.querySelector('.faq-question');
-    questionBtn?.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      // Close other items
-      faqItems.forEach((other) => {
-        if (other !== item) other.classList.remove('open');
-      });
-      item.classList.toggle('open', !isOpen);
+      if (APP_CONFIG.apkDownloadUrl && APP_CONFIG.apkDownloadUrl.trim() !== '') {
+        // Direct APK download link provided
+        window.location.href = APP_CONFIG.apkDownloadUrl;
+      } else {
+        // Placeholder state - notify user and provide GitHub link fallback
+        showToast('APK build is being finalized. Redirecting to GitHub repository...');
+        setTimeout(() => {
+          window.open(APP_CONFIG.githubRepoUrl, '_blank', 'noopener,noreferrer');
+        }, 1200);
+      }
     });
   });
 
-  // 5. Copy Code Snippet
-  const copyBtn = document.getElementById('copySnippetBtn');
-  copyBtn?.addEventListener('click', async () => {
-    const codeEl = document.getElementById('buildSourceCode');
-    if (!codeEl) return;
-    try {
-      await navigator.clipboard.writeText(codeEl.textContent || '');
-      const originalHtml = copyBtn.innerHTML;
-      copyBtn.innerHTML = `<span>✓ Copied</span>`;
-      setTimeout(() => {
-        copyBtn.innerHTML = originalHtml;
-      }, 2000);
-    } catch (e) {
-      console.warn('Could not copy code to clipboard', e);
+  function showToast(message: string) {
+    if (!toast) return;
+    if (toastText) toastText.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 4000);
+  }
+}
+
+/**
+ * Mobile Navigation Drawer Toggle
+ */
+function initMobileDrawer() {
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const drawer = document.getElementById('mobileDrawer');
+  const drawerLinks = document.querySelectorAll('.mobile-nav-link');
+
+  if (!mobileBtn || !drawer) return;
+
+  mobileBtn.addEventListener('click', () => {
+    drawer.classList.toggle('is-open');
+  });
+
+  drawerLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      drawer.classList.remove('is-open');
+    });
+  });
+}
+
+/**
+ * Interactive Preview Card Controls (Minimalist Demo)
+ */
+function initPreviewCard() {
+  const playBtn = document.getElementById('previewPlayBtn');
+  const playIcon = document.getElementById('previewPlayIcon');
+  const pauseIcon = document.getElementById('previewPauseIcon');
+  const progressBar = document.getElementById('previewProgress');
+  const currentTimeEl = document.getElementById('previewCurrentTime');
+
+  if (!playBtn || !progressBar || !currentTimeEl) return;
+
+  let isPlaying = true;
+  let progress = 42; // Percentage
+  let totalSeconds = 230; // 3:50
+  let currentSeconds = Math.floor((progress / 100) * totalSeconds);
+
+  function formatTime(secs: number): string {
+    const mins = Math.floor(secs / 60);
+    const remainder = secs % 60;
+    return `${mins}:${remainder < 10 ? '0' : ''}${remainder}`;
+  }
+
+  // Update time indicator
+  currentTimeEl.textContent = formatTime(currentSeconds);
+
+  playBtn.addEventListener('click', () => {
+    isPlaying = !isPlaying;
+    if (playIcon && pauseIcon) {
+      if (isPlaying) {
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+      } else {
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+      }
     }
   });
 
-  // 6. Table of Contents Scrollspy for Legal pages
-  const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.legal-toc-link');
-  const legalSections = document.querySelectorAll<HTMLElement>('.legal-section');
-
-  if (tocLinks.length > 0 && legalSections.length > 0) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            tocLinks.forEach((link) => {
-              const href = link.getAttribute('href');
-              if (href === `#${id}`) {
-                link.classList.add('active');
-              } else {
-                link.classList.remove('active');
-              }
-            });
-          }
-        });
-      },
-      {
-        rootMargin: '-80px 0px -60% 0px',
-        threshold: 0.1,
-      }
-    );
-
-    legalSections.forEach((section) => observer.observe(section));
-  }
-});
+  // Subtle progress ticker
+  setInterval(() => {
+    if (!isPlaying) return;
+    progress += 0.5;
+    if (progress > 100) progress = 0;
+    progressBar.style.width = `${progress}%`;
+    currentSeconds = Math.floor((progress / 100) * totalSeconds);
+    currentTimeEl.textContent = formatTime(currentSeconds);
+  }, 1000);
+}
