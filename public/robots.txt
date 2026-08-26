@@ -1,0 +1,69 @@
+# ==============================================================================
+# Robots.txt for Auralis Web
+# Host: https://auralis-self-nu.vercel.app
+# ==============================================================================
+
+# Default rules for all web crawlers
+User-agent: *
+Allow: /
+Allow: /privacy
+Allow: /terms
+Allow: /assets/
+Allow: /logo.png
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.svg$
+Allow: /*.webp$
+Allow: /*.ico$
+Disallow: /downloads/*.apk$
+
+# Googlebot specific directives
+User-agent: Googlebot
+Allow: /
+Allow: /privacy
+Allow: /terms
+Allow: /assets/
+Allow: /logo.png
+
+# Bingbot specific directives
+User-agent: Bingbot
+Allow: /
+Allow: /privacy
+Allow: /terms
+Allow: /assets/
+Allow: /logo.png
+
+# Apple Search & Siri Suggestions
+User-agent: Applebot
+Allow: /
+Allow: /privacy
+Allow: /terms
+
+# AI Crawlers & LLM Indexers
+User-agent: GPTBot
+Allow: /
+Allow: /privacy
+Allow: /terms
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /privacy
+Allow: /terms
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /privacy
+Allow: /terms
+
+User-agent: Google-Extended
+Allow: /
+Allow: /privacy
+Allow: /terms
+
+# Sitemap locations
+Sitemap: https://auralis-self-nu.vercel.app/sitemap.xml
+Sitemap: https://auralis-self-nu.vercel.app/sitemaps.xml
+
+# Host declaration
+Host: https://auralis-self-nu.vercel.app

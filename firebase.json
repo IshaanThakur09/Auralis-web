@@ -44,7 +44,7 @@
         ]
       },
       {
-        "source": "**/*.@(html|json)",
+        "source": "**/*.@(html|json|xml|txt)",
         "headers": [
           {
             "key": "Cache-Control",
