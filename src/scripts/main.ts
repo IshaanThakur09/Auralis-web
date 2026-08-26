@@ -423,11 +423,10 @@ function initPlayerControls() {
 }
 
 /**
- * 7. APK Download & SHA256 Checksum Copying
+ * 7. APK Direct Download Handler
  */
 function initDownloadAndChecksum() {
   const downloadBtns = document.querySelectorAll<HTMLElement>('[data-action="download-apk"]');
-  const checksumBox = document.getElementById('checksumBox');
 
   downloadBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
@@ -441,25 +440,13 @@ function initDownloadAndChecksum() {
         link.click();
         document.body.removeChild(link);
       } else {
-        showToast('APK build finalizing. Redirecting to GitHub...');
+        showToast('Redirecting to official GitHub releases...');
         setTimeout(() => {
           window.open(APP_CONFIG.githubRepoUrl, '_blank', 'noopener,noreferrer');
-        }, 1200);
+        }, 800);
       }
     });
   });
-
-  if (checksumBox) {
-    checksumBox.addEventListener('click', async () => {
-      const shaText = checksumBox.getAttribute('data-checksum') || '8f434346648f6b96e411ea99d55aa6da3cb365bd3df8f5f68b3dc861cd7db863';
-      try {
-        await navigator.clipboard.writeText(shaText);
-        showToast('SHA256 Checksum copied to clipboard!');
-      } catch (err) {
-        showToast(`Checksum: ${shaText.substring(0, 16)}...`);
-      }
-    });
-  }
 }
 
 /**

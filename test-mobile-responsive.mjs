@@ -38,6 +38,14 @@ if (indexHtml.includes('qr-container') || indexHtml.includes('Scan to Sideload')
   console.log('✅ PASS: QR code component completely removed.');
 }
 
+// Test 2c: Check that SHA256 box is removed
+if (indexHtml.includes('checksum-box') || indexHtml.includes('SHA256:')) {
+  console.error('❌ FAIL: SHA256 box still found in index.html!');
+  errors++;
+} else {
+  console.log('✅ PASS: SHA256 checksum box completely removed.');
+}
+
 // Test 3: Check for horizontal overflow locks in main.css
 const mainCss = fs.readFileSync('src/styles/main.css', 'utf8');
 
