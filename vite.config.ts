@@ -19,6 +19,11 @@ const mpaDevPlugin: () => Plugin = () => ({
 export default defineConfig({
   appType: 'mpa',
   plugins: [mpaDevPlugin()],
+  server: {
+    watch: {
+      ignored: ['**/public/downloads/**', '**/temp_unzip/**'],
+    },
+  },
   build: {
     target: 'es2022',
     cssTarget: 'chrome90',
