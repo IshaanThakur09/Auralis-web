@@ -452,40 +452,6 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  margin-bottom: 40px;
-}
-
-.hero-trust-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.avatar-stack {
-  display: flex;
-}
-
-.avatar-pill {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 2px solid #0c0e0c;
-  margin-left: -8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-}
-
-.avatar-pill:first-child {
-  margin-left: 0;
-}
-
-.trust-text {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
-.trust-text strong {
-  color: var(--text-primary);
 }
 
 /* ==========================================================================
