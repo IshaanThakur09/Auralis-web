@@ -19,8 +19,14 @@ function initDownloadHandlers() {
       e.preventDefault();
 
       if (APP_CONFIG.apkDownloadUrl && APP_CONFIG.apkDownloadUrl.trim() !== '') {
-        // Direct APK download link provided
-        window.location.href = APP_CONFIG.apkDownloadUrl;
+        // Direct APK download
+        showToast('Downloading Auralis APK...');
+        const link = document.createElement('a');
+        link.href = APP_CONFIG.apkDownloadUrl;
+        link.download = 'auralis.apk';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       } else {
         // Placeholder state - notify user and provide GitHub link fallback
         showToast('APK build is being finalized. Redirecting to GitHub repository...');
@@ -51,14 +57,39 @@ function initMobileDrawer() {
 
   if (!mobileBtn || !drawer) return;
 
-  mobileBtn.addEventListener('click', () => {
-    drawer.classList.toggle('is-open');
+  const btn = mobileBtn;
+  const navDrawer = drawer;
+
+  function setDrawerState(isOpen: boolean) {
+    navDrawer.classList.toggle('is-open', isOpen);
+    document.body.classList.toggle('drawer-open', isOpen);
+    btn.setAttribute('aria-expanded', String(isOpen));
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = navDrawer.classList.contains('is-open');
+    setDrawerState(!isOpen);
   });
 
   drawerLinks.forEach((link) => {
     link.addEventListener('click', () => {
-      drawer.classList.remove('is-open');
+      setDrawerState(false);
     });
+  });
+
+  // Close when clicking/tapping outside
+  document.addEventListener('click', (e) => {
+    if (drawer.classList.contains('is-open') && !drawer.contains(e.target as Node) && e.target !== mobileBtn) {
+      setDrawerState(false);
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+      setDrawerState(false);
+    }
   });
 }
 

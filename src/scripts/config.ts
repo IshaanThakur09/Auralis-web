@@ -1,6 +1,5 @@
 /**
  * Central configuration for Auralis Web
- * Map placeholders here for easy updates (e.g. APK download link, repo, version)
  */
 export const APP_CONFIG = {
   appName: 'Auralis',
@@ -12,7 +11,6 @@ export const APP_CONFIG = {
   // GitHub repository link
   githubRepoUrl: 'https://github.com/shreyanshchoubey09/Auralis',
   
-  // PLACEHOLDER: Map your direct APK download link here when ready
-  // e.g. 'https://github.com/shreyanshchoubey09/Auralis/releases/download/v1.0.0/auralis-v1.0.0.apk'
-  apkDownloadUrl: '',
+  // Direct APK download link
+  apkDownloadUrl: '/downloads/auralis.apk',
 };
