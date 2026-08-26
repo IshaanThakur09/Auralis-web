@@ -1031,9 +1031,45 @@ button {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.lyrics-demo-active svg {
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+/* Micro-Animations for Custom Feature SVGs */
+.icon-svg-sparkle {
+  animation: sparkleTwinkle 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes sparkleTwinkle {
+  0% { transform: scale(0.9) rotate(0deg); opacity: 0.85; filter: drop-shadow(0 0 1px rgba(210, 231, 128, 0.4)); }
+  100% { transform: scale(1.15) rotate(15deg); opacity: 1; filter: drop-shadow(0 0 5px rgba(210, 231, 128, 0.7)); }
+}
+
+.icon-svg-bolt {
+  animation: boltPulse 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes boltPulse {
+  0% { transform: scale(0.95); opacity: 0.85; }
+  100% { transform: scale(1.12) translateY(-1px); opacity: 1; filter: drop-shadow(0 0 6px rgba(210, 231, 128, 0.6)); }
+}
+
+.icon-svg-wave {
+  animation: wavePulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes wavePulse {
+  0% { transform: scaleY(0.85); opacity: 0.85; }
+  100% { transform: scaleY(1.15); opacity: 1; }
 }
 
 /* Feature Demo 2: Spatial Listen Together Room */
@@ -1076,6 +1112,11 @@ button {
   justify-content: center;
   font-size: 0.68rem;
   font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.room-user-node svg {
+  display: block;
 }
 
 .user-host {
