@@ -62,7 +62,6 @@ function initMobileDrawer() {
 
   function setDrawerState(isOpen: boolean) {
     navDrawer.classList.toggle('is-open', isOpen);
-    document.body.classList.toggle('drawer-open', isOpen);
     btn.setAttribute('aria-expanded', String(isOpen));
   }
 

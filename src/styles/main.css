@@ -67,12 +67,10 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  overflow-x: hidden;
 }
 
 body {
   min-height: 100vh;
-  min-height: 100dvh;
   background-color: var(--bg-main);
   color: var(--text-primary);
   line-height: 1.6;
@@ -80,14 +78,6 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  position: relative;
-  /* Prevent pull-to-refresh interfering with page interactions */
-  overscroll-behavior-y: none;
-}
-
-body.drawer-open {
-  overflow: hidden;
-  touch-action: none;
 }
 
 a {
@@ -298,7 +288,7 @@ button {
 
 /* Mobile Drawer */
 .mobile-drawer {
-  display: flex;
+  display: none;
   position: fixed;
   top: calc(64px + var(--sat));
   left: 0;
@@ -310,18 +300,10 @@ button {
   flex-direction: column;
   gap: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: opacity 200ms ease, transform 200ms ease, visibility 200ms ease;
-  pointer-events: none;
 }
 
 .mobile-drawer.is-open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
+  display: flex;
 }
 
 .mobile-nav-link {
