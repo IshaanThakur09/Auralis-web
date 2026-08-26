@@ -506,8 +506,8 @@ button {
   position: relative;
   width: 100%;
   max-width: 100%;
-  min-height: 520px;
-  height: 540px;
+  min-height: 540px;
+  height: 560px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -524,7 +524,7 @@ button {
   max-width: 100%;
   z-index: 1;
   pointer-events: none;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .threejs-canvas-wrapper canvas {
@@ -1437,7 +1437,7 @@ button {
   }
 
   .hero-3d-stage {
-    height: 520px;
+    height: 540px;
     overflow: visible;
   }
 
@@ -1510,7 +1510,7 @@ button {
 
   .hero-3d-stage {
     height: auto;
-    min-height: 520px;
+    min-height: 540px;
     margin-top: 10px;
     padding: 18px 0;
     overflow: visible;

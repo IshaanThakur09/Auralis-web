@@ -145,10 +145,10 @@ function initThreeJSPlayer() {
 
   const scene = new THREE.Scene();
   const width = container.clientWidth || 400;
-  const height = container.clientHeight || 520;
+  const height = container.clientHeight || 540;
 
   const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
-  camera.position.z = width < 600 ? 7.6 : 7.0;
+  camera.position.z = width < 600 ? 7.2 : 6.8;
 
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
   renderer.setSize(width, height);
@@ -166,54 +166,56 @@ function initThreeJSPlayer() {
   const group = new THREE.Group();
   scene.add(group);
 
-  // Outer Crisp Torus Ring 1 (Enlarged Prominent Olive Accent #d2e780)
-  const ring1Geo = new THREE.TorusGeometry(4.3, 0.048, 16, 150);
+  // Outer Grand Torus Ring 1 (Prominent Olive Accent #d2e780 - Open-face dynamic angle)
+  const ring1Geo = new THREE.TorusGeometry(4.7, 0.052, 16, 160);
   const ring1Mat = new THREE.MeshBasicMaterial({ color: 0xd2e780, transparent: true, opacity: 0.96 });
   const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
-  ring1.rotation.x = Math.PI / 2.3;
+  ring1.rotation.x = 0.42;
+  ring1.rotation.y = 0.28;
   group.add(ring1);
 
-  // Inner Soundwave Ring 2 (Enlarged Deep Muted Olive #687d3a)
-  const ring2Geo = new THREE.TorusGeometry(3.6, 0.038, 16, 150);
+  // Inner Intersecting Torus Ring 2 (Deep Muted Olive #687d3a - Crossed open angle)
+  const ring2Geo = new THREE.TorusGeometry(4.1, 0.042, 16, 160);
   const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x687d3a, transparent: true, opacity: 0.9 });
   const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
-  ring2.rotation.y = Math.PI / 3;
+  ring2.rotation.x = -0.52;
+  ring2.rotation.y = 0.65;
   group.add(ring2);
 
-  // Equatorial Orbital Ring 3 (Enlarged Soft Olive #8ea05e)
-  const ring3Geo = new THREE.TorusGeometry(3.9, 0.034, 16, 140);
+  // Equatorial Orbital Ring 3 (Soft Olive #8ea05e - Wide open orbit)
+  const ring3Geo = new THREE.TorusGeometry(4.4, 0.038, 16, 150);
   const ring3Mat = new THREE.MeshBasicMaterial({ color: 0x8ea05e, transparent: true, opacity: 0.85 });
   const ring3 = new THREE.Mesh(ring3Geo, ring3Mat);
-  ring3.rotation.x = Math.PI / 1.6;
-  ring3.rotation.z = Math.PI / 5;
+  ring3.rotation.x = 0.85;
+  ring3.rotation.z = 0.45;
   group.add(ring3);
 
   // Center Wireframe Icosahedron Core (Enlarged Soft Olive #d2e780)
-  const coreGeo = new THREE.IcosahedronGeometry(2.65, 1);
+  const coreGeo = new THREE.IcosahedronGeometry(2.8, 1);
   const coreMat = new THREE.MeshBasicMaterial({
     color: 0xd2e780,
     wireframe: true,
     transparent: true,
-    opacity: 0.48,
+    opacity: 0.45,
   });
   const core = new THREE.Mesh(coreGeo, coreMat);
   group.add(core);
 
-  // Orbiting Floating Particles (Olive tones)
+  // Orbiting Floating Particles (Olive tones - Expansive spread)
   const particleGeo = new THREE.BufferGeometry();
-  const particleCount = 95;
+  const particleCount = 100;
   const positions = new Float32Array(particleCount * 3);
   for (let i = 0; i < particleCount * 3; i += 3) {
     const angle = Math.random() * Math.PI * 2;
-    const radius = 3.8 + Math.random() * 2.0;
+    const radius = 4.2 + Math.random() * 2.2;
     positions[i] = Math.cos(angle) * radius;
-    positions[i + 1] = (Math.random() - 0.5) * 4.0;
+    positions[i + 1] = (Math.random() - 0.5) * 4.4;
     positions[i + 2] = Math.sin(angle) * radius;
   }
   particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   const particleMat = new THREE.PointsMaterial({
     color: 0xd2e780,
-    size: 0.06,
+    size: 0.065,
     transparent: true,
     opacity: 0.85,
   });
@@ -224,11 +226,11 @@ function initThreeJSPlayer() {
   const ambientLight = new THREE.AmbientLight(0xffffff, 1.1);
   scene.add(ambientLight);
 
-  const oliveLight = new THREE.PointLight(0xd2e780, 3.0, 25);
+  const oliveLight = new THREE.PointLight(0xd2e780, 3.2, 30);
   oliveLight.position.set(4, 4, 4);
   scene.add(oliveLight);
 
-  const forestLight = new THREE.PointLight(0x44532b, 2.2, 25);
+  const forestLight = new THREE.PointLight(0x44532b, 2.4, 30);
   forestLight.position.set(-4, -4, 3);
   scene.add(forestLight);
 
@@ -255,9 +257,9 @@ function initThreeJSPlayer() {
 
   window.addEventListener('resize', () => {
     const w = container.clientWidth || 400;
-    const h = container.clientHeight || 520;
+    const h = container.clientHeight || 540;
     camera.aspect = w / h;
-    camera.position.z = w < 600 ? 7.6 : 7.0;
+    camera.position.z = w < 600 ? 7.2 : 6.8;
     camera.updateProjectionMatrix();
     renderer.setSize(w, h);
   });
