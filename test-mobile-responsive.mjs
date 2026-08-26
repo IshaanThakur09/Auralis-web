@@ -46,6 +46,14 @@ if (indexHtml.includes('checksum-box') || indexHtml.includes('SHA256:')) {
   console.log('✅ PASS: SHA256 checksum box completely removed.');
 }
 
+// Test 2d: Check that specific version number (v1.0.0) is not displayed
+if (indexHtml.includes('v1.0.0') || indexHtml.includes('v1.0')) {
+  console.error('❌ FAIL: Specific version number still found in index.html!');
+  errors++;
+} else {
+  console.log('✅ PASS: Specific version number replaced with "Latest Version".');
+}
+
 // Test 3: Check for horizontal overflow locks in main.css
 const mainCss = fs.readFileSync('src/styles/main.css', 'utf8');
 
