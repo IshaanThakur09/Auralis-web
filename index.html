@@ -172,16 +172,30 @@
                 </div>
               </div>
 
-              <!-- 3D Holographic Animated Seekbar (Non-interactive) -->
-              <div class="scrubber-container" aria-label="Playback progress" role="progressbar" aria-valuenow="44" aria-valuemin="0" aria-valuemax="100">
-                <span class="scrubber-time" id="currentTime">1:41</span>
-                <div class="scrubber-3d-track" id="scrubberTrack">
-                  <div class="scrubber-3d-fill" id="scrubberFill">
-                    <div class="scrubber-3d-thumb"></div>
-                    <div class="scrubber-3d-shimmer"></div>
+              <!-- 3D Flashy Holographic Audio Waveform Seekbar -->
+              <div class="seekbar-3d-wrapper" aria-label="3D Live Audio Waveform Seekbar" role="progressbar" aria-valuenow="44" aria-valuemin="0" aria-valuemax="100">
+                <div class="seekbar-3d-header">
+                  <span class="seekbar-3d-badge">
+                    <span class="live-pulse-dot"></span>
+                    <span>3D SPATIAL STREAM</span>
+                  </span>
+                  <div class="seekbar-3d-timestamps">
+                    <span class="time-elapsed" id="currentTime">1:41</span>
+                    <span class="time-divider">/</span>
+                    <span class="time-total">3:50</span>
                   </div>
                 </div>
-                <span class="scrubber-time">3:50</span>
+
+                <!-- 3D Frequency Equalizer Waveform Track -->
+                <div class="seekbar-3d-stage">
+                  <div class="seekbar-3d-bars-track" id="seekbarBarsTrack">
+                    <!-- Populated dynamically with 30 interactive frequency equalizer pillars -->
+                  </div>
+                  <div class="seekbar-3d-progress-overlay" id="scrubberFill">
+                    <div class="seekbar-3d-beam"></div>
+                    <div class="seekbar-3d-head-bead"></div>
+                  </div>
+                </div>
               </div>
 
               <!-- Player Controls -->

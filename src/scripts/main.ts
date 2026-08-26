@@ -366,7 +366,7 @@ function initEqualizerVisualizer() {
 }
 
 /**
- * 6. 3D Holographic Animated Seekbar & Controls (Non-Interactive Seekbar)
+ * 6. 3D Flashy Holographic Audio Waveform Seekbar Engine (Non-Interactive)
  */
 function initPlayerControls() {
   const playBtn = document.getElementById('heroPlayBtn');
@@ -374,9 +374,26 @@ function initPlayerControls() {
   const pauseIcon = document.getElementById('pauseIcon');
   const progressBar = document.getElementById('scrubberFill');
   const currentTimeEl = document.getElementById('currentTime');
+  const barsTrack = document.getElementById('seekbarBarsTrack');
 
   const barEl = progressBar as HTMLElement;
   const timeEl = currentTimeEl as HTMLElement;
+
+  // Initialize 28 dynamic 3D frequency equalizer bars
+  const totalBars = 28;
+  const barElements: HTMLElement[] = [];
+
+  if (barsTrack) {
+    barsTrack.innerHTML = '';
+    for (let i = 0; i < totalBars; i++) {
+      const bar = document.createElement('div');
+      bar.className = 'seekbar-freq-bar';
+      const initialHeight = 25 + Math.sin(i * 0.4) * 20 + (i % 3) * 12;
+      bar.style.height = `${initialHeight}%`;
+      barsTrack.appendChild(bar);
+      barElements.push(bar);
+    }
+  }
 
   let isPlaying = true;
   const totalSeconds = 230; // 3:50 total track time
@@ -400,7 +417,7 @@ function initPlayerControls() {
     });
   }
 
-  // Smooth continuous procedural 3D playback tick
+  // Smooth 60 FPS continuous procedural 3D frequency seekbar playback tick
   function tickPlayback(now: number) {
     if (isPlaying) {
       const delta = (now - lastTimestamp) / 1000;
@@ -408,10 +425,32 @@ function initPlayerControls() {
       if (currentElapsedSeconds >= totalSeconds) {
         currentElapsedSeconds = 0;
       }
+
       const progressPercent = (currentElapsedSeconds / totalSeconds) * 100;
-      barEl.style.width = `${progressPercent.toFixed(2)}%`;
-      timeEl.textContent = formatTime(currentElapsedSeconds);
+      if (barEl) {
+        barEl.style.width = `${progressPercent.toFixed(2)}%`;
+      }
+      if (timeEl) {
+        timeEl.textContent = formatTime(currentElapsedSeconds);
+      }
+
+      // Dynamically animate 3D audio frequency equalizer bars
+      const progressFraction = currentElapsedSeconds / totalSeconds;
+      const activeBarIndex = Math.floor(progressFraction * totalBars);
+
+      barElements.forEach((bar, idx) => {
+        const freqOffset = Math.sin(now * 0.006 + idx * 0.5) * 30 + Math.cos(now * 0.003 + idx * 0.8) * 15;
+        const dynamicH = Math.min(Math.max(20 + freqOffset + ((idx * 7) % 25), 12), 95);
+        bar.style.height = `${dynamicH}%`;
+
+        if (idx <= activeBarIndex) {
+          bar.classList.add('is-played');
+        } else {
+          bar.classList.remove('is-played');
+        }
+      });
     }
+
     lastTimestamp = now;
     requestAnimationFrame(tickPlayback);
   }

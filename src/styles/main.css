@@ -535,27 +535,26 @@ button {
   left: 0;
 }
 
-/* 3D Glass Music Player Overlay Card (Translucent & High-Legibility) */
+/* 3D Glass Music Player Overlay Card & Flashy 3D Audio Seekbar */
 .player-overlay-card {
   position: relative;
   z-index: 10;
   width: 100%;
   max-width: 360px;
-  background: rgba(14, 18, 13, 0.64);
-  backdrop-filter: blur(18px) saturate(135%);
-  -webkit-backdrop-filter: blur(18px) saturate(135%);
-  border: 1px solid rgba(210, 231, 128, 0.25);
+  background: rgba(14, 18, 13, 0.76);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(210, 231, 128, 0.28);
   border-radius: var(--radius-lg);
   padding: 22px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.15);
-  transform-style: preserve-3d;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.16);
   transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
   box-sizing: border-box;
 }
 
 .player-overlay-card:hover {
   border-color: var(--border-highlight);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.95);
   transform: translateY(-4px);
 }
 
@@ -563,7 +562,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .player-tag {
@@ -614,12 +613,12 @@ button {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .track-art-box {
-  width: 52px;
-  height: 52px;
+  width: 50px;
+  height: 50px;
   border-radius: var(--radius-md);
   background: var(--primary-container);
   border: 1px solid rgba(210, 231, 128, 0.25);
@@ -658,14 +657,14 @@ button {
 
 /* Synchronized Lyrics Display */
 .lyrics-box {
-  background: rgba(10, 13, 9, 0.68);
+  background: rgba(10, 13, 9, 0.72);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-md);
-  padding: 12px;
-  margin-bottom: 18px;
-  height: 80px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  height: 72px;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -681,7 +680,7 @@ button {
   position: absolute;
   left: 0;
   right: 0;
-  height: 14px;
+  height: 12px;
   z-index: 2;
   pointer-events: none;
 }
@@ -699,13 +698,13 @@ button {
 .lyrics-track-list {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
   text-align: center;
   transition: transform 0.4s var(--ease-spring);
 }
 
 .lyric-item {
-  font-size: 0.825rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-muted);
   transition: all 0.3s ease;
@@ -716,81 +715,156 @@ button {
 
 .lyric-item.is-active {
   color: var(--primary);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  transform: scale(1.02);
+  text-shadow: 0 0 8px rgba(210, 231, 128, 0.4);
 }
 
-/* 3D Holographic Animated Seekbar (Non-Interactive) */
-.scrubber-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  color: var(--text-secondary);
-  margin-bottom: 16px;
+/* ==========================================================================
+   3D Holographic Flashy Frequency Waveform Seekbar
+   ========================================================================== */
+.seekbar-3d-wrapper {
+  background: rgba(10, 14, 9, 0.88);
+  border: 1px solid rgba(210, 231, 128, 0.22);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7), 0 6px 18px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  box-sizing: border-box;
   user-select: none;
   pointer-events: none;
-  transform: translateZ(20px);
 }
 
-.scrubber-3d-track {
-  flex: 1;
-  height: 8px;
-  background: rgba(8, 11, 7, 0.92);
-  border-radius: var(--radius-full);
+.seekbar-3d-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+}
+
+.seekbar-3d-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.live-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px #d2e780;
+  animation: dotPulse 1.6s infinite ease-in-out;
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+}
+
+.seekbar-3d-timestamps {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-secondary);
+}
+
+.time-elapsed {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.time-divider {
+  color: var(--text-muted);
+}
+
+.time-total {
+  color: var(--text-muted);
+}
+
+/* 3D Waveform Frequency Track Stage */
+.seekbar-3d-stage {
   position: relative;
-  overflow: visible;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.9), 0 1px 1px rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(210, 231, 128, 0.18);
+  height: 36px;
+  background: rgba(6, 8, 5, 0.95);
+  border-radius: var(--radius-sm);
+  padding: 0 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
-.scrubber-3d-fill {
+.seekbar-3d-bars-track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.seekbar-freq-bar {
+  flex: 1;
+  min-width: 2px;
+  max-width: 6px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.16);
+  transition: height 0.08s ease-out, background-color 0.12s ease;
+  min-height: 4px;
+}
+
+.seekbar-freq-bar.is-played {
+  background: linear-gradient(180deg, #ffffff 0%, #d2e780 40%, #485632 100%);
+  box-shadow: 0 0 6px rgba(210, 231, 128, 0.6);
+}
+
+/* 3D Laser Progress Beam & Head */
+.seekbar-3d-progress-overlay {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 44%;
-  background: linear-gradient(90deg, #384326 0%, #a4be5c 60%, #d2e780 100%);
-  border-radius: var(--radius-full);
-  box-shadow: 0 0 10px rgba(210, 231, 128, 0.3);
-  position: relative;
+  pointer-events: none;
+  z-index: 2;
   transition: width 0.12s linear;
 }
 
-.scrubber-3d-thumb {
-  position: absolute;
-  right: -5px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 13px;
-  height: 13px;
-  background: #ffffff;
-  border: 2.5px solid #d2e780;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 8px rgba(210, 231, 128, 0.6);
-  animation: thumbPulse 2.5s infinite alternate ease-in-out;
-}
-
-@keyframes thumbPulse {
-  0% { transform: translateY(-50%) scale(1); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8); }
-  100% { transform: translateY(-50%) scale(1.15); box-shadow: 0 3px 10px rgba(210, 231, 128, 0.5); }
-}
-
-.scrubber-3d-shimmer {
+.seekbar-3d-beam {
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
-  background-size: 200% 100%;
-  animation: seekbarShimmer 3s infinite linear;
-  pointer-events: none;
+  background: linear-gradient(90deg, rgba(210, 231, 128, 0.02) 0%, rgba(210, 231, 128, 0.22) 100%);
+  border-right: 2px solid #d2e780;
+  box-shadow: 2px 0 14px rgba(210, 231, 128, 0.85);
 }
 
-@keyframes seekbarShimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+.seekbar-3d-head-bead {
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 22px;
+  background: #ffffff;
+  border: 2px solid #d2e780;
+  border-radius: 4px;
+  box-shadow: 0 0 14px #d2e780, 0 2px 6px rgba(0, 0, 0, 0.8);
+  animation: beadPulse 1.8s infinite alternate ease-in-out;
+}
+
+@keyframes beadPulse {
+  0% { transform: translateY(-50%) scale(1); box-shadow: 0 0 10px #d2e780, 0 2px 6px rgba(0, 0, 0, 0.8); }
+  100% { transform: translateY(-50%) scale(1.1); box-shadow: 0 0 20px #d2e780, 0 3px 8px rgba(0, 0, 0, 0.9); }
 }
 
 .controls-row {
