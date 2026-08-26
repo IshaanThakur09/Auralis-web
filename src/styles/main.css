@@ -1,7 +1,8 @@
 /* ==========================================================================
-   Auralis Web - Material 3 Tone & Crisp Nocturnal Design System
+   Auralis Web - Mobile-First Material 3 Tone & Crisp Nocturnal Design System
    High-performance, 3D hover physics, WebGL shader integration
    Accent: Exact Olive Green (#d2e780) without sloppy luminescence
+   Mobile-first: Zero horizontal overflow on all screen sizes
    ========================================================================== */
 
 :root {
@@ -11,7 +12,7 @@
   --bg-surface: #151813;
   --bg-surface-elevated: #1e231b;
   --bg-glass: rgba(21, 24, 19, 0.7);
-  --bg-glass-heavy: rgba(12, 14, 12, 0.92);
+  --bg-glass-heavy: rgba(12, 14, 12, 0.94);
   --bg-glass-card: rgba(21, 24, 19, 0.65);
   --bg-overlay: rgba(12, 14, 12, 0.9);
 
@@ -78,7 +79,7 @@
   --sar: env(safe-area-inset-right, 0px);
 }
 
-/* Base Reset */
+/* Base Reset & Mobile-First Overflow Locks */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -93,6 +94,9 @@ html {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
@@ -103,6 +107,8 @@ body {
   font-size: 16px;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100vw;
   overflow-x: hidden;
   position: relative;
 }
@@ -113,21 +119,23 @@ body {
   inset: 0;
   width: 100vw;
   height: 100vh;
+  max-width: 100%;
   z-index: -1;
   pointer-events: none;
   opacity: 0.7;
 }
 
-/* Content Container */
+/* Content Container - Strictly Responsive */
 .container {
   width: 100%;
   max-width: var(--container-width);
   margin-left: auto;
   margin-right: auto;
-  padding-left: max(24px, var(--sal));
-  padding-right: max(24px, var(--sar));
+  padding-left: max(16px, var(--sal));
+  padding-right: max(16px, var(--sar));
   position: relative;
   z-index: 10;
+  box-sizing: border-box;
 }
 
 /* Links & Buttons Reset */
@@ -144,44 +152,50 @@ button {
 }
 
 /* ==========================================================================
-   Header Navigation
+   Header Navigation (Mobile-First, Compact & Overflow-Proof)
    ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
   width: 100%;
+  max-width: 100vw;
   background: var(--bg-glass-heavy);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--border-subtle);
   padding-top: var(--sat);
   transition: all var(--transition-normal);
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .site-header.is-scrolled {
-  background: rgba(12, 14, 12, 0.96);
+  background: rgba(12, 14, 12, 0.98);
   border-bottom-color: var(--border-glass);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
 }
 
 .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 64px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .brand-link {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   letter-spacing: -0.02em;
   color: var(--text-primary);
   transition: transform var(--transition-fast);
+  flex-shrink: 0;
 }
 
 .brand-link:hover {
@@ -189,8 +203,8 @@ button {
 }
 
 .brand-logo-img {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: var(--radius-sm);
   transition: transform var(--transition-normal);
 }
@@ -207,7 +221,7 @@ button {
 .desktop-nav {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
 }
 
 .nav-link {
@@ -242,7 +256,14 @@ button {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.header-github-btn {
+  padding: 7px 14px;
+  font-size: 0.85rem;
+  gap: 6px;
 }
 
 /* ==========================================================================
@@ -252,27 +273,28 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.95rem;
-  padding: 10px 22px;
+  padding: 10px 20px;
   border-radius: var(--radius-md);
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
   white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .btn-sm {
-  padding: 8px 16px;
-  font-size: 0.875rem;
+  padding: 7px 14px;
+  font-size: 0.85rem;
   border-radius: var(--radius-sm);
 }
 
 .btn-lg {
-  padding: 14px 28px;
-  font-size: 1.05rem;
+  padding: 14px 24px;
+  font-size: 1rem;
   border-radius: var(--radius-md);
 }
 
@@ -282,13 +304,13 @@ button {
   color: var(--primary-dark) !important;
   font-weight: 700;
   border: 1px solid rgba(210, 231, 128, 0.4);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .btn-primary:hover {
   background: var(--primary-light);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
   color: var(--primary-dark) !important;
 }
 
@@ -308,7 +330,7 @@ button {
   background: var(--primary-container);
   border-color: var(--border-highlight);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
   color: #ffffff !important;
 }
 
@@ -326,35 +348,39 @@ button {
 
 .mobile-menu-btn {
   display: none;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-sm);
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 /* Mobile Drawer */
 .mobile-drawer {
   display: none;
   position: fixed;
-  top: 72px;
+  top: 64px;
   left: 0;
   right: 0;
+  width: 100vw;
+  max-width: 100%;
   background: rgba(12, 14, 12, 0.98);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   border-bottom: 1px solid var(--border-glass);
-  padding: 20px 24px 30px;
+  padding: 20px 20px 28px;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   z-index: 99;
   transform: translateY(-100%);
   opacity: 0;
   pointer-events: none;
   transition: all var(--transition-normal);
+  box-sizing: border-box;
 }
 
 .mobile-drawer.is-open {
@@ -364,7 +390,7 @@ button {
 }
 
 .mobile-nav-link {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--text-secondary);
   padding: 10px 0;
@@ -380,15 +406,21 @@ button {
    ========================================================================== */
 .hero-section {
   position: relative;
-  padding: 60px 0 100px;
-  overflow: hidden;
+  padding: 40px 0 80px;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: 48px;
+  gap: 40px;
   align-items: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .hero-content {
@@ -396,29 +428,35 @@ button {
   flex-direction: column;
   align-items: flex-start;
   z-index: 10;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 14px;
+  padding: 5px 12px;
   border-radius: var(--radius-full);
   background: rgba(210, 231, 128, 0.12);
   border: 1px solid rgba(210, 231, 128, 0.28);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--primary);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .badge-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background-color: var(--primary);
   animation: pulseDot 2s infinite ease-in-out;
+  flex-shrink: 0;
 }
 
 @keyframes pulseDot {
@@ -428,12 +466,15 @@ button {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+  font-size: clamp(2.4rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 1.12;
   letter-spacing: -0.03em;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   color: var(--text-primary);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .hero-title-highlight {
@@ -441,17 +482,21 @@ button {
 }
 
 .hero-subtitle {
-  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
   color: var(--text-secondary);
-  line-height: 1.7;
-  max-width: 540px;
-  margin-bottom: 36px;
+  line-height: 1.65;
+  max-width: 520px;
+  margin-bottom: 28px;
+  word-break: break-word;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 14px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* ==========================================================================
@@ -460,11 +505,14 @@ button {
 .hero-3d-stage {
   position: relative;
   width: 100%;
-  height: 520px;
+  max-width: 100%;
+  height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
   perspective: 1200px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .threejs-canvas-wrapper {
@@ -472,13 +520,16 @@ button {
   inset: 0;
   width: 100%;
   height: 100%;
+  max-width: 100%;
   z-index: 1;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .threejs-canvas-wrapper canvas {
   width: 100% !important;
   height: 100% !important;
+  max-width: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -489,21 +540,22 @@ button {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 380px;
+  max-width: 360px;
   background: rgba(21, 24, 19, 0.88);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+  padding: 22px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
   transform-style: preserve-3d;
   transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  box-sizing: border-box;
 }
 
 .player-overlay-card:hover {
   border-color: var(--border-highlight);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
   transform: translateY(-4px);
 }
 
@@ -511,7 +563,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .player-tag {
@@ -561,13 +613,13 @@ button {
 .track-preview-row {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 18px;
 }
 
 .track-art-box {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   border-radius: var(--radius-md);
   background: var(--primary-container);
   border: 1px solid rgba(210, 231, 128, 0.25);
@@ -577,7 +629,7 @@ button {
   color: var(--primary);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
   flex-shrink: 0;
 }
 
@@ -589,7 +641,7 @@ button {
 .track-name {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--primary);
   white-space: nowrap;
   overflow: hidden;
@@ -597,7 +649,7 @@ button {
 }
 
 .track-artist {
-  font-size: 0.825rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
   white-space: nowrap;
   overflow: hidden;
@@ -609,14 +661,16 @@ button {
   background: rgba(12, 14, 12, 0.85);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 14px;
-  margin-bottom: 20px;
-  height: 84px;
+  padding: 12px;
+  margin-bottom: 18px;
+  height: 80px;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .lyrics-box::before,
@@ -625,7 +679,7 @@ button {
   position: absolute;
   left: 0;
   right: 0;
-  height: 16px;
+  height: 14px;
   z-index: 2;
   pointer-events: none;
 }
@@ -643,13 +697,13 @@ button {
 .lyrics-track-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   text-align: center;
   transition: transform 0.4s var(--ease-spring);
 }
 
 .lyric-item {
-  font-size: 0.85rem;
+  font-size: 0.825rem;
   font-weight: 500;
   color: var(--text-muted);
   transition: all 0.3s ease;
@@ -660,20 +714,20 @@ button {
 
 .lyric-item.is-active {
   color: var(--primary);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 /* Scrubber & Controls */
 .scrubber-container {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--text-muted);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .scrubber-track {
@@ -701,7 +755,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 16px;
 }
 
 .control-btn {
@@ -719,22 +773,22 @@ button {
 .control-btn:hover {
   color: var(--primary);
   background: var(--primary-container);
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
-/* Circular Olive Play Button (Exact match with Android Screenshot) */
+/* Circular Olive Play Button */
 .control-btn-main {
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   background: var(--primary);
   color: var(--primary-dark) !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .control-btn-main:hover {
   background: var(--primary-light);
-  transform: scale(1.1);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
   color: var(--primary-dark) !important;
 }
 
@@ -743,48 +797,59 @@ button {
    ========================================================================== */
 .section-header {
   text-align: center;
-  max-width: 700px;
-  margin: 0 auto 60px;
+  max-width: 680px;
+  margin: 0 auto 48px;
+  padding: 0 8px;
+  box-sizing: border-box;
 }
 
 .section-tag {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--primary);
   background: rgba(210, 231, 128, 0.12);
   border: 1px solid rgba(210, 231, 128, 0.28);
-  padding: 4px 14px;
+  padding: 4px 12px;
   border-radius: var(--radius-full);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  font-size: clamp(1.85rem, 3.5vw, 2.6rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text-primary);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   line-height: 1.2;
+  word-break: break-word;
 }
 
 .section-desc {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 .features-section {
-  padding: 90px 0;
+  padding: 70px 0;
   position: relative;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 24px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* 3D Perspective Card with Physics Hover */
@@ -795,16 +860,19 @@ button {
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-xl);
-  padding: 32px;
+  padding: 28px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 380px;
+  min-height: 360px;
   transform-style: preserve-3d;
   perspective: 1000px;
   transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform 0.15s ease-out;
   overflow: hidden;
   cursor: default;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .tilt-card::before {
@@ -832,11 +900,13 @@ button {
   position: relative;
   z-index: 2;
   transform: translateZ(30px);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .feature-icon-wrapper {
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   border-radius: var(--radius-md);
   background: rgba(210, 231, 128, 0.12);
   border: 1px solid rgba(210, 231, 128, 0.28);
@@ -844,12 +914,13 @@ button {
   align-items: center;
   justify-content: center;
   color: var(--primary);
-  margin-bottom: 22px;
+  margin-bottom: 18px;
   transition: transform var(--transition-normal);
+  flex-shrink: 0;
 }
 
 .tilt-card:hover .feature-icon-wrapper {
-  transform: scale(1.08) rotate(4deg);
+  transform: scale(1.06) rotate(3deg);
 }
 
 .feature-icon-cyan {
@@ -866,24 +937,29 @@ button {
 
 .feature-title {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  word-break: break-word;
 }
 
 .feature-desc {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.55;
+  word-break: break-word;
 }
 
-/* Card Visual Demos (Bottom Area) */
+/* Card Visual Demos */
 .card-visual-demo {
   position: relative;
   z-index: 2;
-  margin-top: 24px;
+  margin-top: 20px;
   transform: translateZ(20px);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Feature Demo 1: Synchronized Lyrics Preview */
@@ -891,28 +967,36 @@ button {
   background: rgba(12, 14, 12, 0.8);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 14px 16px;
+  padding: 12px 14px;
   font-family: var(--font-sans);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .lyrics-demo-line {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .lyrics-demo-active {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Feature Demo 2: Spatial Listen Together Room */
 .room-radar-container {
-  height: 110px;
+  height: 100px;
   background: rgba(12, 14, 12, 0.8);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -921,6 +1005,8 @@ button {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .radar-ring {
@@ -930,8 +1016,8 @@ button {
   animation: radarPulse 3s infinite linear;
 }
 
-.radar-ring-1 { width: 60px; height: 60px; }
-.radar-ring-2 { width: 110px; height: 110px; animation-delay: 1.5s; }
+.radar-ring-1 { width: 50px; height: 50px; }
+.radar-ring-2 { width: 95px; height: 95px; animation-delay: 1.5s; }
 
 @keyframes radarPulse {
   0% { transform: scale(0.6); opacity: 0.8; }
@@ -939,14 +1025,14 @@ button {
 }
 
 .room-user-node {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
 }
 
@@ -959,28 +1045,30 @@ button {
 .user-guest-1 {
   background: var(--primary-container-light);
   color: #ffffff;
-  top: 18px;
-  left: 28px;
+  top: 16px;
+  left: 24px;
 }
 
 .user-guest-2 {
   background: var(--primary-container);
   color: var(--primary);
-  bottom: 18px;
-  right: 28px;
+  bottom: 16px;
+  right: 24px;
 }
 
-/* Feature Demo 3: Procedural Frequency Equalizer (Matching Screenshot 2) */
+/* Feature Demo 3: Procedural Frequency Equalizer */
 .equalizer-canvas-strip {
-  height: 90px;
+  height: 80px;
   background: rgba(12, 14, 12, 0.8);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 10px 14px;
+  padding: 10px 12px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 4px;
+  gap: 3px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .eq-bar {
@@ -998,9 +1086,12 @@ button {
   border-radius: var(--radius-md);
   padding: 12px;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--text-secondary);
   line-height: 1.5;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
 }
 
 .code-keyword { color: var(--primary); }
@@ -1012,8 +1103,12 @@ button {
    Download Hub Section
    ========================================================================== */
 .download-section {
-  padding: 100px 0;
+  padding: 80px 0;
   position: relative;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .download-glass-card {
@@ -1022,74 +1117,90 @@ button {
   -webkit-backdrop-filter: blur(32px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-xl);
-  padding: clamp(32px, 6vw, 64px);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  padding: clamp(24px, 5vw, 56px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
   position: relative;
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .download-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
-  gap: 48px;
+  gap: 40px;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.download-info {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .download-meta-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 6px;
+  margin-bottom: 18px;
 }
 
 .meta-pill {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: var(--primary);
   background: rgba(210, 231, 128, 0.1);
   border: 1px solid rgba(210, 231, 128, 0.25);
-  padding: 4px 12px;
+  padding: 4px 10px;
   border-radius: var(--radius-full);
 }
 
 .download-title {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
   font-weight: 800;
   color: var(--text-primary);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   line-height: 1.15;
+  word-break: break-word;
 }
 
 .download-desc {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 32px;
+  line-height: 1.65;
+  margin-bottom: 26px;
+  word-break: break-word;
 }
 
 .download-btn-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 14px;
+  margin-bottom: 22px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Checksum Inspector */
 .checksum-box {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: rgba(12, 14, 12, 0.85);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 8px 14px;
+  padding: 8px 12px;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--text-secondary);
   cursor: pointer;
   transition: all var(--transition-fast);
+  max-width: 100%;
+  box-sizing: border-box;
+  word-break: break-all;
 }
 
 .checksum-box:hover {
@@ -1111,18 +1222,20 @@ button {
   background: rgba(14, 17, 13, 0.9);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-lg);
-  padding: 28px;
+  padding: 24px;
   text-align: center;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .qr-code-graphic {
-  width: 140px;
-  height: 140px;
+  width: 130px;
+  height: 130px;
   background: #ffffff;
-  padding: 10px;
+  padding: 8px;
   border-radius: var(--radius-md);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1151,10 +1264,14 @@ button {
 .site-footer {
   background: #0c0e0c;
   border-top: 1px solid var(--border-subtle);
-  padding: 48px 0;
+  padding: 40px 0;
   margin-top: auto;
   position: relative;
   z-index: 10;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .footer-container {
@@ -1162,22 +1279,25 @@ button {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 0.9rem;
+  gap: 10px;
+  font-size: 0.88rem;
   color: var(--text-secondary);
+  flex-wrap: wrap;
 }
 
 .status-indicator {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-family: var(--font-mono);
   color: var(--primary);
   background: rgba(210, 231, 128, 0.1);
@@ -1194,9 +1314,10 @@ button {
 
 .footer-links {
   display: flex;
-  gap: 24px;
-  font-size: 0.9rem;
+  gap: 20px;
+  font-size: 0.88rem;
   color: var(--text-secondary);
+  flex-wrap: wrap;
 }
 
 .footer-link {
@@ -1210,13 +1331,16 @@ button {
 /* Toast Notifications */
 .toast-container {
   position: fixed;
-  bottom: 24px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%) translateY(100px);
   z-index: 200;
   opacity: 0;
   pointer-events: none;
   transition: all 0.35s var(--ease-spring);
+  width: calc(100% - 32px);
+  max-width: 380px;
+  box-sizing: border-box;
 }
 
 .toast-container.is-visible {
@@ -1226,28 +1350,31 @@ button {
 }
 
 .toast-body {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  text-align: center;
   background: rgba(21, 25, 19, 0.98);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(210, 231, 128, 0.35);
   border-radius: var(--radius-full);
-  padding: 12px 24px;
+  padding: 12px 20px;
   color: #f2f4ee;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 500;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ==========================================================================
-   Media Queries & Responsive Layout
+   Mobile-First Media Queries
    ========================================================================== */
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
     text-align: center;
   }
 
@@ -1265,7 +1392,7 @@ button {
   }
 
   .hero-3d-stage {
-    height: 480px;
+    height: 420px;
   }
 
   .features-grid {
@@ -1299,22 +1426,136 @@ button {
     display: flex;
   }
 
-  .features-grid {
-    grid-template-columns: 1fr;
+  .site-header {
+    padding: 0;
+  }
+
+  .header-container {
+    height: 58px;
+  }
+
+  .hero-section {
+    padding: 28px 0 48px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8.5vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 18px;
+    font-size: 0.95rem;
   }
 
   .hero-3d-stage {
-    height: 420px;
+    height: 340px;
+    margin-top: 6px;
   }
 
   .player-overlay-card {
-    max-width: 320px;
-    padding: 18px;
+    max-width: min(330px, calc(100vw - 32px));
+    padding: 16px;
+  }
+
+  .features-section {
+    padding: 48px 0;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .tilt-card {
+    padding: 20px 16px;
+    min-height: auto;
+    border-radius: var(--radius-lg);
+  }
+
+  .download-section {
+    padding: 48px 0;
+  }
+
+  .download-glass-card {
+    padding: 22px 14px;
+    border-radius: var(--radius-lg);
+  }
+
+  .download-title {
+    font-size: clamp(1.75rem, 6.5vw, 2.2rem);
+  }
+
+  .download-desc {
+    font-size: 0.92rem;
+    margin-bottom: 20px;
+  }
+
+  .download-btn-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .download-btn-group .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 18px;
+  }
+
+  .checksum-box {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.68rem;
+    padding: 8px 10px;
+  }
+
+  .qr-container {
+    padding: 18px 14px;
   }
 
   .footer-container {
     flex-direction: column;
     text-align: center;
+    gap: 14px;
+  }
+
+  .footer-brand {
+    justify-content: center;
+  }
+
+  .footer-links {
+    justify-content: center;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .github-btn-text {
+    display: none;
+  }
+  
+  .header-github-btn {
+    padding: 7px 10px;
+  }
+  
+  .brand-link {
+    font-size: 1.05rem;
+    gap: 8px;
   }
 }
 
