@@ -535,27 +535,22 @@ button {
   left: 0;
 }
 
-/* 3D Glass Music Player Overlay Card & Flashy 3D Audio Seekbar */
+/* 3D Glass Music Player Overlay Card & Flashy 3D Audio Seekbar (Non-Interactive & Translucent) */
 .player-overlay-card {
   position: relative;
   z-index: 10;
   width: 100%;
   max-width: 360px;
-  background: rgba(14, 18, 13, 0.76);
-  backdrop-filter: blur(20px) saturate(140%);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  background: rgba(12, 16, 11, 0.32);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
   border: 1px solid rgba(210, 231, 128, 0.28);
   border-radius: var(--radius-lg);
   padding: 22px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.16);
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.12);
   box-sizing: border-box;
-}
-
-.player-overlay-card:hover {
-  border-color: var(--border-highlight);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.95);
-  transform: translateY(-4px);
+  pointer-events: none;
+  user-select: none;
 }
 
 .player-header {
@@ -571,10 +566,10 @@ button {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--primary);
-  background: rgba(210, 231, 128, 0.14);
+  background: rgba(210, 231, 128, 0.16);
   padding: 4px 10px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(210, 231, 128, 0.3);
+  border: 1px solid rgba(210, 231, 128, 0.35);
 }
 
 .player-badge-live {
@@ -620,8 +615,8 @@ button {
   width: 50px;
   height: 50px;
   border-radius: var(--radius-md);
-  background: var(--primary-container);
-  border: 1px solid rgba(210, 231, 128, 0.25);
+  background: rgba(35, 45, 25, 0.65);
+  border: 1px solid rgba(210, 231, 128, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -657,10 +652,10 @@ button {
 
 /* Synchronized Lyrics Display */
 .lyrics-box {
-  background: rgba(10, 13, 9, 0.72);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(8, 11, 7, 0.28);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(210, 231, 128, 0.16);
   border-radius: var(--radius-md);
   padding: 10px 14px;
   margin-bottom: 16px;
@@ -687,12 +682,12 @@ button {
 
 .lyrics-box::before {
   top: 0;
-  background: linear-gradient(180deg, rgba(12, 14, 12, 0.9), transparent);
+  background: linear-gradient(180deg, rgba(12, 14, 12, 0.7), transparent);
 }
 
 .lyrics-box::after {
   bottom: 0;
-  background: linear-gradient(0deg, rgba(12, 14, 12, 0.9), transparent);
+  background: linear-gradient(0deg, rgba(12, 14, 12, 0.7), transparent);
 }
 
 .lyrics-track-list {
@@ -721,15 +716,15 @@ button {
 }
 
 /* ==========================================================================
-   3D Holographic Flashy Frequency Waveform Seekbar
+   3D Holographic Flashy Frequency Waveform Seekbar (Translucent)
    ========================================================================== */
 .seekbar-3d-wrapper {
-  background: rgba(10, 14, 9, 0.88);
-  border: 1px solid rgba(210, 231, 128, 0.22);
+  background: rgba(8, 11, 7, 0.32);
+  border: 1px solid rgba(210, 231, 128, 0.2);
   border-radius: var(--radius-md);
   padding: 12px 14px;
   margin-bottom: 18px;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7), 0 6px 18px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5), 0 4px 14px rgba(0, 0, 0, 0.3);
   width: 100%;
   box-sizing: border-box;
   user-select: none;
@@ -793,11 +788,11 @@ button {
 .seekbar-3d-stage {
   position: relative;
   height: 36px;
-  background: rgba(6, 8, 5, 0.95);
+  background: rgba(5, 7, 4, 0.45);
   border-radius: var(--radius-sm);
   padding: 0 6px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -818,7 +813,7 @@ button {
   min-width: 2px;
   max-width: 6px;
   border-radius: 2px;
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.18);
   transition: height 0.08s ease-out, background-color 0.12s ease;
   min-height: 4px;
 }
@@ -872,6 +867,7 @@ button {
   align-items: center;
   justify-content: center;
   gap: 16px;
+  pointer-events: none;
 }
 
 .control-btn {
@@ -882,14 +878,18 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-surface-elevated);
-  transition: all var(--transition-fast);
+  background: rgba(35, 45, 25, 0.6);
+  border: 1px solid rgba(210, 231, 128, 0.2);
+  pointer-events: none;
+  cursor: default;
 }
 
-.control-btn:hover {
-  color: var(--primary);
-  background: var(--primary-container);
-  transform: scale(1.06);
+.control-btn-main {
+  width: 46px;
+  height: 46px;
+  background: var(--primary);
+  color: #0c0e0c;
+  box-shadow: 0 4px 16px rgba(210, 231, 128, 0.4);
 }
 
 /* Circular Olive Play Button */

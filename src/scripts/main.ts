@@ -167,41 +167,42 @@ function initThreeJSPlayer() {
   scene.add(group);
 
   // Outer Crisp Torus Ring 1 (Prominent Olive Accent #d2e780)
-  const ring1Geo = new THREE.TorusGeometry(3.55, 0.038, 16, 140);
-  const ring1Mat = new THREE.MeshBasicMaterial({ color: 0xd2e780, transparent: true, opacity: 0.92 });
+  // Outer Crisp Torus Ring 1 (Prominent Olive Accent #d2e780)
+  const ring1Geo = new THREE.TorusGeometry(3.6, 0.042, 16, 140);
+  const ring1Mat = new THREE.MeshBasicMaterial({ color: 0xd2e780, transparent: true, opacity: 0.96 });
   const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
   ring1.rotation.x = Math.PI / 2.3;
   group.add(ring1);
 
   // Inner Soundwave Ring 2 (Deep Muted Olive #687d3a)
-  const ring2Geo = new THREE.TorusGeometry(2.95, 0.028, 16, 140);
-  const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x687d3a, transparent: true, opacity: 0.85 });
+  const ring2Geo = new THREE.TorusGeometry(3.0, 0.032, 16, 140);
+  const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x687d3a, transparent: true, opacity: 0.9 });
   const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
   ring2.rotation.y = Math.PI / 3;
   group.add(ring2);
 
   // Equatorial Orbital Ring 3 (Soft Olive #8ea05e)
-  const ring3Geo = new THREE.TorusGeometry(3.25, 0.024, 16, 130);
-  const ring3Mat = new THREE.MeshBasicMaterial({ color: 0x8ea05e, transparent: true, opacity: 0.75 });
+  const ring3Geo = new THREE.TorusGeometry(3.3, 0.028, 16, 130);
+  const ring3Mat = new THREE.MeshBasicMaterial({ color: 0x8ea05e, transparent: true, opacity: 0.85 });
   const ring3 = new THREE.Mesh(ring3Geo, ring3Mat);
   ring3.rotation.x = Math.PI / 1.6;
   ring3.rotation.z = Math.PI / 5;
   group.add(ring3);
 
-  // Center Wireframe Icosahedron Core (Enlarged Soft Olive #dced9a)
-  const coreGeo = new THREE.IcosahedronGeometry(2.2, 1);
+  // Center Wireframe Icosahedron Core (Enlarged Soft Olive #d2e780)
+  const coreGeo = new THREE.IcosahedronGeometry(2.25, 1);
   const coreMat = new THREE.MeshBasicMaterial({
-    color: 0xdced9a,
+    color: 0xd2e780,
     wireframe: true,
     transparent: true,
-    opacity: 0.32,
+    opacity: 0.48,
   });
   const core = new THREE.Mesh(coreGeo, coreMat);
   group.add(core);
 
   // Orbiting Floating Particles (Olive tones)
   const particleGeo = new THREE.BufferGeometry();
-  const particleCount = 80;
+  const particleCount = 85;
   const positions = new Float32Array(particleCount * 3);
   for (let i = 0; i < particleCount * 3; i += 3) {
     const angle = Math.random() * Math.PI * 2;
@@ -213,48 +214,32 @@ function initThreeJSPlayer() {
   particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   const particleMat = new THREE.PointsMaterial({
     color: 0xd2e780,
-    size: 0.055,
+    size: 0.06,
     transparent: true,
-    opacity: 0.8,
+    opacity: 0.85,
   });
   const particles = new THREE.Points(particleGeo, particleMat);
   group.add(particles);
 
   // Clean Lighting
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 1.1);
   scene.add(ambientLight);
 
-  const oliveLight = new THREE.PointLight(0xd2e780, 2.5, 25);
+  const oliveLight = new THREE.PointLight(0xd2e780, 3.0, 25);
   oliveLight.position.set(4, 4, 4);
   scene.add(oliveLight);
 
-  const forestLight = new THREE.PointLight(0x44532b, 2.0, 25);
+  const forestLight = new THREE.PointLight(0x44532b, 2.2, 25);
   forestLight.position.set(-4, -4, 3);
   scene.add(forestLight);
 
-  // Mouse Parallax Interaction
-  let targetRotationX = 0;
-  let targetRotationY = 0;
-  let mouseTiltX = 0;
-  let mouseTiltY = 0;
-
-  window.addEventListener('mousemove', (e) => {
-    const rect = container.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    mouseTiltX = (e.clientX - centerX) / (window.innerWidth / 2);
-    mouseTiltY = (e.clientY - centerY) / (window.innerHeight / 2);
-  });
-
+  // Autonomous Smooth 3D Orbiting Loop (Zero Mouse/Hover Jitter)
   function animate() {
     requestAnimationFrame(animate);
     const time = Date.now() * 0.0015;
 
-    targetRotationY = Math.sin(time * 0.5) * 0.2 + mouseTiltX * 0.4;
-    targetRotationX = Math.cos(time * 0.4) * 0.15 + mouseTiltY * 0.3;
-
-    group.rotation.y += (targetRotationY - group.rotation.y) * 0.06;
-    group.rotation.x += (targetRotationX - group.rotation.x) * 0.06;
+    group.rotation.y = Math.sin(time * 0.35) * 0.3;
+    group.rotation.x = Math.cos(time * 0.25) * 0.15;
     group.position.y = Math.sin(time * 1.2) * 0.15;
 
     ring1.rotation.z += 0.007;
