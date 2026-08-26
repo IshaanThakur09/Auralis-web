@@ -737,47 +737,12 @@ button {
   justify-content: space-between;
   margin-bottom: 10px;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-}
-
-.seekbar-3d-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--primary);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-
-.live-pulse-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--primary);
-  box-shadow: 0 0 8px #d2e780;
-  animation: dotPulse 1.6s infinite ease-in-out;
-}
-
-@keyframes dotPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.5; }
-}
-
-.seekbar-3d-timestamps {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: var(--text-secondary);
+  font-size: 0.75rem;
 }
 
 .time-elapsed {
   color: var(--primary);
   font-weight: 600;
-}
-
-.time-divider {
-  color: var(--text-muted);
 }
 
 .time-total {
