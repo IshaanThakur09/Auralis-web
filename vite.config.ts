@@ -20,6 +20,8 @@ export default defineConfig({
   appType: 'mpa',
   plugins: [mpaDevPlugin()],
   build: {
+    target: 'es2022',
+    cssTarget: 'chrome90',
     rollupOptions: {
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
