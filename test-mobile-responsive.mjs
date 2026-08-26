@@ -30,6 +30,14 @@ if (indexHtml.includes('10,000+') || indexHtml.includes('10000')) {
   console.log('✅ PASS: 10,000+ listeners claim completely removed.');
 }
 
+// Test 2b: Check that QR code is removed
+if (indexHtml.includes('qr-container') || indexHtml.includes('Scan to Sideload')) {
+  console.error('❌ FAIL: QR code component still found in index.html!');
+  errors++;
+} else {
+  console.log('✅ PASS: QR code component completely removed.');
+}
+
 // Test 3: Check for horizontal overflow locks in main.css
 const mainCss = fs.readFileSync('src/styles/main.css', 'utf8');
 
