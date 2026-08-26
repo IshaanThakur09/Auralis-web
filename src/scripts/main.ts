@@ -145,10 +145,10 @@ function initThreeJSPlayer() {
 
   const scene = new THREE.Scene();
   const width = container.clientWidth || 400;
-  const height = container.clientHeight || 500;
+  const height = container.clientHeight || 520;
 
   const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
-  camera.position.z = 8;
+  camera.position.z = width < 600 ? 7.6 : 7.0;
 
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
   renderer.setSize(width, height);
@@ -166,23 +166,22 @@ function initThreeJSPlayer() {
   const group = new THREE.Group();
   scene.add(group);
 
-  // Outer Crisp Torus Ring 1 (Prominent Olive Accent #d2e780)
-  // Outer Crisp Torus Ring 1 (Prominent Olive Accent #d2e780)
-  const ring1Geo = new THREE.TorusGeometry(3.6, 0.042, 16, 140);
+  // Outer Crisp Torus Ring 1 (Enlarged Prominent Olive Accent #d2e780)
+  const ring1Geo = new THREE.TorusGeometry(4.3, 0.048, 16, 150);
   const ring1Mat = new THREE.MeshBasicMaterial({ color: 0xd2e780, transparent: true, opacity: 0.96 });
   const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
   ring1.rotation.x = Math.PI / 2.3;
   group.add(ring1);
 
-  // Inner Soundwave Ring 2 (Deep Muted Olive #687d3a)
-  const ring2Geo = new THREE.TorusGeometry(3.0, 0.032, 16, 140);
+  // Inner Soundwave Ring 2 (Enlarged Deep Muted Olive #687d3a)
+  const ring2Geo = new THREE.TorusGeometry(3.6, 0.038, 16, 150);
   const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x687d3a, transparent: true, opacity: 0.9 });
   const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
   ring2.rotation.y = Math.PI / 3;
   group.add(ring2);
 
-  // Equatorial Orbital Ring 3 (Soft Olive #8ea05e)
-  const ring3Geo = new THREE.TorusGeometry(3.3, 0.028, 16, 130);
+  // Equatorial Orbital Ring 3 (Enlarged Soft Olive #8ea05e)
+  const ring3Geo = new THREE.TorusGeometry(3.9, 0.034, 16, 140);
   const ring3Mat = new THREE.MeshBasicMaterial({ color: 0x8ea05e, transparent: true, opacity: 0.85 });
   const ring3 = new THREE.Mesh(ring3Geo, ring3Mat);
   ring3.rotation.x = Math.PI / 1.6;
@@ -190,7 +189,7 @@ function initThreeJSPlayer() {
   group.add(ring3);
 
   // Center Wireframe Icosahedron Core (Enlarged Soft Olive #d2e780)
-  const coreGeo = new THREE.IcosahedronGeometry(2.25, 1);
+  const coreGeo = new THREE.IcosahedronGeometry(2.65, 1);
   const coreMat = new THREE.MeshBasicMaterial({
     color: 0xd2e780,
     wireframe: true,
@@ -202,13 +201,13 @@ function initThreeJSPlayer() {
 
   // Orbiting Floating Particles (Olive tones)
   const particleGeo = new THREE.BufferGeometry();
-  const particleCount = 85;
+  const particleCount = 95;
   const positions = new Float32Array(particleCount * 3);
   for (let i = 0; i < particleCount * 3; i += 3) {
     const angle = Math.random() * Math.PI * 2;
-    const radius = 3.2 + Math.random() * 1.6;
+    const radius = 3.8 + Math.random() * 2.0;
     positions[i] = Math.cos(angle) * radius;
-    positions[i + 1] = (Math.random() - 0.5) * 3.6;
+    positions[i + 1] = (Math.random() - 0.5) * 4.0;
     positions[i + 2] = Math.sin(angle) * radius;
   }
   particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
@@ -256,8 +255,9 @@ function initThreeJSPlayer() {
 
   window.addEventListener('resize', () => {
     const w = container.clientWidth || 400;
-    const h = container.clientHeight || 500;
+    const h = container.clientHeight || 520;
     camera.aspect = w / h;
+    camera.position.z = w < 600 ? 7.6 : 7.0;
     camera.updateProjectionMatrix();
     renderer.setSize(w, h);
   });
