@@ -166,48 +166,56 @@ function initThreeJSPlayer() {
   const group = new THREE.Group();
   scene.add(group);
 
-  // Outer Crisp Torus Ring (Olive Accent #d2e780)
-  const ring1Geo = new THREE.TorusGeometry(2.9, 0.035, 16, 120);
-  const ring1Mat = new THREE.MeshBasicMaterial({ color: 0xd2e780, transparent: true, opacity: 0.9 });
+  // Outer Crisp Torus Ring 1 (Prominent Olive Accent #d2e780)
+  const ring1Geo = new THREE.TorusGeometry(3.55, 0.038, 16, 140);
+  const ring1Mat = new THREE.MeshBasicMaterial({ color: 0xd2e780, transparent: true, opacity: 0.92 });
   const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
   ring1.rotation.x = Math.PI / 2.3;
   group.add(ring1);
 
-  // Inner Soundwave Ring (Deep Muted Olive #687d3a)
-  const ring2Geo = new THREE.TorusGeometry(2.4, 0.025, 16, 120);
+  // Inner Soundwave Ring 2 (Deep Muted Olive #687d3a)
+  const ring2Geo = new THREE.TorusGeometry(2.95, 0.028, 16, 140);
   const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x687d3a, transparent: true, opacity: 0.85 });
   const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
   ring2.rotation.y = Math.PI / 3;
   group.add(ring2);
 
-  // Center Wireframe Icosahedron Core (Soft Olive #dced9a)
-  const coreGeo = new THREE.IcosahedronGeometry(1.6, 1);
+  // Equatorial Orbital Ring 3 (Soft Olive #8ea05e)
+  const ring3Geo = new THREE.TorusGeometry(3.25, 0.024, 16, 130);
+  const ring3Mat = new THREE.MeshBasicMaterial({ color: 0x8ea05e, transparent: true, opacity: 0.75 });
+  const ring3 = new THREE.Mesh(ring3Geo, ring3Mat);
+  ring3.rotation.x = Math.PI / 1.6;
+  ring3.rotation.z = Math.PI / 5;
+  group.add(ring3);
+
+  // Center Wireframe Icosahedron Core (Enlarged Soft Olive #dced9a)
+  const coreGeo = new THREE.IcosahedronGeometry(2.2, 1);
   const coreMat = new THREE.MeshBasicMaterial({
     color: 0xdced9a,
     wireframe: true,
     transparent: true,
-    opacity: 0.22,
+    opacity: 0.32,
   });
   const core = new THREE.Mesh(coreGeo, coreMat);
   group.add(core);
 
   // Orbiting Floating Particles (Olive tones)
   const particleGeo = new THREE.BufferGeometry();
-  const particleCount = 60;
+  const particleCount = 80;
   const positions = new Float32Array(particleCount * 3);
   for (let i = 0; i < particleCount * 3; i += 3) {
     const angle = Math.random() * Math.PI * 2;
-    const radius = 2.8 + Math.random() * 1.2;
+    const radius = 3.2 + Math.random() * 1.6;
     positions[i] = Math.cos(angle) * radius;
-    positions[i + 1] = (Math.random() - 0.5) * 3;
+    positions[i + 1] = (Math.random() - 0.5) * 3.6;
     positions[i + 2] = Math.sin(angle) * radius;
   }
   particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   const particleMat = new THREE.PointsMaterial({
     color: 0xd2e780,
-    size: 0.05,
+    size: 0.055,
     transparent: true,
-    opacity: 0.75,
+    opacity: 0.8,
   });
   const particles = new THREE.Points(particleGeo, particleMat);
   group.add(particles);
@@ -216,11 +224,11 @@ function initThreeJSPlayer() {
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
   scene.add(ambientLight);
 
-  const oliveLight = new THREE.PointLight(0xd2e780, 2.2, 20);
+  const oliveLight = new THREE.PointLight(0xd2e780, 2.5, 25);
   oliveLight.position.set(4, 4, 4);
   scene.add(oliveLight);
 
-  const forestLight = new THREE.PointLight(0x44532b, 1.8, 20);
+  const forestLight = new THREE.PointLight(0x44532b, 2.0, 25);
   forestLight.position.set(-4, -4, 3);
   scene.add(forestLight);
 
@@ -249,9 +257,10 @@ function initThreeJSPlayer() {
     group.rotation.x += (targetRotationX - group.rotation.x) * 0.06;
     group.position.y = Math.sin(time * 1.2) * 0.15;
 
-    ring1.rotation.z += 0.008;
-    ring2.rotation.z -= 0.012;
-    ring1.scale.setScalar(1 + Math.sin(time * 2) * 0.04);
+    ring1.rotation.z += 0.007;
+    ring2.rotation.z -= 0.011;
+    ring3.rotation.y += 0.009;
+    ring1.scale.setScalar(1 + Math.sin(time * 2) * 0.035);
     core.rotation.x += 0.004;
     core.rotation.y += 0.006;
 
@@ -357,21 +366,22 @@ function initEqualizerVisualizer() {
 }
 
 /**
- * 6. Interactive Player Demo Controls
+ * 6. 3D Holographic Animated Seekbar & Controls (Non-Interactive Seekbar)
  */
 function initPlayerControls() {
   const playBtn = document.getElementById('heroPlayBtn');
   const playIcon = document.getElementById('playIcon');
   const pauseIcon = document.getElementById('pauseIcon');
   const progressBar = document.getElementById('scrubberFill');
-  const scrubberTrack = document.getElementById('scrubberTrack');
   const currentTimeEl = document.getElementById('currentTime');
 
-  if (!playBtn || !progressBar || !currentTimeEl) return;
+  const barEl = progressBar as HTMLElement;
+  const timeEl = currentTimeEl as HTMLElement;
 
   let isPlaying = true;
-  let progress = 38;
-  const totalSeconds = 230; // 3:50
+  const totalSeconds = 230; // 3:50 total track time
+  let currentElapsedSeconds = 101; // Start at 1:41 (44%)
+  let lastTimestamp = performance.now();
 
   function formatTime(secs: number): string {
     const mins = Math.floor(secs / 60);
@@ -379,32 +389,37 @@ function initPlayerControls() {
     return `${mins}:${rem < 10 ? '0' : ''}${rem}`;
   }
 
-  playBtn.addEventListener('click', () => {
-    isPlaying = !isPlaying;
-    if (playIcon && pauseIcon) {
-      playIcon.style.display = isPlaying ? 'none' : 'block';
-      pauseIcon.style.display = isPlaying ? 'block' : 'none';
-    }
-  });
-
-  if (scrubberTrack) {
-    scrubberTrack.addEventListener('click', (e) => {
-      const rect = scrubberTrack.getBoundingClientRect();
-      const clickX = e.clientX - rect.left;
-      progress = Math.min(Math.max((clickX / rect.width) * 100, 0), 100);
-      progressBar.style.width = `${progress}%`;
-      currentTimeEl.textContent = formatTime((progress / 100) * totalSeconds);
+  if (playBtn) {
+    playBtn.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      if (playIcon && pauseIcon) {
+        playIcon.style.display = isPlaying ? 'none' : 'block';
+        pauseIcon.style.display = isPlaying ? 'block' : 'none';
+      }
+      lastTimestamp = performance.now();
     });
   }
 
-  setInterval(() => {
-    if (!isPlaying) return;
-    progress += 0.4;
-    if (progress >= 100) progress = 0;
-    progressBar.style.width = `${progress}%`;
-    const curSec = (progress / 100) * totalSeconds;
-    currentTimeEl.textContent = formatTime(curSec);
-  }, 1000);
+  // Smooth continuous procedural 3D playback tick
+  function tickPlayback(now: number) {
+    if (isPlaying) {
+      const delta = (now - lastTimestamp) / 1000;
+      currentElapsedSeconds += delta;
+      if (currentElapsedSeconds >= totalSeconds) {
+        currentElapsedSeconds = 0;
+      }
+      const progressPercent = (currentElapsedSeconds / totalSeconds) * 100;
+      barEl.style.width = `${progressPercent.toFixed(2)}%`;
+      timeEl.textContent = formatTime(currentElapsedSeconds);
+    }
+    lastTimestamp = now;
+    requestAnimationFrame(tickPlayback);
+  }
+
+  requestAnimationFrame((now) => {
+    lastTimestamp = now;
+    tickPlayback(now);
+  });
 }
 
 /**
