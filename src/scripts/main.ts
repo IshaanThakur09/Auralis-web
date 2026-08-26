@@ -481,15 +481,22 @@ function initDownloadAndChecksum() {
 function initMobileNavigation() {
   const mobileBtn = document.getElementById('mobileMenuBtn');
   const drawer = document.getElementById('mobileDrawer');
+  const overlay = document.getElementById('mobileMenuOverlay');
   const drawerLinks = document.querySelectorAll('.mobile-nav-link');
 
   if (!mobileBtn || !drawer) return;
 
   function toggleDrawer(open?: boolean) {
     if (!drawer || !mobileBtn) return;
-    const isOpen = open !== undefined ? open : !drawer.classList.contains('is-open');
-    drawer.classList.toggle('is-open', isOpen);
-    mobileBtn.setAttribute('aria-expanded', String(isOpen));
+    const willOpen = open !== undefined ? open : !drawer.classList.contains('is-open');
+
+    drawer.classList.toggle('is-open', willOpen);
+    mobileBtn.classList.toggle('is-active', willOpen);
+    if (overlay) {
+      overlay.classList.toggle('is-visible', willOpen);
+    }
+    document.body.classList.toggle('menu-open', willOpen);
+    mobileBtn.setAttribute('aria-expanded', String(willOpen));
   }
 
   mobileBtn.addEventListener('click', (e) => {
@@ -497,15 +504,39 @@ function initMobileNavigation() {
     toggleDrawer();
   });
 
+  if (overlay) {
+    overlay.addEventListener('click', () => toggleDrawer(false));
+  }
+
   drawerLinks.forEach((link) => {
     link.addEventListener('click', () => toggleDrawer(false));
   });
 
-  document.addEventListener('click', (e) => {
-    if (drawer && drawer.classList.contains('is-open') && !drawer.contains(e.target as Node) && e.target !== mobileBtn) {
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
       toggleDrawer(false);
     }
   });
+
+  // Auto-close when resized to desktop viewport
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && drawer.classList.contains('is-open')) {
+      toggleDrawer(false);
+    }
+  });
+
+  // Auto-close if user scrolls past a threshold
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    if (drawer.classList.contains('is-open')) {
+      if (Math.abs(window.scrollY - lastScrollY) > 50) {
+        toggleDrawer(false);
+      }
+    } else {
+      lastScrollY = window.scrollY;
+    }
+  }, { passive: true });
 }
 
 /**
