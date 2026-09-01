@@ -2,18 +2,25 @@ import '../styles/main.css';
 import * as THREE from 'three';
 import { APP_CONFIG } from './config';
 
-document.addEventListener('DOMContentLoaded', () => {
-  initWebGLBackground();
-  initThreeJSPlayer();
-  init3DCardHoverPhysics();
-  initLyricsScroller();
-  initEqualizerVisualizer();
-  initPlayerControls();
-  initDownloadAndChecksum();
-  initMobileNavigation();
-  initScrollEffects();
-  initFAQAccordion();
-});
+function bootstrap() {
+  try { initWebGLBackground(); } catch (e) { console.error('Error in initWebGLBackground:', e); }
+  try { initThreeJSPlayer(); } catch (e) { console.error('Error in initThreeJSPlayer:', e); }
+  try { init3DCardHoverPhysics(); } catch (e) { console.error('Error in init3DCardHoverPhysics:', e); }
+  try { initLyricsScroller(); } catch (e) { console.error('Error in initLyricsScroller:', e); }
+  try { initEqualizerVisualizer(); } catch (e) { console.error('Error in initEqualizerVisualizer:', e); }
+  try { initPlayerControls(); } catch (e) { console.error('Error in initPlayerControls:', e); }
+  try { initDownloadAndChecksum(); } catch (e) { console.error('Error in initDownloadAndChecksum:', e); }
+  try { initMobileNavigation(); } catch (e) { console.error('Error in initMobileNavigation:', e); }
+  try { initScrollEffects(); } catch (e) { console.error('Error in initScrollEffects:', e); }
+  try { initFAQAccordion(); } catch (e) { console.error('Error in initFAQAccordion:', e); }
+  try { initKeyframeSmoothScroll(); } catch (e) { console.error('Error in initKeyframeSmoothScroll:', e); }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootstrap);
+} else {
+  bootstrap();
+}
 
 /**
  * 1. WebGL Organic Ambient Flow Shader (Background)
@@ -604,4 +611,262 @@ function initFAQAccordion() {
     });
   });
 }
+
+/**
+ * 11. Cinematic Keyframe Smooth Scroll Engine
+ * Aligned with Google Stitch Nocturnal Holographic Design Guidelines.
+ * Ensures clicking navigation & action buttons (such as "Download" in the header)
+ * executes a multi-frame cinematic keyframe scroll instead of an instant single-frame snap.
+ */
+let activeScrollAnimationId: number | null = null;
+let restoreScrollBehaviorTimer: number | null = null;
+
+function cancelCurrentScrollAnimation() {
+  if (activeScrollAnimationId !== null) {
+    cancelAnimationFrame(activeScrollAnimationId);
+    activeScrollAnimationId = null;
+  }
+}
+
+/**
+ * Keyframe quartic easing curve:
+ * Produces a gradual, refined camera launch, high-speed fluid transit,
+ * and an ultra-soft settling deceleration into the target zone.
+ */
+function keyframeEaseInOutQuart(t: number): number {
+  return t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
+}
+
+/**
+ * Triggers Stitch Nocturnal Neon Olive bloom highlight on arrival
+ */
+function triggerArrivalHighlight(targetEl: HTMLElement | null) {
+  if (!targetEl) return;
+  const card = targetEl.classList.contains('download-glass-card')
+    ? targetEl
+    : targetEl.querySelector<HTMLElement>('.download-glass-card') || targetEl;
+
+  card.classList.remove('arrival-pulse');
+  // Trigger DOM reflow to restart CSS animation cleanly
+  void card.offsetWidth;
+  card.classList.add('arrival-pulse');
+
+  setTimeout(() => {
+    card.classList.remove('arrival-pulse');
+  }, 1600);
+}
+
+/**
+ * Programmatic Smooth Keyframe Scroller
+ */
+export function smoothScrollToTarget(
+  target: HTMLElement | string,
+  options: {
+    duration?: number;
+    offset?: number;
+    onComplete?: () => void;
+  } = {}
+) {
+  cancelCurrentScrollAnimation();
+
+  const targetEl = typeof target === 'string'
+    ? document.querySelector<HTMLElement>(target)
+    : target;
+
+  if (!targetEl) return;
+  const destinationEl: HTMLElement = targetEl;
+
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const headerHeight = header ? header.offsetHeight : 64;
+  const extraOffset = options.offset !== undefined ? options.offset : 20;
+
+  const startY = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || 0;
+  const targetRect = destinationEl.getBoundingClientRect();
+  const maxScroll = Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight
+  ) - window.innerHeight;
+
+  const targetY = Math.min(
+    maxScroll,
+    Math.max(0, targetRect.top + startY - headerHeight - extraOffset)
+  );
+  const distance = targetY - startY;
+
+  // If already at target
+  if (Math.abs(distance) < 4) {
+    triggerArrivalHighlight(destinationEl);
+    if (options.onComplete) options.onComplete();
+    return;
+  }
+
+  // Calculate dynamic duration based on travel distance:
+  // Short leaps (~400px): ~680ms, Massive leaps (top to bottom ~3000px): ~1100ms
+  const distanceAbs = Math.abs(distance);
+  const duration = options.duration || Math.min(1200, Math.max(650, Math.round(distanceAbs * 0.32 + 380)));
+
+  // Temporarily set document scrollBehavior to auto so CSS doesn't fight rAF
+  const docEl = document.documentElement;
+  const prevScrollBehavior = docEl.style.scrollBehavior;
+  docEl.style.scrollBehavior = 'auto';
+
+  let startTime: number | null = null;
+  const animationStartTime = performance.now();
+
+  // Listeners to stop animation only if user intentionally scrolls
+  function onWheelInterrupt(e: WheelEvent) {
+    // Ignore initial inertia during first 150ms
+    if (performance.now() - animationStartTime < 150) return;
+    if (Math.abs(e.deltaY) > 4) {
+      cancelCurrentScrollAnimation();
+      docEl.style.scrollBehavior = prevScrollBehavior;
+      removeInterruptListeners();
+    }
+  }
+
+  function onTouchInterrupt() {
+    if (performance.now() - animationStartTime < 150) return;
+    cancelCurrentScrollAnimation();
+    docEl.style.scrollBehavior = prevScrollBehavior;
+    removeInterruptListeners();
+  }
+
+  function addInterruptListeners() {
+    window.addEventListener('wheel', onWheelInterrupt, { passive: true });
+    window.addEventListener('touchstart', onTouchInterrupt, { passive: true });
+  }
+
+  function removeInterruptListeners() {
+    window.removeEventListener('wheel', onWheelInterrupt);
+    window.removeEventListener('touchstart', onTouchInterrupt);
+  }
+
+  addInterruptListeners();
+
+  function step(currentTime: number) {
+    if (!startTime) startTime = currentTime;
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easedProgress = keyframeEaseInOutQuart(progress);
+
+    const currentY = startY + distance * easedProgress;
+    window.scrollTo({ top: currentY, behavior: 'auto' });
+    document.documentElement.scrollTop = currentY;
+    document.body.scrollTop = currentY;
+
+    if (progress < 1) {
+      activeScrollAnimationId = requestAnimationFrame(step);
+    } else {
+      activeScrollAnimationId = null;
+      removeInterruptListeners();
+      window.scrollTo({ top: targetY, behavior: 'auto' });
+      document.documentElement.scrollTop = targetY;
+      document.body.scrollTop = targetY;
+
+      // Restore scroll behavior after animation completes
+      if (restoreScrollBehaviorTimer) clearTimeout(restoreScrollBehaviorTimer);
+      restoreScrollBehaviorTimer = window.setTimeout(() => {
+        docEl.style.scrollBehavior = prevScrollBehavior;
+      }, 50);
+
+      // Trigger Stitch arrival highlight
+      triggerArrivalHighlight(destinationEl);
+
+      if (options.onComplete) {
+        options.onComplete();
+      }
+    }
+  }
+
+  activeScrollAnimationId = requestAnimationFrame(step);
+}
+
+function initKeyframeSmoothScroll() {
+  const anchorLinks = document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]');
+
+  anchorLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (!href) return;
+
+      if (href === '#' || href === '#top') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      const targetEl = document.querySelector<HTMLElement>(href);
+      if (!targetEl) return;
+
+      // Prevent native single-frame jump
+      e.preventDefault();
+
+      // If mobile navigation drawer is currently open, close it cleanly
+      const drawer = document.getElementById('mobileDrawer');
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const overlay = document.getElementById('mobileMenuOverlay');
+      if (drawer?.classList.contains('is-open')) {
+        drawer.classList.remove('is-open');
+        mobileBtn?.classList.remove('is-active');
+        mobileBtn?.setAttribute('aria-expanded', 'false');
+        overlay?.classList.remove('is-visible');
+        document.body.classList.remove('menu-open');
+      }
+
+      // Execute smooth keyframe scroll animation
+      smoothScrollToTarget(targetEl, {
+        onComplete: () => {
+          // Update URL hash without causing an instant layout jump
+          if (history.pushState) {
+            history.pushState(null, '', href);
+          } else {
+            window.location.hash = href;
+          }
+
+          // Retain accessibility focus without browser jump
+          targetEl.setAttribute('tabindex', '-1');
+          targetEl.focus({ preventScroll: true });
+        }
+      });
+    });
+  });
+
+  // Also support the brand logo to smooth scroll to top when already on the home page
+  const brandLink = document.querySelector<HTMLAnchorElement>('.brand-link');
+  if (brandLink) {
+    brandLink.addEventListener('click', (e) => {
+      if (window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) {
+        e.preventDefault();
+        cancelCurrentScrollAnimation();
+        const startY = window.pageYOffset || document.documentElement.scrollTop || 0;
+        if (startY > 10) {
+          const docEl = document.documentElement;
+          const prevScrollBehavior = docEl.style.scrollBehavior;
+          docEl.style.scrollBehavior = 'auto';
+
+          let startTime: number | null = null;
+          const duration = Math.min(950, Math.max(500, Math.round(startY * 0.35)));
+
+          function step(currentTime: number) {
+            if (!startTime) startTime = currentTime;
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easedProgress = keyframeEaseInOutQuart(progress);
+            window.scrollTo(0, startY * (1 - easedProgress));
+
+            if (progress < 1) {
+              activeScrollAnimationId = requestAnimationFrame(step);
+            } else {
+              activeScrollAnimationId = null;
+              window.scrollTo(0, 0);
+              docEl.style.scrollBehavior = prevScrollBehavior;
+            }
+          }
+          activeScrollAnimationId = requestAnimationFrame(step);
+        }
+      }
+    });
+  }
+}
+
 
