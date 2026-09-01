@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDownloadAndChecksum();
   initMobileNavigation();
   initScrollEffects();
+  initFAQAccordion();
 });
 
 /**
@@ -576,3 +577,31 @@ function showToast(message: string) {
     toastContainer?.classList.remove('is-visible');
   }, 3500);
 }
+
+/**
+ * 10. FAQ Accordion Accessibility & Sync
+ */
+function initFAQAccordion() {
+  const faqItems = document.querySelectorAll<HTMLDetailsElement>('.faq-item');
+  if (!faqItems.length) return;
+
+  faqItems.forEach((item) => {
+    const summary = item.querySelector<HTMLElement>('.faq-summary');
+    if (!summary) return;
+
+    // Set initial ARIA state
+    summary.setAttribute('aria-expanded', item.open ? 'true' : 'false');
+
+    // Keep ARIA in sync with details toggle
+    item.addEventListener('toggle', () => {
+      summary.setAttribute('aria-expanded', item.open ? 'true' : 'false');
+    });
+
+    // Support browser Find in page / search-hidden-content
+    item.addEventListener('beforematch', () => {
+      item.open = true;
+      summary.setAttribute('aria-expanded', 'true');
+    });
+  });
+}
+

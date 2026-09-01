@@ -44,8 +44,10 @@
 
       <nav class="desktop-nav" aria-label="Navigation">
         <a href="/" class="nav-link">Home</a>
+        <a href="/#faq" class="nav-link">FAQ</a>
         <a href="/#download" class="nav-link">Download</a>
         <a href="/privacy" class="nav-link" style="color: var(--text-primary);">Privacy</a>
+        <a href="/terms" class="nav-link">Terms</a>
       </nav>
 
       <div class="header-actions">
@@ -114,12 +116,15 @@
         </div>
 
         <div class="legal-block">
-          <h2>4. Local Data Storage & User Control</h2>
+          <h2>4. Local Data Storage & Cloud Sync</h2>
           <p>
-            All user data—including custom playlists, playback history, audio cache, and settings—is stored exclusively on your local device. 
+            By default, all user data—including custom playlists, playback history, audio cache, and settings—is stored locally on your device.
           </p>
           <p>
-            <strong>Data Deletion:</strong> You retain complete control over your data. You can delete all local data, cached audio files, and playlist records at any time by selecting "Clear Cache" in app settings or by clearing application data via your Android device settings.
+            <strong>Optional Cloud Sync:</strong> If you voluntarily choose to sign in with your Google account, your saved playlists and favorites are synchronized securely via Firebase Cloud Sync to enable cross-device access. We do not sell, monetize, or share this data with third parties.
+          </p>
+          <p>
+            <strong>Data Deletion:</strong> You retain complete control over your data. You can delete all local data, cached audio files, and playlist records at any time by selecting "Clear Cache" in app settings or by clearing application data via your Android device settings. You can also delete your cloud-synced account data by signing out or requesting deletion.
           </p>
         </div>
 
@@ -145,7 +150,7 @@
         <div class="legal-block">
           <h2>7. Open Source Transparency</h2>
           <p>
-            Auralis is 100% open source under the MIT License. The complete source code and network operations are publicly auditable on our <a href="https://github.com/shreyanshchoubey09/Auralis" target="_blank" rel="noopener noreferrer">GitHub repository</a>.
+            Auralis is 100% open source under the GPL-3.0 License. The complete source code and network operations are publicly auditable on our <a href="https://github.com/shreyanshchoubey09/Auralis" target="_blank" rel="noopener noreferrer">GitHub repository</a>.
           </p>
         </div>
 
@@ -164,14 +169,21 @@
     <div class="container footer-container">
       <div class="footer-brand">
         <img src="/logo.png" alt="Auralis" width="20" height="20" />
-        <span>Auralis &copy; 2026. Open source under MIT.</span>
+        <span>Auralis &copy; 2026. Open source under GPL-3.0.</span>
       </div>
 
       <div class="footer-links">
         <a href="/" class="footer-link">Home</a>
+        <a href="/#faq" class="footer-link">FAQ</a>
         <a href="/#download" class="footer-link">Download</a>
         <a href="https://github.com/shreyanshchoubey09/Auralis" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
+        <a href="/privacy" class="footer-link">Privacy Policy</a>
+        <a href="/terms" class="footer-link">Terms of Service</a>
       </div>
+
+      <p class="footer-disclaimer">
+        Disclaimer: Auralis is an independent, free, and open-source project and is not affiliated with, sponsored by, or endorsed by Google LLC, YouTube, or Spotify. YouTube and YouTube Music are trademarks of Google LLC. Spotify is a trademark of Spotify AB.
+      </p>
     </div>
   </footer>
 </body>
