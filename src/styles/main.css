@@ -1368,6 +1368,10 @@ button {
   background-color: rgba(210, 231, 128, 0.015);
 }
 
+.faq-item.is-closing {
+  background-color: transparent;
+}
+
 .faq-summary {
   display: flex;
   align-items: center;
@@ -1418,7 +1422,8 @@ button {
 
 .faq-arrow {
   color: var(--text-secondary);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+  transition: transform 0.36s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+  will-change: transform;
 }
 
 .faq-summary:hover .faq-arrow {
@@ -1430,31 +1435,31 @@ button {
   color: var(--primary);
 }
 
+.faq-item.is-closing .faq-arrow {
+  transform: rotate(0deg);
+  color: var(--text-secondary);
+}
+
 .faq-answer {
   padding: 0 32px 24px 32px;
   color: var(--text-secondary);
   font-size: 0.96rem;
   line-height: 1.68;
   text-align: left;
+  will-change: transform, opacity;
 }
 
 .faq-answer p {
   margin: 0;
 }
 
-.faq-item[open] .faq-answer {
-  animation: faqFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes faqFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.faq-answer code {
+  color: var(--primary);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.9em;
+  background: rgba(210, 231, 128, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 /* ==========================================================================

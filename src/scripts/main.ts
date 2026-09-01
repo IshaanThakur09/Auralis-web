@@ -586,7 +586,7 @@ function showToast(message: string) {
 }
 
 /**
- * 10. FAQ Accordion Accessibility & Sync
+ * 10. FAQ Accordion Butter-Smooth Spring Animation & Accessibility Sync
  */
 function initFAQAccordion() {
   const faqItems = document.querySelectorAll<HTMLDetailsElement>('.faq-item');
@@ -594,20 +594,115 @@ function initFAQAccordion() {
 
   faqItems.forEach((item) => {
     const summary = item.querySelector<HTMLElement>('.faq-summary');
-    if (!summary) return;
+    const answer = item.querySelector<HTMLElement>('.faq-answer');
+    if (!summary || !answer) return;
+    const summaryEl: HTMLElement = summary;
+    const answerEl: HTMLElement = answer;
 
     // Set initial ARIA state
-    summary.setAttribute('aria-expanded', item.open ? 'true' : 'false');
+    summaryEl.setAttribute('aria-expanded', item.open ? 'true' : 'false');
 
-    // Keep ARIA in sync with details toggle
-    item.addEventListener('toggle', () => {
-      summary.setAttribute('aria-expanded', item.open ? 'true' : 'false');
+    let heightAnimation: Animation | null = null;
+    let contentAnimation: Animation | null = null;
+    let isClosing = false;
+    let isExpanding = false;
+
+    function shrink() {
+      isClosing = true;
+      isExpanding = false;
+      item.classList.add('is-closing');
+      summaryEl.setAttribute('aria-expanded', 'false');
+
+      const startHeight = `${item.offsetHeight}px`;
+      const endHeight = `${summaryEl.offsetHeight}px`;
+
+      if (heightAnimation) heightAnimation.cancel();
+      if (contentAnimation) contentAnimation.cancel();
+
+      item.style.overflow = 'hidden';
+
+      heightAnimation = item.animate(
+        { height: [startHeight, endHeight] },
+        { duration: 300, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+      );
+
+      contentAnimation = answerEl.animate(
+        { opacity: [1, 0], transform: ['translateY(0)', 'translateY(-8px)'] },
+        { duration: 220, easing: 'ease' }
+      );
+
+      heightAnimation.onfinish = () => {
+        item.open = false;
+        item.classList.remove('is-closing');
+        heightAnimation = null;
+        contentAnimation = null;
+        isClosing = false;
+        item.style.height = '';
+        item.style.overflow = '';
+      };
+
+      heightAnimation.oncancel = () => {
+        isClosing = false;
+        item.classList.remove('is-closing');
+      };
+    }
+
+    function openDetails() {
+      item.style.height = `${item.offsetHeight}px`;
+      item.style.overflow = 'hidden';
+      item.open = true;
+      window.requestAnimationFrame(expand);
+    }
+
+    function expand() {
+      isExpanding = true;
+      isClosing = false;
+      item.classList.remove('is-closing');
+      summaryEl.setAttribute('aria-expanded', 'true');
+
+      const startHeight = `${item.offsetHeight}px`;
+      const endHeight = `${summaryEl.offsetHeight + answerEl.offsetHeight}px`;
+
+      if (heightAnimation) heightAnimation.cancel();
+      if (contentAnimation) contentAnimation.cancel();
+
+      heightAnimation = item.animate(
+        { height: [startHeight, endHeight] },
+        { duration: 340, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+      );
+
+      contentAnimation = answerEl.animate(
+        { opacity: [0, 1], transform: ['translateY(-8px)', 'translateY(0)'] },
+        { duration: 300, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+      );
+
+      heightAnimation.onfinish = () => {
+        heightAnimation = null;
+        contentAnimation = null;
+        isExpanding = false;
+        item.style.height = '';
+        item.style.overflow = '';
+      };
+
+      heightAnimation.oncancel = () => {
+        isExpanding = false;
+      };
+    }
+
+    summaryEl.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      if (isClosing || !item.open) {
+        openDetails();
+      } else if (isExpanding || item.open) {
+        shrink();
+      }
     });
 
     // Support browser Find in page / search-hidden-content
     item.addEventListener('beforematch', () => {
       item.open = true;
-      summary.setAttribute('aria-expanded', 'true');
+      summaryEl.setAttribute('aria-expanded', 'true');
     });
   });
 }
