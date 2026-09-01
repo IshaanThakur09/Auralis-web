@@ -469,7 +469,7 @@ function initDownloadAndChecksum() {
         showToast('Initiating Auralis APK download...');
         const link = document.createElement('a');
         link.href = APP_CONFIG.apkDownloadUrl;
-        link.download = 'auralis.apk';
+        link.download = 'Auralis-v1.0.0-universal.apk';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

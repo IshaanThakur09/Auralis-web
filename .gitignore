@@ -71,3 +71,17 @@ service-account*.json
 .temp/
 .tmp/
 *.tgz
+
+# Archives & compressed packages
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+temp_unzip/
+
+# Android artifacts (safeguard official public download asset)
+*.apk
+!public/downloads/*.apk
+*.aab
+*.apks

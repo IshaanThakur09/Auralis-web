@@ -12,5 +12,5 @@ export const APP_CONFIG = {
   githubRepoUrl: 'https://github.com/shreyanshchoubey09/Auralis',
   
   // Direct APK download link
-  apkDownloadUrl: '/downloads/auralis.apk',
+  apkDownloadUrl: '/downloads/Auralis-v1.0.0-universal.apk',
 };
