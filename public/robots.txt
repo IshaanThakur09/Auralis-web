@@ -17,6 +17,8 @@ Allow: /*.svg$
 Allow: /*.webp$
 Allow: /*.ico$
 Disallow: /downloads/*.apk$
+Disallow: /admin
+Disallow: /admin/*
 
 # Googlebot specific directives
 User-agent: Googlebot

@@ -1,6 +1,6 @@
 import '../styles/main.css';
 import * as THREE from 'three';
-import { APP_CONFIG } from './config';
+import { APP_CONFIG, loadApkMetadata } from './config';
 
 function bootstrap() {
   try { initWebGLBackground(); } catch (e) { console.error('Error in initWebGLBackground:', e); }
@@ -460,6 +460,7 @@ function initPlayerControls() {
  * 7. APK Direct Download Handler
  */
 function initDownloadAndChecksum() {
+  loadApkMetadata().catch(() => {});
   const downloadBtns = document.querySelectorAll<HTMLElement>('[data-action="download-apk"]');
 
   downloadBtns.forEach((btn) => {
@@ -469,7 +470,8 @@ function initDownloadAndChecksum() {
         showToast('Initiating Auralis APK download...');
         const link = document.createElement('a');
         link.href = APP_CONFIG.apkDownloadUrl;
-        link.download = 'Auralis-v1.0.0-universal.apk';
+        const filename = APP_CONFIG.apkDownloadUrl.split('/').pop() || 'Auralis-universal.apk';
+        link.download = filename;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
