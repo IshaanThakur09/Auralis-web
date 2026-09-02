@@ -12,7 +12,7 @@ const adminApiPlugin: () => Plugin = () => ({
   name: 'admin-api-plugin',
   configureServer(server) {
     // 1. MPA Router Middleware
-    server.middlewares.use((req, _res, next) => {
+    server.middlewares.use((req, res, next) => {
       const url = req.url?.split('?')[0];
       if (url === '/privacy' || url === '/privacy/') {
         req.url = '/privacy/index.html';
@@ -20,6 +20,9 @@ const adminApiPlugin: () => Plugin = () => ({
         req.url = '/terms/index.html';
       } else if (url === '/admin' || url === '/admin/') {
         req.url = '/admin/index.html';
+      } else if (url?.endsWith('.apk')) {
+        res.setHeader('Content-Type', 'application/vnd.android.package-archive');
+        res.setHeader('Content-Disposition', 'attachment; filename="Auralis-v1.0.0-universal.apk"');
       }
       next();
     });
@@ -292,7 +295,7 @@ export default defineConfig({
   plugins: [adminApiPlugin()],
   server: {
     watch: {
-      ignored: ['**/public/downloads/**', '**/temp_unzip/**'],
+      ignored: ['**/temp_unzip/**'],
     },
   },
   build: {

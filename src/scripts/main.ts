@@ -469,22 +469,38 @@ function initDownloadAndChecksum() {
   const downloadBtns = document.querySelectorAll<HTMLElement>('[data-action="download-apk"]');
 
   downloadBtns.forEach((btn) => {
+    if (btn instanceof HTMLAnchorElement && APP_CONFIG.apkDownloadUrl) {
+      btn.href = APP_CONFIG.apkDownloadUrl;
+      btn.setAttribute('download', 'Auralis-v1.0.0-universal.apk');
+    }
+
     btn.addEventListener('click', (e) => {
-      e.preventDefault();
       if (APP_CONFIG.apkDownloadUrl && APP_CONFIG.apkDownloadUrl.trim() !== '') {
         showToast('Initiating Auralis APK download...');
-        const link = document.createElement('a');
-        link.href = APP_CONFIG.apkDownloadUrl;
-        const filename = APP_CONFIG.apkDownloadUrl.split('/').pop() || 'Auralis-universal.apk';
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        if (!(btn instanceof HTMLAnchorElement)) {
+          e.preventDefault();
+          const link = document.createElement('a');
+          link.href = APP_CONFIG.apkDownloadUrl;
+          const filename = APP_CONFIG.apkDownloadUrl.split('/').pop() || 'Auralis-universal.apk';
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
       } else {
-        showToast('Redirecting to official GitHub releases...');
-        setTimeout(() => {
-          window.open(APP_CONFIG.githubRepoUrl, '_blank', 'noopener,noreferrer');
-        }, 800);
+        e.preventDefault();
+        showToast('No APK available');
+        const textSpan = btn.querySelector('span');
+        if (textSpan && !btn.dataset.originalText) {
+          btn.dataset.originalText = textSpan.textContent || '';
+          textSpan.textContent = 'No APK available';
+          setTimeout(() => {
+            if (btn.dataset.originalText) {
+              textSpan.textContent = btn.dataset.originalText;
+              delete btn.dataset.originalText;
+            }
+          }, 2500);
+        }
       }
     });
   });
@@ -573,6 +589,8 @@ function initScrollEffects() {
 /**
  * Toast Notification Utility
  */
+let toastTimer: ReturnType<typeof setTimeout> | null = null;
+
 function showToast(message: string) {
   let toastContainer = document.getElementById('toastNotification');
   if (!toastContainer) {
@@ -587,9 +605,10 @@ function showToast(message: string) {
   if (msgText) msgText.textContent = message;
 
   toastContainer.classList.add('is-visible');
-  setTimeout(() => {
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
     toastContainer?.classList.remove('is-visible');
-  }, 3500);
+  }, 2500);
 }
 
 /**
