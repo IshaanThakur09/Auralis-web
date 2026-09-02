@@ -186,42 +186,39 @@ function redirectToGoogleOAuth(clientId: string) {
 }
 
 /**
+ * Trigger Google Login (Popup if available, otherwise direct OAuth redirect)
+ */
+function triggerGoogleLogin(clientId: string) {
+  if ((window as any).google?.accounts?.oauth2) {
+    try {
+      const tokenClient = (window as any).google.accounts.oauth2.initTokenClient({
+        client_id: clientId,
+        scope: 'email profile openid',
+        callback: async (tokenResponse: any) => {
+          if (tokenResponse && tokenResponse.access_token) {
+            await handleAccessToken(tokenResponse.access_token);
+          }
+        },
+      });
+      tokenClient.requestAccessToken();
+      return;
+    } catch (e) {
+      console.warn('initTokenClient fallback:', e);
+    }
+  }
+
+  redirectToGoogleOAuth(clientId);
+}
+
+/**
  * Initialize Google Identity Services
  */
 async function initGoogleSignIn() {
-  const googleSignInBtn = document.getElementById('googleSignInBtn') as HTMLButtonElement;
-
   try {
     await loadGoogleGsiScript();
 
     const clientId = getGoogleClientId();
     if (!clientId) return;
-
-    if (googleSignInBtn) {
-      googleSignInBtn.onclick = () => {
-        // 1. Try Google Identity Services Token Client (Modern OAuth Popup)
-        if ((window as any).google?.accounts?.oauth2) {
-          try {
-            const tokenClient = (window as any).google.accounts.oauth2.initTokenClient({
-              client_id: clientId,
-              scope: 'email profile openid',
-              callback: async (tokenResponse: any) => {
-                if (tokenResponse && tokenResponse.access_token) {
-                  await handleAccessToken(tokenResponse.access_token);
-                }
-              },
-            });
-            tokenClient.requestAccessToken();
-            return;
-          } catch (e) {
-            console.warn('initTokenClient fallback:', e);
-          }
-        }
-
-        // 2. Direct Redirect Fallback (100% reliable everywhere)
-        redirectToGoogleOAuth(clientId);
-      };
-    }
 
     if ((window as any).google?.accounts?.id) {
       (window as any).google.accounts.id.initialize({
@@ -232,11 +229,7 @@ async function initGoogleSignIn() {
       });
     }
   } catch (err: any) {
-    console.error('Failed to initialize Google Sign-In:', err);
-    const clientId = getGoogleClientId();
-    if (googleSignInBtn && clientId) {
-      googleSignInBtn.onclick = () => redirectToGoogleOAuth(clientId);
-    }
+    console.warn('Google Identity Services script failed:', err);
   }
 }
 
@@ -336,12 +329,23 @@ function showAccessDenied(email: string) {
  * Setup Event Listeners
  */
 function setupEventListeners() {
+  // Google Sign-In Button — Immediately Clickable
+  const googleSignInBtn = document.getElementById('googleSignInBtn') as HTMLButtonElement;
+  googleSignInBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const clientId = getGoogleClientId();
+    if (!clientId) {
+      showToast('Google Client ID is missing. Check .env configuration.');
+      return;
+    }
+    triggerGoogleLogin(clientId);
+  });
+
   // Sign Out Button
   adminSignOutBtn?.addEventListener('click', () => {
     clearUser();
     showToast('Signed out of Admin Console.');
     showView('auth');
-    initGoogleSignIn();
   });
 
   // Switch Account Button on Denied Screen

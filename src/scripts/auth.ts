@@ -66,19 +66,25 @@ export function parseJwt(token: string): any {
 }
 
 /**
- * Dynamically load Google Identity Services SDK
+ * Dynamically load Google Identity Services SDK (Never hangs)
  */
 export function loadGoogleGsiScript(): Promise<void> {
-  return new Promise((resolve, reject) => {
-    if ((window as any).google?.accounts?.id) {
+  return new Promise((resolve) => {
+    if ((window as any).google?.accounts) {
       resolve();
       return;
     }
 
-    const existingScript = document.querySelector('script[src="https://accounts.google.com/gsi/client"]');
+    const existingScript = document.querySelector('script[src="https://accounts.google.com/gsi/client"]') as HTMLScriptElement | null;
     if (existingScript) {
+      if ((window as any).google?.accounts) {
+        resolve();
+        return;
+      }
       existingScript.addEventListener('load', () => resolve());
-      existingScript.addEventListener('error', () => reject(new Error('Failed to load Google SDK')));
+      existingScript.addEventListener('error', () => resolve());
+      // Safety timeout: never block execution longer than 800ms
+      setTimeout(() => resolve(), 800);
       return;
     }
 
@@ -87,7 +93,8 @@ export function loadGoogleGsiScript(): Promise<void> {
     script.async = true;
     script.defer = true;
     script.onload = () => resolve();
-    script.onerror = () => reject(new Error('Failed to load Google SDK'));
+    script.onerror = () => resolve();
+    setTimeout(() => resolve(), 800);
     document.head.appendChild(script);
   });
 }
