@@ -93,7 +93,41 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  // 2. Check existing session
+  // 2. Check for OAuth redirect token in URL hash (from fallback OAuth redirect)
+  if (window.location.hash.includes('access_token')) {
+    const params = new URLSearchParams(window.location.hash.substring(1));
+    const token = params.get('access_token');
+    if (token) {
+      try {
+        const res = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const profile = await res.json();
+        if (profile && profile.email) {
+          window.location.hash = '';
+          const user: GoogleUser = {
+            email: profile.email,
+            name: profile.name || profile.email,
+            picture: profile.picture,
+            sub: profile.sub,
+          };
+          if (isAuthorizedAdmin(user.email)) {
+            storeUser(user);
+            showAdminDashboard(user);
+            showToast('Welcome, Ishaan! Authenticated via Google.');
+            return;
+          } else {
+            showAccessDenied(user.email);
+            return;
+          }
+        }
+      } catch (err) {
+        console.error('Failed to parse OAuth redirect token:', err);
+      }
+    }
+  }
+
+  // 3. Check existing session
   const user = getStoredUser();
   if (user) {
     if (isAuthorizedAdmin(user.email)) {
@@ -104,7 +138,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  // 3. Not logged in, render Google Sign-In
+  // 4. Not logged in, render Google Sign-In
   showView('auth');
   await initGoogleSignIn();
 });
@@ -144,38 +178,82 @@ function showView(view: 'config' | 'auth' | 'denied' | 'dashboard') {
 }
 
 /**
+ * Redirect to Google OAuth (Fallback for blocked iframes or origins)
+ */
+function redirectToGoogleOAuth(clientId: string) {
+  const redirectUri = window.location.origin + '/admin';
+  const oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${encodeURIComponent(clientId)}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=token&scope=email%20profile&prompt=select_account`;
+  window.location.href = oauthUrl;
+}
+
+/**
  * Initialize Google Identity Services
  */
 async function initGoogleSignIn() {
+  const fallbackGoogleBtn = document.getElementById('fallbackGoogleBtn') as HTMLButtonElement;
+
   try {
     await loadGoogleGsiScript();
 
     const clientId = getGoogleClientId();
-    if (!clientId || !(window as any).google?.accounts?.id) return;
+    if (!clientId) return;
 
-    (window as any).google.accounts.id.initialize({
-      client_id: clientId,
-      callback: handleGoogleCredentialResponse,
-      auto_select: false,
-      cancel_on_tap_outside: true,
-    });
-
-    if (gsiButtonTarget) {
-      gsiButtonTarget.innerHTML = '';
-      (window as any).google.accounts.id.renderButton(gsiButtonTarget, {
-        theme: 'filled_black',
-        size: 'large',
-        shape: 'pill',
-        text: 'continue_with',
-        logo_alignment: 'left',
-        width: 320,
-      });
+    if (fallbackGoogleBtn) {
+      fallbackGoogleBtn.onclick = () => {
+        try {
+          if ((window as any).google?.accounts?.id) {
+            (window as any).google.accounts.id.prompt((notification: any) => {
+              if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+                redirectToGoogleOAuth(clientId);
+              }
+            });
+          } else {
+            redirectToGoogleOAuth(clientId);
+          }
+        } catch {
+          redirectToGoogleOAuth(clientId);
+        }
+      };
     }
+
+    if ((window as any).google?.accounts?.id) {
+      (window as any).google.accounts.id.initialize({
+        client_id: clientId,
+        callback: handleGoogleCredentialResponse,
+        auto_select: false,
+        cancel_on_tap_outside: true,
+      });
+
+      if (gsiButtonTarget) {
+        gsiButtonTarget.innerHTML = '';
+        (window as any).google.accounts.id.renderButton(gsiButtonTarget, {
+          theme: 'filled_black',
+          size: 'large',
+          shape: 'pill',
+          text: 'continue_with',
+          logo_alignment: 'left',
+          width: 320,
+        });
+      }
+    }
+
+    // Check if Google's iframe button rendered within 1.2 seconds
+    setTimeout(() => {
+      const isRendered = gsiButtonTarget && gsiButtonTarget.children.length > 0;
+      if (!isRendered) {
+        if (fallbackGoogleBtn) fallbackGoogleBtn.style.display = 'flex';
+        if (authAlert) {
+          authAlert.style.display = 'flex';
+          authAlertText.innerHTML = `Google button blocked. Ensure <strong>${window.location.origin}</strong> is added to <strong>Authorised JavaScript origins</strong> in Google Cloud, or pause adblocker.`;
+        }
+      }
+    }, 1200);
   } catch (err: any) {
     console.error('Failed to initialize Google Sign-In:', err);
+    if (fallbackGoogleBtn) fallbackGoogleBtn.style.display = 'flex';
     if (authAlert) {
       authAlert.style.display = 'flex';
-      authAlertText.textContent = 'Could not load Google Identity Services. Check your internet connection.';
+      authAlertText.textContent = 'Could not load Google script. Click "Sign In with Google" below to authenticate.';
     }
   }
 }
