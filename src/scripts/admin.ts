@@ -38,7 +38,6 @@ const adminProfileName = document.getElementById('adminProfileName') as HTMLElem
 const adminSignOutBtn = document.getElementById('adminSignOutBtn') as HTMLButtonElement;
 
 // Auth Gateway Elements
-const gsiButtonTarget = document.getElementById('gsiButtonTarget') as HTMLElement;
 const authAlert = document.getElementById('authAlert') as HTMLElement;
 const authAlertText = document.getElementById('authAlertText') as HTMLElement;
 const deniedAccountChip = document.getElementById('deniedAccountChip') as HTMLElement;
@@ -190,7 +189,7 @@ function redirectToGoogleOAuth(clientId: string) {
  * Initialize Google Identity Services
  */
 async function initGoogleSignIn() {
-  const fallbackGoogleBtn = document.getElementById('fallbackGoogleBtn') as HTMLButtonElement;
+  const googleSignInBtn = document.getElementById('googleSignInBtn') as HTMLButtonElement;
 
   try {
     await loadGoogleGsiScript();
@@ -198,21 +197,29 @@ async function initGoogleSignIn() {
     const clientId = getGoogleClientId();
     if (!clientId) return;
 
-    if (fallbackGoogleBtn) {
-      fallbackGoogleBtn.onclick = () => {
-        try {
-          if ((window as any).google?.accounts?.id) {
-            (window as any).google.accounts.id.prompt((notification: any) => {
-              if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-                redirectToGoogleOAuth(clientId);
-              }
+    if (googleSignInBtn) {
+      googleSignInBtn.onclick = () => {
+        // 1. Try Google Identity Services Token Client (Modern OAuth Popup)
+        if ((window as any).google?.accounts?.oauth2) {
+          try {
+            const tokenClient = (window as any).google.accounts.oauth2.initTokenClient({
+              client_id: clientId,
+              scope: 'email profile openid',
+              callback: async (tokenResponse: any) => {
+                if (tokenResponse && tokenResponse.access_token) {
+                  await handleAccessToken(tokenResponse.access_token);
+                }
+              },
             });
-          } else {
-            redirectToGoogleOAuth(clientId);
+            tokenClient.requestAccessToken();
+            return;
+          } catch (e) {
+            console.warn('initTokenClient fallback:', e);
           }
-        } catch {
-          redirectToGoogleOAuth(clientId);
         }
+
+        // 2. Direct Redirect Fallback (100% reliable everywhere)
+        redirectToGoogleOAuth(clientId);
       };
     }
 
@@ -223,38 +230,44 @@ async function initGoogleSignIn() {
         auto_select: false,
         cancel_on_tap_outside: true,
       });
-
-      if (gsiButtonTarget) {
-        gsiButtonTarget.innerHTML = '';
-        (window as any).google.accounts.id.renderButton(gsiButtonTarget, {
-          theme: 'filled_black',
-          size: 'large',
-          shape: 'pill',
-          text: 'continue_with',
-          logo_alignment: 'left',
-          width: 320,
-        });
-      }
     }
-
-    // Check if Google's iframe button rendered within 1.2 seconds
-    setTimeout(() => {
-      const isRendered = gsiButtonTarget && gsiButtonTarget.children.length > 0;
-      if (!isRendered) {
-        if (fallbackGoogleBtn) fallbackGoogleBtn.style.display = 'flex';
-        if (authAlert) {
-          authAlert.style.display = 'flex';
-          authAlertText.innerHTML = `Google button blocked. Ensure <strong>${window.location.origin}</strong> is added to <strong>Authorised JavaScript origins</strong> in Google Cloud, or pause adblocker.`;
-        }
-      }
-    }, 1200);
   } catch (err: any) {
     console.error('Failed to initialize Google Sign-In:', err);
-    if (fallbackGoogleBtn) fallbackGoogleBtn.style.display = 'flex';
-    if (authAlert) {
-      authAlert.style.display = 'flex';
-      authAlertText.textContent = 'Could not load Google script. Click "Sign In with Google" below to authenticate.';
+    const clientId = getGoogleClientId();
+    if (googleSignInBtn && clientId) {
+      googleSignInBtn.onclick = () => redirectToGoogleOAuth(clientId);
     }
+  }
+}
+
+/**
+ * Handle Access Token (from OAuth Token Client or Hash)
+ */
+async function handleAccessToken(token: string) {
+  try {
+    const res = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const profile = await res.json();
+    if (profile && profile.email) {
+      const user: GoogleUser = {
+        email: profile.email,
+        name: profile.name || profile.email,
+        picture: profile.picture,
+        sub: profile.sub,
+      };
+      if (isAuthorizedAdmin(user.email)) {
+        storeUser(user);
+        showAdminDashboard(user);
+        showToast('Welcome, Ishaan! Authenticated with Google.');
+      } else {
+        clearUser();
+        showAccessDenied(user.email);
+      }
+    }
+  } catch (err: any) {
+    console.error('Failed to fetch user profile:', err);
+    showToast('Failed to fetch user profile from Google.');
   }
 }
 
