@@ -2,6 +2,11 @@ import '../styles/main.css';
 import * as THREE from 'three';
 import { APP_CONFIG, loadApkMetadata } from './config';
 
+// If OAuth redirected to root domain, forward token to /admin
+if (typeof window !== 'undefined' && window.location.hash.includes('access_token')) {
+  window.location.href = `/admin${window.location.hash}`;
+}
+
 function bootstrap() {
   try { initWebGLBackground(); } catch (e) { console.error('Error in initWebGLBackground:', e); }
   try { initThreeJSPlayer(); } catch (e) { console.error('Error in initThreeJSPlayer:', e); }

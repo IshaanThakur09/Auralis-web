@@ -177,34 +177,54 @@ function showView(view: 'config' | 'auth' | 'denied' | 'dashboard') {
 }
 
 /**
- * Redirect to Google OAuth (Fallback for blocked iframes or origins)
+ * Redirect to Google OAuth (Uses pure domain origin with NO path)
  */
 function redirectToGoogleOAuth(clientId: string) {
-  const redirectUri = window.location.origin + '/admin';
+  const redirectUri = window.location.origin;
   const oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${encodeURIComponent(clientId)}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=token&scope=email%20profile&prompt=select_account`;
   window.location.href = oauthUrl;
 }
 
 /**
- * Trigger Google Login (Popup if available, otherwise direct OAuth redirect)
+ * Trigger Google Login (Popup first, fallback to pure origin redirect)
  */
-function triggerGoogleLogin(clientId: string) {
-  if ((window as any).google?.accounts?.oauth2) {
-    try {
+async function triggerGoogleLogin(clientId: string) {
+  const googleSignInBtn = document.getElementById('googleSignInBtn') as HTMLButtonElement;
+  if (googleSignInBtn) {
+    googleSignInBtn.disabled = true;
+    googleSignInBtn.style.opacity = '0.7';
+  }
+
+  try {
+    await loadGoogleGsiScript();
+
+    if ((window as any).google?.accounts?.oauth2) {
       const tokenClient = (window as any).google.accounts.oauth2.initTokenClient({
         client_id: clientId,
         scope: 'email profile openid',
         callback: async (tokenResponse: any) => {
+          if (googleSignInBtn) {
+            googleSignInBtn.disabled = false;
+            googleSignInBtn.style.opacity = '1';
+          }
           if (tokenResponse && tokenResponse.access_token) {
             await handleAccessToken(tokenResponse.access_token);
           }
         },
+        error_callback: (err: any) => {
+          console.warn('OAuth popup closed/failed:', err);
+          if (googleSignInBtn) {
+            googleSignInBtn.disabled = false;
+            googleSignInBtn.style.opacity = '1';
+          }
+          redirectToGoogleOAuth(clientId);
+        },
       });
-      tokenClient.requestAccessToken();
+      tokenClient.requestAccessToken({ prompt: 'select_account' });
       return;
-    } catch (e) {
-      console.warn('initTokenClient fallback:', e);
     }
+  } catch (e) {
+    console.warn('Google GSI SDK unavailable, falling back to direct auth:', e);
   }
 
   redirectToGoogleOAuth(clientId);
