@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { APP_CONFIG, loadApkMetadata } from './config';
 
 // If OAuth redirected to root domain, forward token to /admin
-if (typeof window !== 'undefined' && window.location.hash.includes('access_token')) {
+if (typeof window !== 'undefined' && (window.location.hash.includes('access_token') || window.location.hash.includes('id_token'))) {
   window.location.href = `/admin${window.location.hash}`;
 }
 

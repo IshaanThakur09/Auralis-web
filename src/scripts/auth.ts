@@ -13,9 +13,11 @@ export interface GoogleUser {
 
 const SESSION_STORAGE_KEY = 'auralis_admin_google_user';
 export const AUTHORIZED_ADMIN_EMAIL = 'ishaanthakur49@gmail.com';
+export const DEFAULT_GOOGLE_CLIENT_ID = '658283139281-fkas76bbb5cgcg89dqu62kpd9a8rlsam.apps.googleusercontent.com';
 
 export function getGoogleClientId(): string {
-  return (import.meta.env.VITE_GOOGLE_CLIENT_ID || '').trim();
+  const envId = (import.meta.env.VITE_GOOGLE_CLIENT_ID || '').trim();
+  return envId.length > 0 ? envId : DEFAULT_GOOGLE_CLIENT_ID;
 }
 
 export function isAuthConfigured(): boolean {
@@ -28,7 +30,7 @@ export function isAuthorizedAdmin(email: string): boolean {
 
 export function getStoredUser(): GoogleUser | null {
   try {
-    const raw = sessionStorage.getItem(SESSION_STORAGE_KEY);
+    const raw = localStorage.getItem(SESSION_STORAGE_KEY) || sessionStorage.getItem(SESSION_STORAGE_KEY);
     if (!raw) return null;
     return JSON.parse(raw);
   } catch {
@@ -37,11 +39,17 @@ export function getStoredUser(): GoogleUser | null {
 }
 
 export function storeUser(user: GoogleUser): void {
-  sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(user));
+  try {
+    localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(user));
+    sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(user));
+  } catch {}
 }
 
 export function clearUser(): void {
-  sessionStorage.removeItem(SESSION_STORAGE_KEY);
+  try {
+    localStorage.removeItem(SESSION_STORAGE_KEY);
+    sessionStorage.removeItem(SESSION_STORAGE_KEY);
+  } catch {}
 }
 
 /**

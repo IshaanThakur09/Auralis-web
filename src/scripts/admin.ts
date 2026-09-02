@@ -83,46 +83,79 @@ const adminToastText = document.getElementById('adminToastText') as HTMLElement;
 /**
  * Main Initialization
  */
-document.addEventListener('DOMContentLoaded', async () => {
+async function initAdmin() {
   setupEventListeners();
 
-  // 1. Check if VITE_GOOGLE_CLIENT_ID is configured
+  // 1. Check if Google Client ID is configured
   if (!isAuthConfigured()) {
     showView('config');
     return;
   }
 
-  // 2. Check for OAuth redirect token in URL hash (from fallback OAuth redirect)
-  if (window.location.hash.includes('access_token')) {
-    const params = new URLSearchParams(window.location.hash.substring(1));
-    const token = params.get('access_token');
-    if (token) {
+  // 2. Check for OAuth redirect token in URL hash (access_token or id_token)
+  if (window.location.hash.includes('access_token') || window.location.hash.includes('id_token')) {
+    const rawHash = window.location.hash.startsWith('#')
+      ? window.location.hash.substring(1)
+      : window.location.hash;
+    const params = new URLSearchParams(rawHash);
+    const accessToken = params.get('access_token');
+    const idToken = params.get('id_token');
+
+    // Clean up URL hash so refreshing never gets stuck in a loop
+    window.history.replaceState(null, '', window.location.pathname + window.location.search);
+
+    let authenticatedUser: GoogleUser | null = null;
+
+    // A. Fast path: Decode id_token directly if available
+    if (idToken) {
+      const payload = parseJwt(idToken);
+      if (payload && payload.email) {
+        authenticatedUser = {
+          email: payload.email,
+          name: payload.name || payload.email,
+          picture: payload.picture,
+          sub: payload.sub,
+        };
+      }
+    }
+
+    // B. Secondary path: Fetch user profile using access_token
+    if (!authenticatedUser && accessToken) {
       try {
         const res = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-          headers: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${accessToken}` },
         });
-        const profile = await res.json();
-        if (profile && profile.email) {
-          window.location.hash = '';
-          const user: GoogleUser = {
-            email: profile.email,
-            name: profile.name || profile.email,
-            picture: profile.picture,
-            sub: profile.sub,
-          };
-          if (isAuthorizedAdmin(user.email)) {
-            storeUser(user);
-            showAdminDashboard(user);
-            showToast('Welcome, Ishaan! Authenticated via Google.');
-            return;
-          } else {
-            showAccessDenied(user.email);
-            return;
+        if (res.ok) {
+          const profile = await res.json();
+          if (profile && profile.email) {
+            authenticatedUser = {
+              email: profile.email,
+              name: profile.name || profile.email,
+              picture: profile.picture,
+              sub: profile.sub,
+            };
           }
+        } else {
+          console.warn('Google userinfo API returned error status:', res.status);
         }
       } catch (err) {
         console.error('Failed to parse OAuth redirect token:', err);
       }
+    }
+
+    if (authenticatedUser) {
+      if (isAuthorizedAdmin(authenticatedUser.email)) {
+        storeUser(authenticatedUser);
+        showAdminDashboard(authenticatedUser);
+        showToast('Welcome, Ishaan! Authenticated via Google.');
+        return;
+      } else {
+        clearUser();
+        showAccessDenied(authenticatedUser.email);
+        return;
+      }
+    } else {
+      showToast('Authentication failed or token was invalid. Please try again.');
     }
   }
 
@@ -140,7 +173,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 4. Not logged in, render Google Sign-In
   showView('auth');
   await initGoogleSignIn();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAdmin);
+} else {
+  initAdmin();
+}
 
 /**
  * View Management
@@ -181,7 +220,8 @@ function showView(view: 'config' | 'auth' | 'denied' | 'dashboard') {
  */
 function redirectToGoogleOAuth(clientId: string) {
   const redirectUri = window.location.origin;
-  const oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${encodeURIComponent(clientId)}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=token&scope=email%20profile&prompt=select_account`;
+  const nonce = Math.random().toString(36).substring(2);
+  const oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${encodeURIComponent(clientId)}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=token%20id_token&scope=email%20profile%20openid&nonce=${nonce}&prompt=select_account`;
   window.location.href = oauthUrl;
 }
 
@@ -261,6 +301,9 @@ async function handleAccessToken(token: string) {
     const res = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
       headers: { Authorization: `Bearer ${token}` },
     });
+    if (!res.ok) {
+      throw new Error(`Google API returned status ${res.status}`);
+    }
     const profile = await res.json();
     if (profile && profile.email) {
       const user: GoogleUser = {
@@ -277,10 +320,12 @@ async function handleAccessToken(token: string) {
         clearUser();
         showAccessDenied(user.email);
       }
+    } else {
+      throw new Error('No email found in Google profile');
     }
   } catch (err: any) {
     console.error('Failed to fetch user profile:', err);
-    showToast('Failed to fetch user profile from Google.');
+    showToast('Failed to fetch user profile: ' + (err.message || 'Unknown error'));
   }
 }
 
