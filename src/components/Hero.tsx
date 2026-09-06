@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Download, ArrowUpRight, ArrowDown, Volume2, Sparkles, Disc } from "lucide-react";
+import { Download, ArrowUpRight, ArrowDown, Play, Pause, SkipBack, SkipForward, Heart, Users, Disc } from "lucide-react";
 import { MaskLines, Reveal } from "../lib/motion";
 import { Magnetic, useParallax } from "../lib/pointer";
 import GithubIcon from "./GithubIcon";
@@ -18,6 +18,7 @@ export default function Hero() {
   const { meta } = useApkMetadata();
   const [activeLyric, setActiveLyric] = useState(1);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isLiked, setIsLiked] = useState(false);
 
   const downloadUrl = meta?.downloadUrl || "/downloads/Auralis-v1.0.0-universal.apk";
   const apkSize = meta?.fileSizeFormatted || "8.18 MB";
@@ -127,81 +128,133 @@ export default function Hero() {
             </dl>
           </Reveal>
 
-          {/* Interactive Live Now Playing Preview Card */}
+          {/* Interactive Live Now Playing Preview Card (Auralis In-App Aesthetic) */}
           <Reveal delay={400} className="min-w-0 w-full lg:col-span-5 lg:col-start-8">
-            <div className="spot relative border border-edge bg-ink-900/80 p-5 sm:p-7 min-w-0 max-w-full overflow-hidden">
-              {/* header */}
-              <div className="flex items-center justify-between border-b border-edge pb-4">
+            <div className="spot relative border border-edge bg-ink-900/90 p-5 sm:p-7 min-w-0 max-w-full overflow-hidden shadow-2xl shadow-black/60">
+              {/* Header: Quality tag & streaming source */}
+              <div className="flex items-center justify-between border-b border-edge pb-3.5">
                 <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-bone-400">
-                  <Disc className={`h-3.5 w-3.5 text-bone-200 ${isPlaying ? "animate-spin" : ""}`} style={{ animationDuration: "6s" }} />
-                  High-Fidelity Audio
+                  <Disc className={`h-3.5 w-3.5 text-bone-200 ${isPlaying ? "animate-spin" : ""}`} style={{ animationDuration: "5s" }} />
+                  Auralis Engine
                 </span>
                 <span className="flex items-center gap-1.5 border border-edge-hi bg-ink-950 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-bone-200">
                   <span className="h-1.5 w-1.5 rounded-full bg-bone-100 anim-blink" />
-                  32-BIT FLOAT
+                  OPUS 256 KBPS · 32-BIT
                 </span>
               </div>
 
-              {/* Track Details */}
-              <div className="mt-5 flex items-center justify-between gap-3">
-                <div className="min-w-0">
-                  <h3 className="font-display text-lg font-semibold tracking-tight text-bone-50 truncate">
-                    Midnight Frequency
-                  </h3>
+              {/* Track Details & Album Art */}
+              <div className="mt-5 flex items-center gap-4">
+                {/* Vinyl / Cover Artwork */}
+                <div className="relative flex h-14 w-14 shrink-0 items-center justify-center border border-edge-hi bg-gradient-to-br from-ink-800 via-ink-850 to-ink-950 shadow-inner">
+                  <Disc className={`h-7 w-7 text-bone-300 transition-transform duration-700 ${isPlaying ? "scale-105" : "scale-95 opacity-70"}`} />
+                  <div className="absolute inset-0 bg-radial from-transparent to-black/40" />
+                </div>
+
+                {/* Title & Artist */}
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="font-display text-base font-semibold tracking-tight text-bone-50 truncate">
+                      Midnight Frequency
+                    </h3>
+                    <button
+                      type="button"
+                      onClick={() => setIsLiked(!isLiked)}
+                      className={`shrink-0 p-1 transition-colors ${
+                        isLiked ? "text-bone-50" : "text-bone-500 hover:text-bone-300"
+                      }`}
+                      aria-label={isLiked ? "Unlike track" : "Like track"}
+                    >
+                      <Heart className={`h-4 w-4 ${isLiked ? "fill-current" : ""}`} />
+                    </button>
+                  </div>
                   <p className="font-mono text-[11px] text-bone-400 truncate">
-                    Native Audio Pipeline · 32-bit Float
+                    Tame Impala · Auralis Session
                   </p>
                 </div>
-
-                <button
-                  type="button"
-                  onClick={() => setIsPlaying(!isPlaying)}
-                  className="flex h-9 w-9 items-center justify-center border border-edge-hi bg-ink-850 text-bone-100 transition-colors hover:border-bone-200 hover:text-bone-50"
-                  aria-label={isPlaying ? "Pause preview" : "Play preview"}
-                >
-                  <Volume2 className="h-4 w-4" />
-                </button>
               </div>
 
-              {/* Synced Lyrics Box */}
+              {/* Real-time Synced Lyrics Box (Kinetic Display) */}
               <div className="mt-5 border border-edge bg-ink-950/90 p-4">
                 <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-bone-500">
-                  <span>Synced Lyrics (LRCLIB)</span>
-                  <span className="text-bone-300">01:41 / 03:50</span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-bone-300 anim-blink" />
+                    SYNCED LYRICS (LRCLIB)
+                  </span>
+                  <span className="text-bone-300 tabnum">01:42 / 03:58</span>
                 </div>
                 <div className="mt-3 space-y-2 font-mono text-[11px]">
-                  {LYRIC_LINES.map((line, idx) => (
-                    <p
-                      key={line}
-                      className={`transition-all duration-500 ${
-                        idx === activeLyric
-                          ? "font-medium text-bone-50 translate-x-1"
-                          : "text-bone-500 text-[10px]"
-                      }`}
-                    >
-                      {idx === activeLyric && <span className="mr-2 text-bone-300">▸</span>}
-                      {line}
-                    </p>
-                  ))}
+                  {LYRIC_LINES.map((line, idx) => {
+                    const isCurrent = idx === activeLyric;
+                    return (
+                      <p
+                        key={line}
+                        className={`transition-all duration-500 ${
+                          isCurrent
+                            ? "font-medium text-bone-50 translate-x-1.5 text-[12px]"
+                            : "text-bone-500 text-[10px] opacity-60"
+                        }`}
+                      >
+                        {isCurrent && <span className="mr-2 text-bone-200">▸</span>}
+                        {line}
+                      </p>
+                    );
+                  })}
                 </div>
               </div>
 
-              {/* Seekbar Frequency Pillars */}
-              <div className="mt-5">
-                <div className="flex h-6 items-end justify-between gap-1">
-                  {[30, 65, 45, 85, 95, 55, 40, 75, 88, 60, 92, 48, 70, 82, 35, 90, 68, 50, 78, 62].map((h, i) => (
-                    <div
-                      key={i}
-                      className={`w-full transition-all duration-300 ${
-                        i < 9 ? "bg-bone-100" : "bg-bone-500/40"
-                      }`}
-                      style={{ height: `${h}%` }}
-                    />
-                  ))}
+              {/* Scrub Progress Bar */}
+              <div className="mt-4">
+                <div className="relative h-1.5 w-full overflow-hidden bg-ink-800">
+                  <div
+                    className="h-full bg-bone-100 transition-all duration-300"
+                    style={{ width: isPlaying ? "44%" : "44%" }}
+                  />
                 </div>
-                <div className="mt-2 flex justify-between font-mono text-[9px] uppercase tracking-wider text-bone-500">
-                  <span>Native Audio Pipeline</span>
-                  <span>32-bit Float</span>
+                <div className="mt-1.5 flex justify-between font-mono text-[9px] uppercase tracking-wider text-bone-500">
+                  <span>01:42</span>
+                  <span>Gapless · 32-Bit Float</span>
+                  <span>03:58</span>
+                </div>
+              </div>
+
+              {/* Transport Controls */}
+              <div className="mt-4 flex items-center justify-between border-t border-edge/80 pt-3">
+                <div className="flex items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={() => setActiveLyric((prev) => (prev - 1 + LYRIC_LINES.length) % LYRIC_LINES.length)}
+                    className="flex h-8 w-8 items-center justify-center text-bone-400 transition-colors hover:text-bone-50"
+                    aria-label="Previous line"
+                  >
+                    <SkipBack className="h-3.5 w-3.5" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setIsPlaying(!isPlaying)}
+                    className="flex h-9 w-9 items-center justify-center border border-edge-hi bg-ink-850 text-bone-50 transition-colors hover:bg-ink-800 hover:border-bone-200"
+                    aria-label={isPlaying ? "Pause track" : "Play track"}
+                  >
+                    {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 fill-current ml-0.5" />}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setActiveLyric((prev) => (prev + 1) % LYRIC_LINES.length)}
+                    className="flex h-8 w-8 items-center justify-center text-bone-400 transition-colors hover:text-bone-50"
+                    aria-label="Next line"
+                  >
+                    <SkipForward className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+
+                {/* Listen Together Status Pill */}
+                <div className="flex items-center gap-2 border border-edge bg-ink-950 px-2.5 py-1 font-mono text-[10px] text-bone-400">
+                  <Users className="h-3 w-3 text-bone-300" />
+                  <span className="text-bone-300 font-medium">#AUR-96</span>
+                  <span className="text-bone-500">·</span>
+                  <span className="text-bone-400">3 SYNCED</span>
                 </div>
               </div>
             </div>
@@ -211,3 +264,4 @@ export default function Hero() {
     </section>
   );
 }
+
