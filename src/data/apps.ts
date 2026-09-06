@@ -38,7 +38,7 @@ export const APPS: App[] = [
     status: "Stable",
     version: "1.0.0",
     updated: "2026-09-02",
-    minAndroid: "8.0+",
+    minAndroid: "7.0+",
     size: "8.18 MB",
     license: "GPL-3.0",
     summary:
@@ -49,7 +49,7 @@ export const APPS: App[] = [
       "32-bit float pipeline, gapless, USB exclusive mode",
       "YouTube Music streaming with background audio playback",
     ],
-    permissions: ["INTERNET", "WAKE_LOCK", "POST_NOTIFICATIONS", "READ_MEDIA_AUDIO"],
+    permissions: ["INTERNET", "FOREGROUND_SERVICE", "WAKE_LOCK", "POST_NOTIFICATIONS"],
     builds: [
       {
         arch: "universal",

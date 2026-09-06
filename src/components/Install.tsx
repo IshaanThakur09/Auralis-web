@@ -11,8 +11,8 @@ const STEPS: Array<{ n: string; title: string; body: string }> = [
   },
   {
     n: "02",
-    title: "Pick the right build",
-    body: "Universal works everywhere. If you know your device is arm64-v8a (most phones since 2017), take that one — it is roughly 30% smaller.",
+    title: "Universal compatibility",
+    body: "The Universal APK is featherweight (~8 MB) and engineered to run seamlessly across all Android CPU architectures (arm64-v8a, armeabi-v7a, x86, x86_64) with no architecture guesswork required.",
   },
   {
     n: "03",

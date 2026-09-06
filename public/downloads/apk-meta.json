@@ -6,7 +6,7 @@
   "fileSizeFormatted": "8.18 MB",
   "sha256": "d5af6e8546dc50dec4c54f7341fa27b8663e407bd3245dc0c910fc74f9bdbd15",
   "lastUpdated": "2026-09-02",
-  "minAndroidVersion": "Android 8.0+",
+  "minAndroidVersion": "Android 7.0+",
   "downloadUrl": "/downloads/Auralis-v1.0.0-universal.apk",
   "releaseNotes": "Official universal release build."
 }
