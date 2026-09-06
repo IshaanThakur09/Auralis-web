@@ -29,6 +29,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 0px;
+  overflow-x: hidden;
+  max-width: 100%;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -44,11 +46,14 @@ html {
 
 body {
   @apply bg-ink-950 text-bone-50 font-body antialiased;
+  overflow-x: hidden;
+  max-width: 100%;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
+
 
 *, *::before, *::after {
   -webkit-user-select: none;

@@ -178,24 +178,24 @@ export default function Features() {
               <Disc className="h-5 w-5" />
             </div>
             <h3 className="mt-6 font-display text-2xl font-semibold tracking-tight text-bone-50">
-              Lossless Audio Engine
+              High-Fidelity Audio Engine
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              Pristine high-fidelity audio playback pipeline delivering studio-master precision straight to your DAC or headphones with 32-bit float processing.
+              Pristine audio playback pipeline delivering clean, dynamic reproduction straight to your headphones with native 32-bit float processing and zero clipping.
             </p>
           </div>
           {/* Visual Demo */}
           <div className="mt-8 border border-edge bg-ink-900/60 p-4 font-mono text-[11px]">
             <div className="flex items-center justify-between text-bone-400">
               <span>OUTPUT PIPELINE</span>
-              <span className="text-bone-100 font-medium">BIT-PERFECT</span>
+              <span className="text-bone-100 font-medium">32-BIT FLOAT</span>
             </div>
             <div className="mt-3 flex flex-wrap gap-2 text-[10px]">
               <span className="border border-edge-hi bg-ink-850 px-2 py-1 text-bone-200">
-                24-bit / 96 kHz
+                32-Bit Float Engine
               </span>
               <span className="border border-edge-hi bg-ink-850 px-2 py-1 text-bone-200">
-                USB Exclusive Mode
+                Opus 256 kbps
               </span>
               <span className="border border-edge-hi bg-ink-850 px-2 py-1 text-bone-200">
                 Gapless Playback
@@ -203,6 +203,7 @@ export default function Features() {
             </div>
           </div>
         </Reveal>
+
 
         {/* 6. YouTube Music Integration */}
         <Reveal delay={400} className="spot flex flex-col justify-between border border-edge p-6 sm:p-8">

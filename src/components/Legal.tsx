@@ -8,7 +8,7 @@ const PRIVACY = [
 ];
 
 const TERMS = [
-  ["Licence", "GPL-3.0-only or MIT per app, stated in each repository and in the catalog above."],
+  ["Licence", "GPL-3.0 copyleft, publicly auditable on GitHub."],
   ["Warranty", "None. Software is provided as-is; you accept the risk of running it."],
   ["Your content", "Files you open remain entirely yours. You confirm you hold the rights to them."],
   ["Third parties", "Integrations use public endpoints and remain subject to those services' terms."],

@@ -77,9 +77,10 @@ export default function Hero() {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Magnetic strength={0.26}>
                 <a
-                  href="#download"
+                  href={downloadUrl}
+                  download="Auralis-v1.0.0-universal.apk"
                   data-cursor="Download"
-                  className="btn-solid"
+                  className="btn-solid text-center w-full sm:w-auto"
                 >
                   <Download className="h-4 w-4" />
                   Download APK ({apkSize})
@@ -92,7 +93,7 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor="Source"
-                  className="btn-ghost"
+                  className="btn-ghost text-center w-full sm:w-auto"
                 >
                   <GithubIcon className="h-4 w-4" />
                   View Source
@@ -101,56 +102,57 @@ export default function Hero() {
               </Magnetic>
 
               <a
-                href="#features"
-                data-cursor="Features"
+                href="#download"
+                data-cursor="Specs"
                 className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-bone-400 transition-colors hover:text-bone-50 px-2 py-2"
               >
-                Capabilities
+                Checksum & Build Specs
                 <ArrowDown className="h-3.5 w-3.5" />
               </a>
             </div>
 
             {/* Spec Ledger */}
-            <dl className="mt-10 grid grid-cols-2 gap-4 border-t border-edge pt-6 font-mono text-[11px] uppercase tracking-[0.14em] sm:grid-cols-4">
+            <dl className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 border-t border-edge pt-6 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.14em] sm:grid-cols-4">
               {[
                 ["Engine", "Jetpack Compose"],
-                ["Audio Out", "24-bit / 96kHz"],
+                ["Audio Engine", "32-Bit Float"],
                 ["License", "GPL-3.0 Copyleft"],
                 ["Telemetry", "Zero / None"],
               ].map(([k, v]) => (
-                <div key={k}>
-                  <dt className="text-bone-500">{k}</dt>
-                  <dd className="mt-1 text-bone-200">{v}</dd>
+                <div key={k} className="min-w-0">
+                  <dt className="text-bone-500 truncate">{k}</dt>
+                  <dd className="mt-1 text-bone-200 truncate">{v}</dd>
                 </div>
               ))}
             </dl>
           </Reveal>
 
           {/* Interactive Live Now Playing Preview Card */}
-          <Reveal delay={400} className="lg:col-span-5 lg:col-start-8">
-            <div className="spot relative border border-edge bg-ink-900/80 p-6 sm:p-7">
+          <Reveal delay={400} className="min-w-0 w-full lg:col-span-5 lg:col-start-8">
+            <div className="spot relative border border-edge bg-ink-900/80 p-5 sm:p-7 min-w-0 max-w-full overflow-hidden">
               {/* header */}
               <div className="flex items-center justify-between border-b border-edge pb-4">
                 <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-bone-400">
                   <Disc className={`h-3.5 w-3.5 text-bone-200 ${isPlaying ? "animate-spin" : ""}`} style={{ animationDuration: "6s" }} />
-                  Lossless Audio
+                  High-Fidelity Audio
                 </span>
                 <span className="flex items-center gap-1.5 border border-edge-hi bg-ink-950 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-bone-200">
                   <span className="h-1.5 w-1.5 rounded-full bg-bone-100 anim-blink" />
-                  LIVE FLAC
+                  32-BIT FLOAT
                 </span>
               </div>
 
               {/* Track Details */}
-              <div className="mt-5 flex items-center justify-between">
-                <div>
-                  <h3 className="font-display text-lg font-semibold tracking-tight text-bone-50">
+              <div className="mt-5 flex items-center justify-between gap-3">
+                <div className="min-w-0">
+                  <h3 className="font-display text-lg font-semibold tracking-tight text-bone-50 truncate">
                     Midnight Frequency
                   </h3>
-                  <p className="font-mono text-[11px] text-bone-400">
-                    Auralis Spatial Audio · 24-bit/96kHz
+                  <p className="font-mono text-[11px] text-bone-400 truncate">
+                    Native Audio Pipeline · 32-bit Float
                   </p>
                 </div>
+
                 <button
                   type="button"
                   onClick={() => setIsPlaying(!isPlaying)}
