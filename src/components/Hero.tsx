@@ -78,8 +78,7 @@ export default function Hero() {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Magnetic strength={0.26}>
                 <a
-                  href={downloadUrl}
-                  download="Auralis-v1.0.0-universal.apk"
+                  href="#download"
                   data-cursor="Download"
                   className="btn-solid text-center w-full sm:w-auto"
                 >
@@ -103,14 +102,15 @@ export default function Hero() {
               </Magnetic>
 
               <a
-                href="#download"
-                data-cursor="Specs"
+                href="#features"
+                data-cursor="Features"
                 className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-bone-400 transition-colors hover:text-bone-50 px-2 py-2"
               >
-                Checksum & Build Specs
+                Capabilities
                 <ArrowDown className="h-3.5 w-3.5" />
               </a>
             </div>
+
 
             {/* Spec Ledger */}
             <dl className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 border-t border-edge pt-6 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.14em] sm:grid-cols-4">
