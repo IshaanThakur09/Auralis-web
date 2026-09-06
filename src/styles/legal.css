@@ -3,7 +3,19 @@
    Mobile-optimized for all screen sizes and orientations
    ========================================================================== */
 
+body {
+  background-color: #0d0a08 !important;
+  color: #ece7e0 !important;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif !important;
+}
+
+.site-header {
+  background: rgba(13, 10, 8, 0.9) !important;
+  border-bottom: 1px solid #251b14 !important;
+}
+
 .legal-section {
+  background-color: #0d0a08 !important;
   padding: 40px 0 80px;
 }
 
@@ -15,13 +27,14 @@
 .legal-header {
   margin-bottom: 36px;
   padding-bottom: 20px;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid #251b14 !important;
 }
 
 .legal-title {
+  font-family: "Space Grotesk", sans-serif !important;
   font-size: clamp(1.8rem, 4vw, 2.4rem);
   font-weight: 700;
-  color: var(--text-primary);
+  color: #ece7e0 !important;
   margin-bottom: 8px;
   letter-spacing: -0.02em;
   line-height: 1.2;
@@ -29,8 +42,8 @@
 
 .legal-meta {
   font-size: 0.85rem;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
+  color: #7b7062 !important;
+  font-family: "IBM Plex Mono", monospace !important;
 }
 
 .legal-content {
@@ -46,15 +59,16 @@
 }
 
 .legal-block h2 {
+  font-family: "Space Grotesk", sans-serif !important;
   font-size: clamp(1.15rem, 2.5vw, 1.35rem);
   font-weight: 600;
-  color: var(--text-primary);
+  color: #ece7e0 !important;
   letter-spacing: -0.01em;
   line-height: 1.3;
 }
 
 .legal-block p {
-  color: var(--text-secondary);
+  color: #c4bbb0 !important;
   font-size: 0.95rem;
   line-height: 1.7;
   word-break: break-word;
@@ -62,7 +76,7 @@
 
 .legal-block ul {
   padding-left: 20px;
-  color: var(--text-secondary);
+  color: #c4bbb0 !important;
   font-size: 0.95rem;
   line-height: 1.7;
   display: flex;
@@ -71,7 +85,7 @@
 }
 
 .legal-block a {
-  color: var(--accent-amber-light);
+  color: #ece7e0 !important;
   text-decoration: underline;
   text-underline-offset: 3px;
   touch-action: manipulation;
@@ -80,7 +94,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .legal-block a:hover {
-    color: var(--accent-amber);
+    color: #ffffff !important;
   }
 }
 
