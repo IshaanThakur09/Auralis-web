@@ -35,11 +35,11 @@ export default function Hero() {
     <section id="index" className="relative scroll-mt-0 overflow-hidden">
       {/* drifting watermark emblem */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div ref={glyphRef} className="absolute -right-24 top-4 hidden lg:block select-none pointer-events-none">
+        <div ref={glyphRef} className="absolute -right-28 -top-4 hidden lg:block select-none pointer-events-none">
           <img
             src="/auralis-watermark.png"
             alt=""
-            className="h-[36rem] w-[36rem] object-contain opacity-15 transition-opacity duration-700"
+            className="h-[45rem] w-[45rem] object-contain opacity-15 anim-spin-smooth transition-opacity duration-700"
           />
         </div>
       </div>

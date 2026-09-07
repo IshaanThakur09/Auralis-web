@@ -157,9 +157,21 @@ input, textarea {
   to   { opacity: 1; transform: none; }
 }
 
+@keyframes spin-smooth {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
 .anim-drift { animation: drift 7s ease-in-out infinite alternate; }
 .anim-blink { animation: blink 1.15s steps(1) infinite; }
 .anim-swap  { animation: swap-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.anim-spin-smooth {
+  animation: spin-smooth 36s linear infinite;
+  transform-origin: 50.4% 50.4%;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
 .eq-bar {
   transform-origin: bottom;
   animation: bar var(--d, 1s) ease-in-out var(--dl, 0s) infinite alternate;
