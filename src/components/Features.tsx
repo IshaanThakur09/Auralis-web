@@ -35,7 +35,7 @@ export default function Features() {
         </Reveal>
         <Reveal delay={120} className="lg:col-span-5">
           <p className="max-w-md text-[15px] leading-relaxed text-bone-300 lg:ml-auto lg:text-right">
-            Streaming, lyrics, group listening and stats, with no ads and no tracking.
+            Streaming, lyrics, group listening and stats, with no advertising or analytics SDK.
           </p>
         </Reveal>
       </div>
@@ -52,7 +52,7 @@ export default function Features() {
               Word-by-Word Lyrics
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              Karaoke-style lyrics that light up word by word as the song plays, gathered from several lyrics sources. Indian songs always show in Hinglish, and lyrics are cached for offline playback.
+              Karaoke-style lyrics can light up word by word when timing data is available. Hinglish is offered for supported Indian songs, and fetched lyrics can be cached for offline playback.
             </p>
           </div>
           {/* Visual Demo */}
@@ -88,7 +88,7 @@ export default function Features() {
               Listen Together Rooms
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              Listen with friends using a 6-character room code. Everyone hears the same song at the same moment, and the host decides who can play, skip or seek.
+              Listen with friends using a 6-character room code. Playback is synchronized across devices, subject to network and buffering delays. The host decides who can play, skip or seek.
             </p>
           </div>
           {/* Visual Demo */}
@@ -145,7 +145,7 @@ export default function Features() {
           </div>
         </Reveal>
 
-        {/* 4. Open Source & Zero Telemetry */}
+        {/* 4. Open Source */}
         <Reveal delay={240} className="spot flex flex-col justify-between border border-edge p-6 sm:p-8">
           <div>
             <div className="flex h-10 w-10 items-center justify-center border border-edge-hi text-bone-100">
@@ -155,18 +155,18 @@ export default function Features() {
               Open Source
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              No ads, no analytics, no paywalls. All of Auralis's own code is GPL-3.0 on GitHub; Google Firebase (sign-in and sync) and Discord's SDK (Rich Presence) are the only closed-source parts.
+              No ads, analytics SDK or paywalls. Auralis's own code is GPL-3.0 on GitHub. The app also uses third-party services and SDKs for streaming, sign-in, sync, notifications and optional features.
             </p>
           </div>
           {/* Visual Demo */}
           <div className="mt-8 border border-edge bg-ink-900/60 p-4 font-mono text-[11px] leading-relaxed text-bone-300">
-            <p className="text-bone-500">// auralis-core/privacy.ts</p>
+            <p className="text-bone-500">// privacy summary</p>
             <p className="text-bone-200">
-              export const privacy = &#123;
+              Data handling &#123;
             </p>
-            <p className="pl-4 text-bone-400">telemetry: <span className="text-bone-100">false</span>,</p>
-            <p className="pl-4 text-bone-400">adTracking: <span className="text-bone-100">false</span>,</p>
-            <p className="pl-4 text-bone-400">license: <span className="text-bone-100">'GPL-3.0'</span></p>
+            <p className="pl-4 text-bone-400">advertising: <span className="text-bone-100">none</span>,</p>
+            <p className="pl-4 text-bone-400">analytics SDK: <span className="text-bone-100">none</span>,</p>
+            <p className="pl-4 text-bone-400">network services: <span className="text-bone-100">see Privacy Policy</span></p>
             <p className="text-bone-200">&#125;;</p>
           </div>
         </Reveal>
@@ -215,7 +215,7 @@ export default function Features() {
               YouTube Music Integration
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              Stream virtually any track from YouTube Music with pure background audio, fast loading, public playlist imports, and full metadata support.
+              Search and play available YouTube Music tracks with background audio, public playlist imports and song information. Availability depends on the source and region.
             </p>
           </div>
           {/* Visual Demo */}

@@ -12,7 +12,7 @@ const STEPS: Array<{ n: string; title: string; body: string }> = [
   {
     n: "02",
     title: "Universal compatibility",
-    body: "One universal APK (about 43 MB) runs on every Android CPU architecture (arm64-v8a, armeabi-v7a, x86, x86_64), so there's no guessing which file your phone needs.",
+    body: "The universal APK includes arm64-v8a, armeabi-v7a, x86 and x86_64 builds and requires Android 7.0 or later. Compatibility can still vary by device.",
   },
   {
     n: "03",
