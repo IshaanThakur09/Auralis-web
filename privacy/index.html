@@ -79,90 +79,120 @@
 
       <div class="legal-header">
         <h1 class="legal-title">Privacy Policy</h1>
-        <div class="legal-meta">Effective Date: August 26, 2026</div>
+        <div class="legal-meta">Effective Date: September 27, 2026</div>
       </div>
 
       <div class="legal-content">
         <div class="legal-block">
           <h2>1. Introduction</h2>
           <p>
-            Auralis ("we", "our", or "the app") is a free and open-source music streaming client. This Privacy Policy explains our commitment to user privacy, transparent data practices, and compliance with applicable legal standards and API developer policies.
+            Auralis ("we", "our", or "the app") is a free, open-source music player for Android that streams from YouTube Music. This policy explains what data the app handles, where it goes, and how you can delete it.
+          </p>
+          <p>
+            <strong>In short:</strong> no ads, no analytics, no tracking. Most of your data stays on your phone. Signing in is optional, and if you do, only the data needed to back up your library and stats is stored.
           </p>
         </div>
 
         <div class="legal-block">
-          <h2>2. Zero Personal Data Collection & Tracking</h2>
+          <h2>2. Data That Stays on Your Phone</h2>
           <p>
-            Auralis is built with a privacy-by-design architecture:
+            Your library, playlists, liked songs, play history, listening stats, settings, song cache, downloads and saved lyrics are stored on your device. If you don't sign in, none of it leaves your phone.
+          </p>
+        </div>
+
+        <div class="legal-block">
+          <h2>3. If You Sign In (Optional)</h2>
+          <p>
+            You can sign in with Google, or with an email and password, through Firebase Authentication (a Google service). When you're signed in, the following is stored in Google Firebase so you can restore it on a new phone:
           </p>
           <ul>
-            <li>We do <strong>not</strong> collect, harvest, store, or sell any personally identifiable information (PII).</li>
-            <li>We do <strong>not</strong> embed third-party advertising SDKs, commercial telemetry, analytics, or behavioral trackers.</li>
-            <li>We do <strong>not</strong> require user registration or account creation to access core music features.</li>
+            <li>Your account details: email address, name and profile photo from your sign-in.</li>
+            <li>Your playlists, liked songs and saved artists.</li>
+            <li>Your listening stats: which songs you played, when, and for how long.</li>
+          </ul>
+          <p>
+            This data is used only to back up and restore your library and stats. We don't sell it, share it, or use it for advertising.
+          </p>
+        </div>
+
+        <div class="legal-block">
+          <h2>4. Listen Together</h2>
+          <p>
+            When you create or join a Listen Together room, your display name, the room code, the song playing, playback position, the room's queue and any song recommendations are stored in Firebase and visible to everyone in the room. A room is scheduled for deletion one hour after it closes.
+          </p>
+        </div>
+
+        <div class="legal-block">
+          <h2>5. Services the App Connects To</h2>
+          <p>
+            To play music and provide its features, Auralis sends some information to these services. Each has its own privacy policy.
+          </p>
+          <ul>
+            <li><strong>YouTube and YouTube Music:</strong> your searches and the songs you play, to find and stream music. See the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.</li>
+            <li><strong>Lyrics services</strong> (such as LRCLIB, Musixmatch, NetEase, KuGou, Genius and JioSaavn): the song's title, artist, album and length, to find lyrics.</li>
+            <li><strong>Apple iTunes Search:</strong> the song's title and artist, to find its album.</li>
+            <li><strong>Wikipedia:</strong> an artist's name, to find an artist photo.</li>
+            <li><strong>Song recognition (optional):</strong> when you use it, a short acoustic fingerprint of what the microphone hears (not the recording itself) is sent to Shazam to identify the song.</li>
+            <li><strong>Discord (optional):</strong> if you connect Discord, the song you're playing is shown on your Discord profile. Discord sign-in is handled by Discord's official SDK.</li>
+            <li><strong>AI lyrics translation (optional):</strong> the song's lyrics are sent to the AI provider you choose (for example OpenAI, Anthropic, Google Gemini or DeepL), using your own API key. Your key is stored only on your phone.</li>
+            <li><strong>Playlist import (optional):</strong> the Spotify or YouTube playlist links you paste are read from those services. For your own YouTube playlists, the app uses the Google access you grant, which you can revoke on your <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">Google Account permissions page</a>.</li>
+            <li><strong>Updates:</strong> the app checks GitHub for new versions and can receive update notifications through Firebase Cloud Messaging.</li>
           </ul>
         </div>
 
         <div class="legal-block">
-          <h2>3. Third-Party Services & YouTube API Compliance</h2>
-          <p>
-            Auralis interacts with external services to provide content and features:
-          </p>
+          <h2>6. Device Permissions</h2>
           <ul>
-            <li>
-              <strong>YouTube API Services:</strong> Auralis uses YouTube API Services to retrieve music metadata and stream public content. By using Auralis, you agree to be bound by the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a>. User data accessed via YouTube API is handled in strict accordance with the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.
-            </li>
-            <li>
-              <strong>Revoking Access:</strong> You can manage or revoke access to your Google permissions at any time through the <a href="https://security.google.com/settings/security/permissions" target="_blank" rel="noopener noreferrer">Google Security Settings page</a>.
-            </li>
-            <li>
-              <strong>LRCLIB:</strong> Synchronized song lyrics are fetched on demand from the community-driven LRCLIB API. No user data is transmitted during lyric requests.
-            </li>
+            <li><strong>Internet:</strong> to stream music and fetch lyrics.</li>
+            <li><strong>Background playback</strong> (foreground service, wake lock): to keep music playing with the screen off.</li>
+            <li><strong>Notifications:</strong> for playback controls, download progress and update notices.</li>
+            <li><strong>Microphone:</strong> only when you use song recognition.</li>
+            <li><strong>Install apps:</strong> only to install an update you choose to download in the app.</li>
+            <li><strong>Run after restart:</strong> used by Android's background-task system to resume scheduled work after your phone restarts.</li>
           </ul>
         </div>
 
         <div class="legal-block">
-          <h2>4. Local Data Storage & Cloud Sync</h2>
+          <h2>7. No Ads, Analytics or Tracking</h2>
           <p>
-            By default, all user data—including custom playlists, playback history, audio cache, and settings—is stored locally on your device.
-          </p>
-          <p>
-            <strong>Optional Cloud Sync:</strong> If you voluntarily choose to sign in with your Google account, your saved playlists and favorites are synchronized securely via Firebase Cloud Sync to enable cross-device access. We do not sell, monetize, or share this data with third parties.
-          </p>
-          <p>
-            <strong>Data Deletion:</strong> You retain complete control over your data. You can delete all local data, cached audio files, and playlist records at any time by selecting "Clear Cache" in app settings or by clearing application data via your Android device settings. You can also delete your cloud-synced account data by signing out or requesting deletion.
+            Auralis contains no advertising, analytics or crash-reporting SDKs. It does include two closed-source SDKs, used only for the features above: Google Firebase (sign-in, backup and update notifications) and Discord's official SDK (Rich Presence, only if you connect Discord).
           </p>
         </div>
 
         <div class="legal-block">
-          <h2>5. Device Permissions</h2>
-          <p>
-            Auralis requests only the minimum necessary permissions required for core audio functionality:
-          </p>
+          <h2>8. Deleting Your Data</h2>
           <ul>
-            <li><strong>Internet Access:</strong> To stream audio tracks and fetch synchronized lyrics.</li>
-            <li><strong>Foreground Service & Audio Focus:</strong> To enable seamless background music playback and lock-screen media controls.</li>
-            <li><strong>Notifications:</strong> To display active playback status in the system notification drawer.</li>
+            <li><strong>On your phone:</strong> clear your song cache and downloads in Settings › Storage, or remove everything by clearing the app's data or uninstalling it.</li>
+            <li><strong>Listening stats:</strong> "Clear stats" in the Stats screen deletes your stats from your phone and, if you're signed in, from your account.</li>
+            <li><strong>Your account and backed-up library:</strong> signing out does not delete data stored in Firebase. To have your account, playlists, liked songs and saved artists deleted, open a request on our <a href="https://github.com/Shreyanshh071/Auralis/issues" target="_blank" rel="noopener noreferrer">GitHub Issues page</a>. Don't post personal details there; we'll arrange a private way to confirm the request.</li>
           </ul>
         </div>
 
         <div class="legal-block">
-          <h2>6. Children's Privacy (COPPA Compliance)</h2>
+          <h2>9. Children's Privacy</h2>
           <p>
-            Auralis is not directed toward children under 13 years of age. We do not knowingly collect or solicit any personal information from children.
+            Auralis is not directed at children under 13, and we do not knowingly collect personal information from children.
           </p>
         </div>
 
         <div class="legal-block">
-          <h2>7. Open Source Transparency</h2>
+          <h2>10. Open Source</h2>
           <p>
-            Auralis is 100% open source under the GPL-3.0 License. The complete source code and network operations are publicly auditable on our <a href="https://github.com/Shreyanshh071/Auralis" target="_blank" rel="noopener noreferrer">GitHub repository</a>.
+            All of Auralis's own code is open source under the GPL-3.0 license and can be read on our <a href="https://github.com/Shreyanshh071/Auralis" target="_blank" rel="noopener noreferrer">GitHub repository</a>. The Firebase and Discord SDKs mentioned above are closed source.
           </p>
         </div>
 
         <div class="legal-block">
-          <h2>8. Contact & Questions</h2>
+          <h2>11. Changes to This Policy</h2>
           <p>
-            If you have questions or inquiries regarding this Privacy Policy, you can open an issue or start a discussion on our official <a href="https://github.com/Shreyanshh071/Auralis/issues" target="_blank" rel="noopener noreferrer">GitHub Issues page</a>.
+            If this policy changes, we'll update the date at the top and mention significant changes in the release notes.
+          </p>
+        </div>
+
+        <div class="legal-block">
+          <h2>12. Contact</h2>
+          <p>
+            For questions about this policy, open an issue on our <a href="https://github.com/Shreyanshh071/Auralis/issues" target="_blank" rel="noopener noreferrer">GitHub Issues page</a>.
           </p>
         </div>
       </div>
