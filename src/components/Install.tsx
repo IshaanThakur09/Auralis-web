@@ -7,7 +7,7 @@ const STEPS: Array<{ n: string; title: string; body: string }> = [
   {
     n: "01",
     title: "Permit your browser to install",
-    body: "Settings → Apps → (your browser) → Install unknown apps. Android asks once per source. You are not disabling any security check — only naming who you trust.",
+    body: "In Android settings, allow your browser to install this APK if prompted. Install only from a source you trust, and keep Android's security checks enabled.",
   },
   {
     n: "02",
@@ -22,7 +22,7 @@ const STEPS: Array<{ n: string; title: string; body: string }> = [
   {
     n: "04",
     title: "Install and update",
-    body: "Android verifies our signature on install. Later builds must be signed with the same key or the system refuses them — this is your protection against tampered mirrors.",
+    body: "Android checks the APK signature. Updates must use the same signing key as the installed app. Compare the SHA-256 shown here with your downloaded file before installing.",
   },
 ];
 

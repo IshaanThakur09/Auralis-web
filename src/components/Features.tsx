@@ -121,7 +121,7 @@ export default function Features() {
               Stats That Follow You
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              Your top songs, artists and real listening time, counting only what you actually heard. Sign in and your stats are backed up to your account, so they come back on a new phone.
+              Your top songs, artists and listening time reflect recorded playback. When signed in, successfully backed-up stats can be restored on a new phone.
             </p>
           </div>
           {/* Visual Demo */}
@@ -181,7 +181,7 @@ export default function Features() {
               Offline Song Cache
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              Songs you play are kept on your phone, so replays don't download again and work without internet. Download whole playlists, pick High quality (Opus, up to ~160 kbps) and enjoy gapless playback.
+              Previously cached tracks can be replayed from your phone when available, including offline. Cache size and audio quality are configurable. Third-party content remains subject to its source's terms and rights.
             </p>
           </div>
           {/* Visual Demo */}
@@ -195,7 +195,7 @@ export default function Features() {
                 Offline Replays
               </span>
               <span className="border border-edge-hi bg-ink-850 px-2 py-1 text-bone-200">
-                Playlist Downloads
+                Local Storage
               </span>
               <span className="border border-edge-hi bg-ink-850 px-2 py-1 text-bone-200">
                 Gapless Playback

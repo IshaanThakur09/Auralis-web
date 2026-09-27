@@ -89,7 +89,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
           "<strong class=\"text-bone-50\">On your phone:</strong> clear your song cache and downloads in Settings › Storage, or remove everything by clearing the app's data or uninstalling it.",
           "<strong class=\"text-bone-50\">Listening stats:</strong> \"Clear stats\" in the Stats screen deletes your stats from your phone and, if you're signed in, from your account.",
           "<strong class=\"text-bone-50\">Your account and backed-up library:</strong> signing out does not delete data stored in Firebase. In Auralis 1.1.1 and later, tap <strong class=\"text-bone-50\">Delete account</strong> in your Profile to permanently delete your account and everything backed up to it: playlists, liked songs, saved artists and listening stats. You'll confirm it's you first.",
-          "<strong class=\"text-bone-50\">On older versions:</strong> open a request on our <a class=\"text-bone-50 underline underline-offset-4 hover:text-white\" href=\"https://github.com/Shreyanshh071/Auralis/issues\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub Issues page</a>. Don't post personal details there; we'll arrange a private way to confirm the request."
+          "<strong class=\"text-bone-50\">On older versions:</strong> email <a class=\"text-bone-50 underline underline-offset-4 hover:text-white\" href=\"mailto:auralis018@gmail.com\">auralis018@gmail.com</a> to request deletion. We will arrange a private way to verify the request."
         ]
       }
     ]

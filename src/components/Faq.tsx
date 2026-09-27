@@ -23,7 +23,7 @@ const FAQS = [
   },
   {
     q: "Can I log in with my Google account?",
-    a: "Yes. Sign in with Google to back up your playlists, liked songs, saved artists and listening stats. Reinstall or switch phones, sign in, and it all comes back.",
+    a: "Yes. Sign in with Google to back up your playlists, liked songs, saved artists and listening stats. After reinstalling or switching phones, sign in with the same account to restore data that was successfully backed up.",
   },
   {
     q: "Is there an iOS version?",
@@ -31,15 +31,15 @@ const FAQS = [
   },
   {
     q: "What is \"Listen Together\" and how does it work?",
-    a: "Listen Together allows you to create a shared room with a unique 6-character code. Friends join using the code and their playback position, play/pause states, and queue automatically synchronize in real time.",
+    a: "Listen Together lets you create a shared room with a 6-character code. Playback position, play/pause state and the queue synchronize across members, subject to network and buffering delays.",
   },
   {
     q: "Can I play music offline without an internet connection?",
-    a: "Yes, you can cache and save music to play offline without an internet connection.",
+    a: "Previously cached or saved tracks can play offline when the files are available on your device. New searches and streams require a connection. Use of third-party content remains subject to its source's terms and rights.",
   },
   {
     q: "Does Auralis support Android lock-screen and Quick Settings media controls?",
-    a: "Yes, Auralis natively integrates with the Android system media card, giving you lock-screen playback controls, an interactive scrub seekbar, high-res artwork, and uninterrupted background playback.",
+    a: "Auralis integrates with Android's media controls for lock-screen playback and seeking. Background playback may vary with the device, network and source availability.",
   },
   {
     q: "Can I import playlists from Spotify and YouTube?",
