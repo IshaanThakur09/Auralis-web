@@ -6,11 +6,12 @@ import GithubIcon from "./GithubIcon";
 import { ORG_URL } from "../utils/constants";
 import { useApkMetadata } from "../lib/useApkMetadata";
 
+// Demo text showing how lyrics behave in the app (not the song's lyrics, which are copyrighted).
 const LYRIC_LINES = [
-  "Lost in the echoes of the city lights",
-  "Riding the frequency through the night",
-  "Neon pulses rushing in our veins",
-  "Synchronized sound takes away the pain",
+  "Lyrics scroll along with the song",
+  "Each word lights up as it's sung",
+  "Tap any line to jump right there",
+  "Saved on your phone for offline",
 ];
 
 export default function Hero() {
@@ -154,7 +155,7 @@ export default function Hero() {
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between gap-2">
                     <h3 className="font-display text-base font-semibold tracking-tight text-bone-50 truncate">
-                      Midnight Frequency
+                      The Less I Know The Better
                     </h3>
                     <button
                       type="button"
@@ -168,7 +169,7 @@ export default function Hero() {
                     </button>
                   </div>
                   <p className="font-mono text-[11px] text-bone-400 truncate">
-                    Tame Impala · Auralis Session
+                    Tame Impala · Currents
                   </p>
                 </div>
               </div>
@@ -180,7 +181,7 @@ export default function Hero() {
                     <span className="h-1.5 w-1.5 rounded-full bg-bone-300 anim-blink" />
                     WORD-BY-WORD LYRICS
                   </span>
-                  <span className="text-bone-300 tabnum">01:42 / 03:58</span>
+                  <span className="text-bone-300 tabnum">01:35 / 03:36</span>
                 </div>
                 <div className="mt-3 space-y-2 font-mono text-[11px]">
                   {LYRIC_LINES.map((line, idx) => {
@@ -211,9 +212,9 @@ export default function Hero() {
                   />
                 </div>
                 <div className="mt-1.5 flex justify-between font-mono text-[9px] uppercase tracking-wider text-bone-500">
-                  <span>01:42</span>
+                  <span>01:35</span>
                   <span>Gapless Playback</span>
-                  <span>03:58</span>
+                  <span>03:36</span>
                 </div>
               </div>
 
