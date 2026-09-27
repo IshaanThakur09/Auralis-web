@@ -14,7 +14,7 @@ const mpaPlugin: () => Plugin = () => ({
         req.url = '/terms/index.html';
       } else if (url?.endsWith('.apk')) {
         res.setHeader('Content-Type', 'application/vnd.android.package-archive');
-        res.setHeader('Content-Disposition', 'attachment; filename="Auralis-v1.0.0-universal.apk"');
+        res.setHeader('Content-Disposition', `attachment; filename="${url.split('/').pop()}"`);
       }
       next();
     });

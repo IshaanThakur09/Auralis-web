@@ -14,8 +14,8 @@ const FAQS = [
     a: "Google does not allow third-party YouTube clients on the Play Store. You can safely download updates from GitHub or this website.",
   },
   {
-    q: "Why is the Auralis APK only ~8 MB compared to other 30–100 MB music apps?",
-    a: "Auralis is engineered with a 100% native Jetpack Compose and modern AndroidX architecture. Unlike bloated cross-platform apps that bundle heavy Electron, Flutter, React Native, or multi-megabyte C/C++ runtime libraries, Auralis interfaces directly with Android's lean system audio pipeline. Combined with aggressive whole-program R8 tree shaking and ProGuard dead-code elimination, every unused class and debug symbol is stripped away, producing an ultra-fast, featherweight universal package.",
+    q: "Why is the APK about 43 MB?",
+    a: "Auralis itself is small: it's built natively with Jetpack Compose and shrunk with R8, which strips out every unused class. Most of the download is Discord's official SDK for Rich Presence, which ships native code for every kind of Android processor (arm64, arm, x86, x86_64). That's why one universal APK works on any phone with no guessing which file to pick. Once installed, your library, song cache and downloads live on your phone.",
   },
   {
     q: "How to update?",
@@ -23,7 +23,7 @@ const FAQS = [
   },
   {
     q: "Can I log in with my Google account?",
-    a: "Yes, Auralis supports Google account login and Firebase Cloud Sync to synchronize your playlists and library.",
+    a: "Yes. Sign in with Google to back up your playlists, liked songs, saved artists and listening stats. Reinstall or switch phones, sign in, and it all comes back.",
   },
   {
     q: "Is there an iOS version?",

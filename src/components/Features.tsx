@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Mic2, Users, Activity, Code2, Disc, Play } from "lucide-react";
+import { Mic2, Users, BarChart3, Code2, HardDriveDownload, Play } from "lucide-react";
 import { Reveal } from "../lib/motion";
 
 const LYRIC_SNIPPETS = [
@@ -49,17 +49,17 @@ export default function Features() {
               <Mic2 className="h-5 w-5" />
             </div>
             <h3 className="mt-6 font-display text-2xl font-semibold tracking-tight text-bone-50">
-              Synchronized Lyrics
+              Word-by-Word Lyrics
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              Real-time, line-by-line timed lyrics that follow every vocal cadence so you can sing along with glowing clarity. Cached automatically for offline playback.
+              Karaoke-style lyrics that light up word by word as the song plays, gathered from several lyrics sources. Indian songs always show in Hinglish, and lyrics are cached for offline playback.
             </p>
           </div>
           {/* Visual Demo */}
           <div className="mt-8 border border-edge bg-ink-900/60 p-4 font-mono text-[11px]">
             <div className="flex items-center gap-2 text-bone-500">
               <span className="h-1.5 w-1.5 rounded-full bg-bone-300 anim-blink" />
-              <span>LIVE LRCLIB SYNC</span>
+              <span>WORD-BY-WORD SYNC</span>
             </div>
             <div className="mt-3 space-y-1.5 overflow-hidden">
               {LYRIC_SNIPPETS.map((line, idx) => (
@@ -88,7 +88,7 @@ export default function Features() {
               Listen Together Rooms
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              Drop into virtual listening rooms with friends. Stream identical audio timestamps in sample-accurate synchronization using a simple 6-character room code.
+              Listen with friends using a 6-character room code. Everyone hears the same song at the same moment, and the host decides who can play, skip or seek.
             </p>
           </div>
           {/* Visual Demo */}
@@ -111,35 +111,35 @@ export default function Features() {
           </div>
         </Reveal>
 
-        {/* 3. Procedural Visualizer */}
+        {/* 3. Listening Stats */}
         <Reveal delay={160} className="spot flex flex-col justify-between border border-edge p-6 sm:p-8">
           <div>
             <div className="flex h-10 w-10 items-center justify-center border border-edge-hi text-bone-100">
-              <Activity className="h-5 w-5" />
+              <BarChart3 className="h-5 w-5" />
             </div>
             <h3 className="mt-6 font-display text-2xl font-semibold tracking-tight text-bone-50">
-              Procedural Visualizer
+              Stats That Follow You
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              Dynamic frequency engine that translates acoustic energy into real-time fluid animations directly synchronized with the underlying audio stream.
+              Your top songs, artists and real listening time, counting only what you actually heard. Sign in and your stats are backed up to your account, so they come back on a new phone.
             </p>
           </div>
           {/* Visual Demo */}
-          <div className="mt-8 border border-edge bg-ink-900/60 p-4">
-            <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-bone-500">
-              <span>SPECTRUM FFT</span>
-              <span className="tabnum text-bone-300">60 FPS</span>
+          <div className="mt-8 border border-edge bg-ink-900/60 p-4 font-mono text-[11px]">
+            <div className="flex items-center justify-between text-bone-400">
+              <span>THIS WEEK</span>
+              <span className="text-bone-100 font-medium">SYNCED</span>
             </div>
-            <div className="mt-3 flex h-9 items-end justify-between gap-1">
-              {[45, 80, 60, 95, 30, 70, 85, 40, 90, 65, 50, 75, 35, 85, 55].map((h, i) => (
-                <div
-                  key={i}
-                  className="w-full bg-bone-200/80 transition-all duration-200 hover:bg-bone-50"
-                  style={{
-                    height: `${h}%`,
-                    animation: `pulse 1.2s ease-in-out infinite alternate ${i * 0.08}s`,
-                  }}
-                />
+            <div className="mt-3 space-y-2">
+              {[
+                ["Top artist", "Tame Impala"],
+                ["Top song", "The Less I Know The Better"],
+                ["Time listened", "14h 22m"],
+              ].map(([k, v]) => (
+                <div key={k} className="flex items-center justify-between text-[10px]">
+                  <span className="text-bone-500 uppercase tracking-wider">{k}</span>
+                  <span className="text-bone-200">{v}</span>
+                </div>
               ))}
             </div>
           </div>
@@ -171,31 +171,31 @@ export default function Features() {
           </div>
         </Reveal>
 
-        {/* 5. Lossless Audio Engine */}
+        {/* 5. Offline Song Cache */}
         <Reveal delay={320} className="spot flex flex-col justify-between border border-edge p-6 sm:p-8">
           <div>
             <div className="flex h-10 w-10 items-center justify-center border border-edge-hi text-bone-100">
-              <Disc className="h-5 w-5" />
+              <HardDriveDownload className="h-5 w-5" />
             </div>
             <h3 className="mt-6 font-display text-2xl font-semibold tracking-tight text-bone-50">
-              High-Fidelity Audio Engine
+              Offline Song Cache
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              Pristine audio playback pipeline delivering clean, dynamic reproduction straight to your headphones with native 32-bit float processing and zero clipping.
+              Songs you play are kept on your phone, so replays start instantly and work without internet. Download whole playlists, pick High quality (Opus, up to ~160 kbps) and enjoy gapless playback.
             </p>
           </div>
           {/* Visual Demo */}
           <div className="mt-8 border border-edge bg-ink-900/60 p-4 font-mono text-[11px]">
             <div className="flex items-center justify-between text-bone-400">
-              <span>OUTPUT PIPELINE</span>
-              <span className="text-bone-100 font-medium">32-BIT FLOAT</span>
+              <span>SONG CACHE</span>
+              <span className="text-bone-100 font-medium">YOU PICK THE SIZE</span>
             </div>
             <div className="mt-3 flex flex-wrap gap-2 text-[10px]">
               <span className="border border-edge-hi bg-ink-850 px-2 py-1 text-bone-200">
-                32-Bit Float Engine
+                Offline Replays
               </span>
               <span className="border border-edge-hi bg-ink-850 px-2 py-1 text-bone-200">
-                Opus 256 kbps
+                Playlist Downloads
               </span>
               <span className="border border-edge-hi bg-ink-850 px-2 py-1 text-bone-200">
                 Gapless Playback

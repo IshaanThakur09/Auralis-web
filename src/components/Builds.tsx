@@ -13,11 +13,18 @@ type Entry = {
 
 const LOG: Entry[] = [
   {
+    date: "2026-09-27",
+    app: "Auralis",
+    version: "1.1.0",
+    kind: "release",
+    note: "Stats backed up to your account, offline song cache, word-by-word lyrics, smarter search with \"Also matching\", rebuilt Listen Together with host controls, Discord profile, smoother launch and player, and dozens of fixes.",
+  },
+  {
     date: "2026-09-02",
     app: "Auralis",
     version: "1.0.0",
     kind: "release",
-    note: "First public release — YouTube Music streaming, synced lyrics via LRCLIB, Listen Together multi-room, bit-perfect 32-bit float audio pipeline, and zero telemetry.",
+    note: "First public release — YouTube Music streaming, synced lyrics, Listen Together rooms, and zero telemetry.",
   },
 ];
 

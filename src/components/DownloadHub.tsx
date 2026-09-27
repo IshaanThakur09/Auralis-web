@@ -93,7 +93,7 @@ export default function DownloadHub() {
                   <Magnetic strength={0.2}>
                     <a
                       href={auralis.builds[0].url}
-                      download="Auralis-v1.0.0-universal.apk"
+                      download="Auralis-v1.1.0-universal.apk"
                       data-cursor={auralis.size}
                       className="btn-solid text-center w-full sm:w-auto"
                     >
@@ -162,7 +162,7 @@ export default function DownloadHub() {
                           {b.url ? (
                             <a
                               href={b.url}
-                              download="Auralis-v1.0.0-universal.apk"
+                              download="Auralis-v1.1.0-universal.apk"
                               data-cursor="Get APK"
                               className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-bone-300 transition-colors hover:text-bone-50"
                             >
@@ -207,7 +207,7 @@ export default function DownloadHub() {
                 {auralis.builds[0]?.url && (
                   <a
                     href={auralis.builds[0].url}
-                    download="Auralis-v1.0.0-universal.apk"
+                    download="Auralis-v1.1.0-universal.apk"
                     className="mt-3.5 flex w-full items-center justify-center gap-2 border border-edge-hi bg-ink-850 py-2.5 text-[11px] uppercase tracking-wider text-bone-100 transition-colors hover:border-bone-200 hover:text-bone-50"
                   >
                     <Download className="h-3.5 w-3.5" />

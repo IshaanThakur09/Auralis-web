@@ -12,7 +12,7 @@ const STEPS: Array<{ n: string; title: string; body: string }> = [
   {
     n: "02",
     title: "Universal compatibility",
-    body: "The Universal APK is featherweight (~8 MB) and engineered to run seamlessly across all Android CPU architectures (arm64-v8a, armeabi-v7a, x86, x86_64) with no architecture guesswork required.",
+    body: "One universal APK (about 43 MB) runs on every Android CPU architecture (arm64-v8a, armeabi-v7a, x86, x86_64), so there's no guessing which file your phone needs.",
   },
   {
     n: "03",
@@ -27,9 +27,9 @@ const STEPS: Array<{ n: string; title: string; body: string }> = [
 ];
 
 const TABS = [
-  { id: "linux", label: "Linux / macOS", cmd: "sha256sum Auralis-v1.0.0-universal.apk" },
-  { id: "win", label: "Windows", cmd: "certutil -hashfile Auralis-v1.0.0-universal.apk SHA256" },
-  { id: "adb", label: "adb", cmd: "adb install -r Auralis-v1.0.0-universal.apk" },
+  { id: "linux", label: "Linux / macOS", cmd: "sha256sum Auralis-v1.1.0-universal.apk" },
+  { id: "win", label: "Windows", cmd: "certutil -hashfile Auralis-v1.1.0-universal.apk SHA256" },
+  { id: "adb", label: "adb", cmd: "adb install -r Auralis-v1.1.0-universal.apk" },
 ];
 
 export default function Install() {

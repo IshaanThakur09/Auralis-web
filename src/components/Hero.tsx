@@ -20,8 +20,8 @@ export default function Hero() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isLiked, setIsLiked] = useState(false);
 
-  const downloadUrl = meta?.downloadUrl || "/downloads/Auralis-v1.0.0-universal.apk";
-  const apkSize = meta?.fileSizeFormatted || "8.18 MB";
+  const downloadUrl = meta?.downloadUrl || "/downloads/Auralis-v1.1.0-universal.apk";
+  const apkSize = meta?.fileSizeFormatted || "43.34 MB";
 
   useEffect(() => {
     if (!isPlaying) return;
@@ -116,7 +116,7 @@ export default function Hero() {
             <dl className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 border-t border-edge pt-6 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.14em] sm:grid-cols-4">
               {[
                 ["Engine", "Jetpack Compose"],
-                ["Audio Engine", "32-Bit Float"],
+                ["Audio", "Opus · Gapless"],
                 ["License", "GPL-3.0 Copyleft"],
                 ["Telemetry", "Zero / None"],
               ].map(([k, v]) => (
@@ -139,7 +139,7 @@ export default function Hero() {
                 </span>
                 <span className="flex items-center gap-1.5 border border-edge-hi bg-ink-950 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-bone-200">
                   <span className="h-1.5 w-1.5 rounded-full bg-bone-100 anim-blink" />
-                  OPUS 256 KBPS · 32-BIT
+                  OPUS · HIGH QUALITY
                 </span>
               </div>
 
@@ -179,7 +179,7 @@ export default function Hero() {
                 <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-bone-500">
                   <span className="flex items-center gap-1.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-bone-300 anim-blink" />
-                    SYNCED LYRICS (LRCLIB)
+                    WORD-BY-WORD LYRICS
                   </span>
                   <span className="text-bone-300 tabnum">01:42 / 03:58</span>
                 </div>
@@ -213,7 +213,7 @@ export default function Hero() {
                 </div>
                 <div className="mt-1.5 flex justify-between font-mono text-[9px] uppercase tracking-wider text-bone-500">
                   <span>01:42</span>
-                  <span>Gapless · 32-Bit Float</span>
+                  <span>Gapless Playback</span>
                   <span>03:58</span>
                 </div>
               </div>

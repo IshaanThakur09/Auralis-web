@@ -1,12 +1,12 @@
 {
-  "fileName": "Auralis-v1.0.0-universal.apk",
-  "version": "1.0.0",
-  "releaseTag": "v1.0.0",
-  "fileSizeBytes": 8581290,
-  "fileSizeFormatted": "8.18 MB",
-  "sha256": "d5af6e8546dc50dec4c54f7341fa27b8663e407bd3245dc0c910fc74f9bdbd15",
-  "lastUpdated": "2026-09-02",
+  "fileName": "Auralis-v1.1.0-universal.apk",
+  "version": "1.1.0",
+  "releaseTag": "v1.1.0",
+  "fileSizeBytes": 45448558,
+  "fileSizeFormatted": "43.34 MB",
+  "sha256": "83fe68694b985cf58ff620b4b184eb5cff01a740fefe59573f9562fae29a91f1",
+  "lastUpdated": "2026-09-27",
   "minAndroidVersion": "Android 7.0+",
-  "downloadUrl": "/downloads/Auralis-v1.0.0-universal.apk",
-  "releaseNotes": "Official universal release build."
+  "downloadUrl": "/downloads/Auralis-v1.1.0-universal.apk",
+  "releaseNotes": "Stats backed up to your account, offline song cache, word-by-word lyrics, smarter search, rebuilt Listen Together and a smoother app."
 }
