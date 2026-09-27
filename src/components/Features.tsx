@@ -145,17 +145,17 @@ export default function Features() {
           </div>
         </Reveal>
 
-        {/* 4. 100% Open Source & Zero Telemetry */}
+        {/* 4. Open Source & Zero Telemetry */}
         <Reveal delay={240} className="spot flex flex-col justify-between border border-edge p-6 sm:p-8">
           <div>
             <div className="flex h-10 w-10 items-center justify-center border border-edge-hi text-bone-100">
               <Code2 className="h-5 w-5" />
             </div>
             <h3 className="mt-6 font-display text-2xl font-semibold tracking-tight text-bone-50">
-              100% Open Source
+              Open Source
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              Zero advertisements, zero analytics tracking, and no paid paywalls. Licensed under GPL-3.0 copyleft for full developer auditability.
+              No ads, no analytics, no paywalls. All of Auralis's own code is GPL-3.0 on GitHub; Google Firebase (sign-in and sync) and Discord's SDK (Rich Presence) are the only closed-source parts.
             </p>
           </div>
           {/* Visual Demo */}

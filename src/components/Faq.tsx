@@ -7,7 +7,7 @@ import { ORG_URL } from "../utils/constants";
 const FAQS = [
   {
     q: "Is the app safe to use?",
-    a: "Yes. Auralis is 100% open-source under the GNU General Public License v3.0 (GPL-3.0). This strong copyleft license guarantees that the code is publicly auditable on GitHub and legally ensures that all modifications and derivatives must remain free and open. There is zero telemetry, no hidden tracking, and no proprietary spyware.",
+    a: "Yes. All of Auralis's own code is open source under the GNU General Public License v3.0 (GPL-3.0), so anyone can read it on GitHub, and every modified version must stay open too. There are no ads, no analytics and no tracking. The app does include two closed-source SDKs from well-known companies: Google's Firebase, used only for sign-in, backup and update notifications, and Discord's official SDK, used only for Rich Presence if you connect Discord.",
   },
   {
     q: "Why isn't it on the Play Store?",
