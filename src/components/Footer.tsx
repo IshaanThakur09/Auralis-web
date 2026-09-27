@@ -1,6 +1,5 @@
 import { ArrowUpRight, ArrowUp, Download } from "lucide-react";
 import { Reveal } from "../lib/motion";
-import { Magnetic } from "../lib/pointer";
 import GithubIcon from "./GithubIcon";
 import { ORG_URL } from "../utils/constants";
 import { useApkMetadata } from "../lib/useApkMetadata";
@@ -31,7 +30,7 @@ export default function Footer({
           </Reveal>
           <Reveal delay={160}>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Magnetic strength={0.26}>
+              <span className="inline-flex">
                 <a
                   href={downloadUrl}
                   download="Auralis-v1.1.0-universal.apk"
@@ -41,8 +40,8 @@ export default function Footer({
                   <Download className="h-4 w-4" />
                   Download Auralis ({size})
                 </a>
-              </Magnetic>
-              <Magnetic strength={0.18}>
+              </span>
+              <span className="inline-flex">
                 <a
                   href={ORG_URL}
                   target="_blank"
@@ -54,7 +53,7 @@ export default function Footer({
                   GitHub Repository
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </a>
-              </Magnetic>
+              </span>
             </div>
           </Reveal>
         </div>

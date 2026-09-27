@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Download, ArrowUpRight, ArrowDown, Play, Pause, SkipBack, SkipForward, Heart, Users, Disc } from "lucide-react";
 import { MaskLines, Reveal } from "../lib/motion";
-import { Magnetic, useParallax } from "../lib/pointer";
+import { useParallax } from "../lib/pointer";
 import GithubIcon from "./GithubIcon";
 import { ORG_URL } from "../utils/constants";
 import { useApkMetadata } from "../lib/useApkMetadata";
@@ -76,7 +76,7 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Magnetic strength={0.26}>
+              <span className="inline-flex">
                 <a
                   href="#download"
                   data-cursor="Download"
@@ -85,9 +85,9 @@ export default function Hero() {
                   <Download className="h-4 w-4" />
                   Download APK ({apkSize})
                 </a>
-              </Magnetic>
+              </span>
 
-              <Magnetic strength={0.18}>
+              <span className="inline-flex">
                 <a
                   href={ORG_URL}
                   target="_blank"
@@ -99,7 +99,7 @@ export default function Hero() {
                   View Source
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </a>
-              </Magnetic>
+              </span>
 
               <a
                 href="#features"

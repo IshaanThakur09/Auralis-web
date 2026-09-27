@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Download, ArrowUpRight, Check, Copy } from "lucide-react";
 import { Reveal } from "../lib/motion";
-import { Magnetic } from "../lib/pointer";
 import GithubIcon from "./GithubIcon";
 import { useApkMetadata } from "../lib/useApkMetadata";
 
@@ -90,7 +89,7 @@ export default function DownloadHub() {
 
               <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
                 {auralis.builds[0]?.url && (
-                  <Magnetic strength={0.2}>
+                  <span className="inline-flex">
                     <a
                       href={auralis.builds[0].url}
                       download="Auralis-v1.1.0-universal.apk"
@@ -100,7 +99,7 @@ export default function DownloadHub() {
                       <Download className="h-4 w-4" />
                       Download {auralis.name} ({auralis.size})
                     </a>
-                  </Magnetic>
+                  </span>
                 )}
                 {auralis.repo && (
                   <a
