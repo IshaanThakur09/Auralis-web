@@ -46,7 +46,7 @@ export const APPS: App[] = [
     highlights: [
       "Word-by-word synced lyrics, cached for offline",
       "Listen Together rooms with host controls",
-      "Offline song cache, playlist downloads, gapless playback",
+      "Offline replay of available cached tracks and gapless playback",
       "Listening stats backed up to your account",
     ],
     permissions: ["INTERNET", "FOREGROUND_SERVICE", "WAKE_LOCK", "POST_NOTIFICATIONS", "RECORD_AUDIO", "REQUEST_INSTALL_PACKAGES"],
