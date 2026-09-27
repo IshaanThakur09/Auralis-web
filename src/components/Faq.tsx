@@ -6,16 +6,16 @@ import { ORG_URL } from "../utils/constants";
 
 const FAQS = [
   {
-    q: "Is the app safe to use?",
-    a: "Yes. All of Auralis's own code is open source under the GNU General Public License v3.0 (GPL-3.0), so anyone can read it on GitHub, and every modified version must stay open too. There are no ads, no analytics and no tracking. The app does include two closed-source SDKs from well-known companies: Google's Firebase, used only for sign-in, backup and update notifications, and Discord's official SDK, used only for Rich Presence if you connect Discord.",
+    q: "How can I review the app before installing?",
+    a: "Auralis's source code is available on GitHub under GPL-3.0. You can review the code and compare the downloaded APK's SHA-256 checksum with the one shown here. The app has no advertising or analytics SDK, but it connects to third-party services for streaming, lyrics, updates and optional features. See the Privacy Policy for those data flows. Open source code and a matching checksum do not guarantee that an app is risk-free.",
   },
   {
     q: "Why isn't it on the Play Store?",
-    a: "Google does not allow third-party YouTube clients on the Play Store. You can safely download updates from GitHub or this website.",
+    a: "Auralis is currently distributed directly through this website and GitHub Releases rather than the Play Store. Check the version and SHA-256 checksum before installing an APK.",
   },
   {
     q: "Why is the APK about 43 MB?",
-    a: "Auralis itself is small: it's built natively with Jetpack Compose and shrunk with R8, which strips out every unused class. Most of the download is Discord's official SDK for Rich Presence, which ships native code for every kind of Android processor (arm64, arm, x86, x86_64). That's why one universal APK works on any phone with no guessing which file to pick. Once installed, your library, song cache and downloads live on your phone.",
+    a: "The release is a universal APK with native code for arm64, arm, x86 and x86_64. It supports Android 7.0 and later on those architectures. The Discord SDK contributes substantially to its size. Device-specific compatibility can still vary.",
   },
   {
     q: "How to update?",
@@ -63,7 +63,7 @@ export default function Faq() {
                 questions
               </h2>
               <p className="mt-6 max-w-xs text-[15px] leading-relaxed text-bone-300">
-                If the answer you need is not here, our GitHub issue tracker is open and we read every report.
+                If the answer you need is not here, you can open a report in our GitHub issue tracker.
               </p>
               <a
                 href={`${ORG_URL}/issues`}

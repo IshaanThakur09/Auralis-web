@@ -2,21 +2,21 @@
 export type LegalPart = string | { ul: string[] };
 export type LegalSection = { heading: string; parts: LegalPart[] };
 
-export const PRIVACY_DATE = "Effective Date: September 27, 2026";
-export const TERMS_DATE = "Last updated: September 27, 2026";
+export const PRIVACY_DATE = "Effective Date: September 28, 2026";
+export const TERMS_DATE = "Last updated: September 28, 2026";
 
 export const PRIVACY_SECTIONS: LegalSection[] = [
   {
     "heading": "1. Introduction",
     "parts": [
       "Auralis (\"we\", \"our\", or \"the app\") is a free, open-source music player for Android that streams from YouTube Music. This policy explains what data the app handles, where it goes, and how you can delete it.",
-      "<strong class=\"text-bone-50\">In short:</strong> no ads, no analytics, no tracking. Most of your data stays on your phone. Signing in is optional, and if you do, only the data needed to back up your library and stats is stored."
+      "<strong class=\"text-bone-50\">In short:</strong> Auralis has no advertising or analytics SDK. Most library data stays on your phone. Signing in is optional. Streaming, lyrics, update notifications and optional integrations still involve network services, as described below."
     ]
   },
   {
     "heading": "2. Data That Stays on Your Phone",
     "parts": [
-      "Your library, playlists, liked songs, play history, listening stats, settings, song cache, downloads and saved lyrics are stored on your device. If you don't sign in, none of it leaves your phone."
+      "Your library, playlists, liked songs, play history, listening stats, settings, song cache, downloads and saved lyrics are stored on your device. Without sign-in, your library and stats are not backed up to your account. Searches, playback, lyrics lookups, update notifications and optional features still contact external services. Listen Together uses Firebase even if you have not signed in with Google or email."
     ]
   },
   {
@@ -30,7 +30,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
           "Your listening stats: which songs you played, when, and for how long."
         ]
       },
-      "This data is used only to back up and restore your library and stats. We don't sell it, share it, or use it for advertising."
+      "We use this account data for sign-in, backup and restoration, and do not sell it or use it for advertising. Google Firebase processes it to provide those features. Listen Together room data is described separately below."
     ]
   },
   {
@@ -50,10 +50,11 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
           "<strong class=\"text-bone-50\">Apple iTunes Search:</strong> the song's title and artist, to find its album.",
           "<strong class=\"text-bone-50\">Wikipedia:</strong> an artist's name, to find an artist photo.",
           "<strong class=\"text-bone-50\">Song recognition (optional):</strong> when you use it, a short acoustic fingerprint of what the microphone hears (not the recording itself) is sent to Shazam to identify the song.",
+          "<strong class=\"text-bone-50\">Voice search (optional):</strong> speech is handled by the Android speech recognition service selected on your device. Depending on the device and service, recognition may happen on-device or through that provider's servers.",
           "<strong class=\"text-bone-50\">Discord (optional):</strong> if you connect Discord, the song you're playing is shown on your Discord profile. Discord sign-in is handled by Discord's official SDK.",
           "<strong class=\"text-bone-50\">AI lyrics translation (optional):</strong> the song's lyrics are sent to the AI provider you choose (for example OpenAI, Anthropic, Google Gemini or DeepL), using your own API key. Your key is stored only on your phone.",
           "<strong class=\"text-bone-50\">Playlist import (optional):</strong> the Spotify or YouTube playlist links you paste are read from those services. For your own YouTube playlists, the app uses the Google access you grant, which you can revoke on your <a class=\"text-bone-50 underline underline-offset-4 hover:text-white\" href=\"https://myaccount.google.com/permissions\" target=\"_blank\" rel=\"noopener noreferrer\">Google Account permissions page</a>.",
-          "<strong class=\"text-bone-50\">Updates:</strong> the app checks GitHub for new versions and can receive update notifications through Firebase Cloud Messaging."
+          "<strong class=\"text-bone-50\">Updates:</strong> the app checks GitHub for new versions. Firebase Cloud Messaging registers an app/device token and subscribes to update and announcement topics, including before you sign in. Google processes the token to deliver notifications."
         ]
       }
     ]
@@ -66,7 +67,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
           "<strong class=\"text-bone-50\">Internet:</strong> to stream music and fetch lyrics.",
           "<strong class=\"text-bone-50\">Background playback</strong> (foreground service, wake lock): to keep music playing with the screen off.",
           "<strong class=\"text-bone-50\">Notifications:</strong> for playback controls, download progress and update notices.",
-          "<strong class=\"text-bone-50\">Microphone:</strong> only when you use song recognition.",
+          "<strong class=\"text-bone-50\">Microphone:</strong> when you use song recognition or voice search.",
           "<strong class=\"text-bone-50\">Install apps:</strong> only to install an update you choose to download in the app.",
           "<strong class=\"text-bone-50\">Run after restart:</strong> used by Android's background-task system to resume scheduled work after your phone restarts."
         ]
@@ -74,14 +75,15 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
     ]
   },
   {
-    "heading": "7. No Ads, Analytics or Tracking",
+    "heading": "7. Ads, Analytics and Service Data",
     "parts": [
-      "Auralis contains no advertising, analytics or crash-reporting SDKs. It does include two closed-source SDKs, used only for the features above: Google Firebase (sign-in, backup and update notifications) and Discord's official SDK (Rich Presence, only if you connect Discord)."
+      "Auralis contains no advertising, analytics or crash-reporting SDK. Firebase, Discord and other external services process the information needed for the features described above under their own policies. This is why we do not describe all network activity as zero telemetry."
     ]
   },
   {
     "heading": "8. Deleting Your Data",
     "parts": [
+      "Account backups remain in Firebase until you delete the account or request deletion. Rooms that are not closed properly may remain until a maintainer removes them.",
       {
         "ul": [
           "<strong class=\"text-bone-50\">On your phone:</strong> clear your song cache and downloads in Settings › Storage, or remove everything by clearing the app's data or uninstalling it.",
@@ -113,7 +115,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
   {
     "heading": "12. Contact",
     "parts": [
-      "For questions about this policy, open an issue on our <a class=\"text-bone-50 underline underline-offset-4 hover:text-white\" href=\"https://github.com/Shreyanshh071/Auralis/issues\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub Issues page</a>."
+      "For privacy questions, access or deletion requests, email the Auralis maintainers at <a class=\"text-bone-50 underline underline-offset-4 hover:text-white\" href=\"mailto:auralis018@gmail.com\">auralis018@gmail.com</a>. You can also open a general issue on our <a class=\"text-bone-50 underline underline-offset-4 hover:text-white\" href=\"https://github.com/Shreyanshh071/Auralis/issues\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub Issues page</a>, but do not post account details or other personal data there."
     ]
   }
 ];
@@ -129,7 +131,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     "heading": "2. Content and Your Responsibility",
     "parts": [
       "Auralis does not host, upload or own any music, videos or lyrics. It streams music from YouTube Music and fetches lyrics and song information from third-party services. All content belongs to its respective rights holders.",
-      "You're responsible for using Auralis in line with the laws where you live and the terms of the services it connects to. For example, YouTube's Terms of Service may not permit playing its content in the background or without ads through a third-party app."
+      "Use of Auralis does not grant rights to third-party content. YouTube's terms restrict downloading content without authorization, and <a class=\"text-bone-50 underline underline-offset-4 hover:text-white\" href=\"https://developers.google.com/youtube/terms/developer-policies\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube's API policies</a> restrict audio-only downloads and background playback. Review the applicable service terms before using those features; availability of a feature in Auralis does not mean a service has authorized it."
     ]
   },
   {
@@ -177,7 +179,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
   {
     "heading": "10. Contact",
     "parts": [
-      "For questions about these terms, open an issue on our <a class=\"text-bone-50 underline underline-offset-4 hover:text-white\" href=\"https://github.com/Shreyanshh071/Auralis/issues\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub Issues page</a>."
+      "For questions about these terms, email <a class=\"text-bone-50 underline underline-offset-4 hover:text-white\" href=\"mailto:auralis018@gmail.com\">auralis018@gmail.com</a> or open a general issue on our <a class=\"text-bone-50 underline underline-offset-4 hover:text-white\" href=\"https://github.com/Shreyanshh071/Auralis/issues\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub Issues page</a>. Do not post personal details in public issues."
     ]
   }
 ];

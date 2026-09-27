@@ -55,7 +55,7 @@ export default function Hero() {
             </span>
             <span>Open Source Music Client</span>
             <span className="hidden sm:inline">Android · Universal APK</span>
-            <span className="hidden md:inline">GPL-3.0 · Zero Telemetry</span>
+            <span className="hidden md:inline">GPL-3.0 · No Analytics SDK</span>
           </div>
         </Reveal>
 
@@ -72,7 +72,7 @@ export default function Hero() {
           <Reveal delay={300} className="lg:col-span-6">
             <p className="max-w-lg text-[17px] leading-relaxed text-bone-200">
               A music streaming app with synchronized lyrics, Listen Together
-              rooms and YouTube Music streaming. Free, with no ads and no tracking.
+              rooms and YouTube Music streaming. Free, with no ads or analytics SDK.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -118,7 +118,7 @@ export default function Hero() {
                 ["Engine", "Jetpack Compose"],
                 ["Audio", "Opus · Gapless"],
                 ["License", "GPL-3.0 Copyleft"],
-                ["Telemetry", "Zero / None"],
+                ["Analytics SDK", "None"],
               ].map(([k, v]) => (
                 <div key={k} className="min-w-0">
                   <dt className="text-bone-500 truncate">{k}</dt>

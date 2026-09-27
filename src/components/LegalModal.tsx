@@ -130,7 +130,7 @@ export default function LegalModal({ activeDoc, onClose, onSelectDoc }: LegalMod
             <span>·</span>
             <span>GPL-3.0 Copyleft</span>
             <span>·</span>
-            <span>Zero Telemetry</span>
+            <span>No Analytics SDK</span>
           </div>
           <h2
             id="legal-modal-title"

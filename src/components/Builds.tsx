@@ -24,7 +24,7 @@ const LOG: Entry[] = [
     app: "Auralis",
     version: "1.0.0",
     kind: "release",
-    note: "First public release — YouTube Music streaming, synced lyrics, Listen Together rooms, and zero telemetry.",
+    note: "First public release — YouTube Music streaming, synced lyrics and Listen Together rooms.",
   },
 ];
 
@@ -47,7 +47,7 @@ export default function Builds() {
         </Reveal>
         <Reveal delay={120} className="lg:col-span-5">
           <p className="max-w-sm text-[15px] leading-relaxed text-bone-300 lg:ml-auto lg:text-right">
-            Official release log for Auralis. Every tag is cryptographically signed, verified, and reproducible on GitHub.
+            Auralis release history. Check each published APK against the SHA-256 checksum shown on the download page.
           </p>
         </Reveal>
       </div>

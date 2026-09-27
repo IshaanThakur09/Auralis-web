@@ -52,8 +52,8 @@ export default function DownloadHub() {
         </Reveal>
         <Reveal delay={120} className="lg:col-span-5">
           <p className="max-w-sm text-[15px] leading-relaxed text-bone-300 lg:ml-auto lg:text-right">
-            Verified release build with architecture breakdown, SHA-256 checksums, and declared Android permissions.
-            Direct APK download with zero telemetry.
+            Release build details, a SHA-256 checksum for checking your download, and declared Android permissions.
+            Direct APK download. See the Privacy Policy for network and data handling details.
           </p>
         </Reveal>
       </div>
