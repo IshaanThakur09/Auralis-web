@@ -33,7 +33,7 @@ export const APPS: App[] = [
     id: "auralis",
     index: "01",
     name: "Auralis",
-    tagline: "High-fidelity music client",
+    tagline: "Music player for Android",
     category: "Audio",
     status: "Stable",
     version: "1.1.0",

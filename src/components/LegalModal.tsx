@@ -260,7 +260,7 @@ export default function LegalModal({ activeDoc, onClose, onSelectDoc }: LegalMod
                     <strong className="text-bone-100">Internet Access:</strong> To stream audio tracks and fetch synchronized lyrics.
                   </li>
                   <li>
-                    <strong className="text-bone-100">Foreground Service & Audio Focus:</strong> To enable seamless background music playback and lock-screen media controls.
+                    <strong className="text-bone-100">Foreground Service & Audio Focus:</strong> To keep music playing in the background and lock-screen media controls.
                   </li>
                   <li>
                     <strong className="text-bone-100">Notifications:</strong> To display active playback status in the system notification drawer.

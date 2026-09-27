@@ -70,9 +70,8 @@ export default function Hero() {
         <div className="mt-12 grid gap-10 border-t border-edge pt-8 lg:grid-cols-12">
           <Reveal delay={300} className="lg:col-span-6">
             <p className="max-w-lg text-[17px] leading-relaxed text-bone-200">
-              A high-quality music streaming app engineered with synchronized real-time
-              lyrics, collaborative listening rooms, and YouTube Music integration. Free forever with
-              zero telemetry.
+              A music streaming app with synchronized lyrics, Listen Together
+              rooms and YouTube Music streaming. Free, with no ads and no tracking.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">

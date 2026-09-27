@@ -21,7 +21,7 @@ export default function Footer({
         <div className="relative">
           <Reveal>
             <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-bone-500">
-              High-Fidelity Sound · Direct APK
+              Open Source · Direct APK
             </p>
             <h2 className="mt-6 max-w-4xl font-display text-[clamp(2.4rem,7vw,5.5rem)] font-semibold uppercase leading-[0.9] tracking-[-0.04em] text-bone-50">
               Get Auralis
@@ -68,8 +68,8 @@ export default function Footer({
             <span className="font-display text-lg font-semibold tracking-tight text-bone-50">Auralis</span>
           </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-bone-400">
-            A sleek, open-source music streaming player engineered with synchronized lyrics, collaborative
-            Listen Together rooms, and seamless YouTube Music integration.
+            An open-source music player for Android with synchronized lyrics, collaborative
+            Listen Together rooms, and YouTube Music streaming.
           </p>
           <div className="mt-5 flex items-center gap-2 font-mono text-[11px] text-bone-400">
             <span className="h-2 w-2 rounded-full bg-bone-200 anim-blink" />

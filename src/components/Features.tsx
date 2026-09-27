@@ -35,7 +35,7 @@ export default function Features() {
         </Reveal>
         <Reveal delay={120} className="lg:col-span-5">
           <p className="max-w-md text-[15px] leading-relaxed text-bone-300 lg:ml-auto lg:text-right">
-            Every feature meticulously crafted for fluid music discovery, zero telemetry, and real-time community synchronization.
+            Streaming, lyrics, group listening and stats, with no ads and no tracking.
           </p>
         </Reveal>
       </div>
@@ -181,7 +181,7 @@ export default function Features() {
               Offline Song Cache
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              Songs you play are kept on your phone, so replays start instantly and work without internet. Download whole playlists, pick High quality (Opus, up to ~160 kbps) and enjoy gapless playback.
+              Songs you play are kept on your phone, so replays don't download again and work without internet. Download whole playlists, pick High quality (Opus, up to ~160 kbps) and enjoy gapless playback.
             </p>
           </div>
           {/* Visual Demo */}
