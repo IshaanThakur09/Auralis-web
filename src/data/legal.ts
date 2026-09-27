@@ -36,7 +36,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
   {
     "heading": "4. Listen Together",
     "parts": [
-      "When you create or join a Listen Together room, your display name, the room code, the song playing, playback position, the room's queue and any song recommendations are stored in Firebase and visible to everyone in the room. A room is scheduled for deletion one hour after it closes."
+      "When you create or join a Listen Together room, your display name, the room code, the song playing, playback position, the room's queue and any song recommendations are stored in Firebase and visible to everyone in the room. When the host closes a room, it's deleted along with its members and recommendations (Auralis 1.1.1 and later). A room that was never closed properly, for example because the app was force-stopped, may stay until we remove it."
     ]
   },
   {
