@@ -27,9 +27,9 @@ const STEPS: Array<{ n: string; title: string; body: string }> = [
 ];
 
 const TABS = [
-  { id: "linux", label: "Linux / macOS", cmd: "sha256sum Auralis-v1.1.0-universal.apk" },
-  { id: "win", label: "Windows", cmd: "certutil -hashfile Auralis-v1.1.0-universal.apk SHA256" },
-  { id: "adb", label: "adb", cmd: "adb install -r Auralis-v1.1.0-universal.apk" },
+  { id: "linux", label: "Linux / macOS", cmd: "sha256sum Auralis-v1.1.1-universal.apk" },
+  { id: "win", label: "Windows", cmd: "certutil -hashfile Auralis-v1.1.1-universal.apk SHA256" },
+  { id: "adb", label: "adb", cmd: "adb install -r Auralis-v1.1.1-universal.apk" },
 ];
 
 export default function Install() {

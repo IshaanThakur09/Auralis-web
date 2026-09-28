@@ -36,15 +36,15 @@ export const APPS: App[] = [
     tagline: "Music player for Android",
     category: "Audio",
     status: "Stable",
-    version: "1.1.0",
-    updated: "2026-09-27",
+    version: "1.1.1",
+    updated: "2026-09-28",
     minAndroid: "7.0+",
-    size: "43.34 MB",
+    size: "24.95 MB",
     license: "GPL-3.0",
     summary:
       "A YouTube Music player with word-by-word synced lyrics, Listen Together rooms, an offline song cache and listening stats that follow your account. Built to stay out of the way of the music.",
     highlights: [
-      "Word-by-word synced lyrics, cached for offline",
+      "Timed word highlighting when lyrics are available",
       "Listen Together rooms with host controls",
       "Offline replay of available cached tracks and gapless playback",
       "Listening stats backed up to your account",
@@ -53,9 +53,9 @@ export const APPS: App[] = [
     builds: [
       {
         arch: "universal",
-        size: "43.34 MB",
-        sha: "83fe68694b985cf58ff620b4b184eb5cff01a740fefe59573f9562fae29a91f1",
-        url: "/downloads/Auralis-v1.1.0-universal.apk",
+        size: "24.95 MB",
+        sha: "ce6ea028aa43f1545c7b4af2d3b8cb0f533ee865f60fc81232bc993af79b25d6",
+        url: "/downloads/Auralis-v1.1.1-universal.apk",
       },
     ],
     repo: "https://github.com/Shreyanshh071/Auralis",

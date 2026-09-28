@@ -13,6 +13,13 @@ type Entry = {
 
 const LOG: Entry[] = [
   {
+    date: "2026-09-28",
+    app: "Auralis",
+    version: "1.1.1",
+    kind: "release",
+    note: "Improved timed lyric highlighting and search, filtered identifiable Shorts from playlist imports, preserved same-name local playlists, and added eligible playlists to Speed Dial.",
+  },
+  {
     date: "2026-09-27",
     app: "Auralis",
     version: "1.1.0",

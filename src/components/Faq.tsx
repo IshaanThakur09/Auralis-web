@@ -14,7 +14,7 @@ const FAQS = [
     a: "Auralis is currently distributed directly through this website and GitHub Releases rather than the Play Store. Check the version and SHA-256 checksum before installing an APK.",
   },
   {
-    q: "Why is the APK about 43 MB?",
+    q: "Why is the APK about 25 MB?",
     a: "The release is a universal APK with native code for arm64, arm, x86 and x86_64. It supports Android 7.0 and later on those architectures. The Discord SDK contributes substantially to its size. Device-specific compatibility can still vary.",
   },
   {
@@ -43,7 +43,7 @@ const FAQS = [
   },
   {
     q: "Can I import playlists from Spotify and YouTube?",
-    a: "Yes, you can easily import playlists by pasting public Spotify or YouTube playlist links directly into your library.",
+    a: "Yes. Paste a public Spotify or YouTube playlist link. Imports filter identifiable Shorts when metadata is available and preserve an existing local playlist with the same name.",
   },
 ];
 
