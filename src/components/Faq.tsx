@@ -15,19 +15,23 @@ const FAQS = [
   },
   {
     q: "Why is the APK about 25 MB?",
-    a: "The release is a universal APK with native code for arm64, arm, x86 and x86_64. It supports Android 7.0 and later on those architectures. The Discord SDK contributes substantially to its size. Device-specific compatibility can still vary.",
+    a: "The release is a universal APK with native code for arm64-v8a, armeabi-v7a, x86 and x86_64. It supports Android 7.0 and later on those architectures. The Discord SDK contributes substantially to its size. Device-specific compatibility can still vary.",
   },
   {
     q: "How to update?",
-    a: "Use the in-app updater, or download the latest APK from GitHub Releases and install it over the old version.",
+    a: "Use the in-app updater or download the latest APK. Android can install it over your current version when both builds use the same signing key; follow the installer prompts.",
+  },
+  {
+    q: "Which certificate signs the current APK?",
+    a: "The 1.1.1 APK is a minified release build signed with an Android Debug certificate. Android updates require the same signing certificate; a differently signed build cannot install over it. The SHA-256 on this page identifies the APK file, not its signing key.",
   },
   {
     q: "Can I log in with my Google account?",
-    a: "Yes. Sign in with Google to back up your playlists, liked songs, saved artists and listening stats. After reinstalling or switching phones, sign in with the same account to restore data that was successfully backed up.",
+    a: "Yes. Sign in with Google or email and password to back up your playlists, liked songs, saved artists and listening stats. After reinstalling or switching phones, sign in with the same account to restore data that was successfully backed up.",
   },
   {
     q: "Is there an iOS version?",
-    a: "No, Auralis is Android-only and we are not planning to have an iOS version.",
+    a: "There is no iOS release at present. The published app is for Android.",
   },
   {
     q: "What is \"Listen Together\" and how does it work?",
@@ -35,7 +39,7 @@ const FAQS = [
   },
   {
     q: "Can I play music offline without an internet connection?",
-    a: "Previously cached or saved tracks can play offline when the files are available on your device. New searches and streams require a connection. Use of third-party content remains subject to its source's terms and rights.",
+    a: "Fully cached or downloaded tracks can play offline while their files are available on your device. New searches and streams require a connection. Use of third-party content remains subject to its source's terms and rights.",
   },
   {
     q: "Does Auralis support Android lock-screen and Quick Settings media controls?",

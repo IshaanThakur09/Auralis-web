@@ -59,7 +59,7 @@ export default function Features() {
           <div className="mt-8 border border-edge bg-ink-900/60 p-4 font-mono text-[11px]">
             <div className="flex items-center gap-2 text-bone-500">
               <span className="h-1.5 w-1.5 rounded-full bg-bone-300 anim-blink" />
-              <span>WORD-BY-WORD SYNC</span>
+              <span>ILLUSTRATIVE LYRICS</span>
             </div>
             <div className="mt-3 space-y-1.5 overflow-hidden">
               {LYRIC_SNIPPETS.map((line, idx) => (
@@ -94,7 +94,7 @@ export default function Features() {
           {/* Visual Demo */}
           <div className="mt-8 border border-edge bg-ink-900/60 p-4 font-mono text-[11px]">
             <div className="flex items-center justify-between text-bone-400">
-              <span>ROOM: #AUR-96</span>
+              <span>EXAMPLE ROOM: #ABC234</span>
               <span className="text-bone-300 font-medium">3 SYNCED</span>
             </div>
             <div className="mt-3 flex items-center gap-2">
@@ -127,8 +127,8 @@ export default function Features() {
           {/* Visual Demo */}
           <div className="mt-8 border border-edge bg-ink-900/60 p-4 font-mono text-[11px]">
             <div className="flex items-center justify-between text-bone-400">
-              <span>THIS WEEK</span>
-              <span className="text-bone-100 font-medium">SYNCED</span>
+              <span>EXAMPLE STATS</span>
+              <span className="text-bone-100 font-medium">ILLUSTRATIVE</span>
             </div>
             <div className="mt-3 space-y-2">
               {[
@@ -155,7 +155,7 @@ export default function Features() {
               Open Source
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              No ads, analytics SDK or paywalls. Auralis's own code is GPL-3.0 on GitHub. The app also uses third-party services and SDKs for streaming, sign-in, sync, notifications and optional features.
+              No in-app ads, analytics SDK or paywall. Auralis's own code is GPL-3.0 on GitHub. Optional external services, including AI providers, may have their own charges and terms.
             </p>
           </div>
           {/* Visual Demo */}
@@ -181,7 +181,7 @@ export default function Features() {
               Offline Song Cache
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              Previously cached tracks can be replayed from your phone when available, including offline. Cache size and audio quality are configurable. Third-party content remains subject to its source's terms and rights.
+              Fully cached tracks or downloads can replay offline while their files remain on your phone. Cache size and audio quality are configurable. Third-party content remains subject to its source's terms and rights.
             </p>
           </div>
           {/* Visual Demo */}

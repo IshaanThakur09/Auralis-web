@@ -103,7 +103,7 @@ export default function Footer({
               { label: "GPL-3.0 License", href: `${ORG_URL}/blob/main/LICENSE` },
             ].map((item) => (
               <li key={item.label}>
-                {"doc" in item ? (
+                {"doc" in item && item.doc ? (
                   <a
                     href={`#${item.doc}`}
                     onClick={(e) => {

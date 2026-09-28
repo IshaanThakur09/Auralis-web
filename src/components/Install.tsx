@@ -11,7 +11,7 @@ const STEPS: Array<{ n: string; title: string; body: string }> = [
   },
   {
     n: "02",
-    title: "Universal compatibility",
+    title: "Supported devices",
     body: "The universal APK includes arm64-v8a, armeabi-v7a, x86 and x86_64 builds and requires Android 7.0 or later. Compatibility can still vary by device.",
   },
   {
@@ -22,7 +22,7 @@ const STEPS: Array<{ n: string; title: string; body: string }> = [
   {
     n: "04",
     title: "Install and update",
-    body: "Android checks the APK signature. Updates must use the same signing key as the installed app. Compare the SHA-256 shown here with your downloaded file before installing.",
+    body: "Android checks the APK signature. This 1.1.1 build uses an Android Debug certificate; updates need the same signing certificate as your installed copy. Compare the SHA-256 here with your downloaded file.",
   },
 ];
 
@@ -47,8 +47,8 @@ export default function Install() {
         </Reveal>
         <Reveal delay={120} className="lg:col-span-5">
           <p className="max-w-sm text-[15px] leading-relaxed text-bone-300 lg:ml-auto lg:text-right">
-            Four steps, once per device. Nothing here roots your phone, disables Play Protect, or
-            asks you to trust us more than you trust arithmetic.
+            Four steps to download, verify and install. Android checks the APK signature;
+            the checksum checks file integrity but does not prove that an app is safe.
           </p>
         </Reveal>
       </div>

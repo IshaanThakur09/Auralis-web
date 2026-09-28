@@ -11,7 +11,7 @@ const LYRIC_LINES = [
   "Lyrics scroll along with the song",
   "Each word lights up as it's sung",
   "Tap any line to jump right there",
-  "Saved on your phone for offline",
+  "Fetched lyrics can be saved offline",
 ];
 
 export default function Hero() {
@@ -72,7 +72,7 @@ export default function Hero() {
           <Reveal delay={300} className="lg:col-span-6">
             <p className="max-w-lg text-[17px] leading-relaxed text-bone-200">
               A music streaming app with synchronized lyrics, Listen Together
-              rooms and YouTube Music streaming. Free, with no ads or analytics SDK.
+              rooms and YouTube Music streaming. Free, with no in-app advertising or analytics SDK.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -116,7 +116,7 @@ export default function Hero() {
             <dl className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 border-t border-edge pt-6 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.14em] sm:grid-cols-4">
               {[
                 ["Engine", "Jetpack Compose"],
-                ["Audio", "Opus · Gapless"],
+                ["Audio", "Media3 · Gapless option"],
                 ["License", "GPL-3.0 Copyleft"],
                 ["Analytics SDK", "None"],
               ].map(([k, v]) => (
@@ -135,11 +135,11 @@ export default function Hero() {
               <div className="flex items-center justify-between border-b border-edge pb-3.5">
                 <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-bone-400">
                   <Disc className={`h-3.5 w-3.5 text-bone-200 ${isPlaying ? "animate-spin" : ""}`} style={{ animationDuration: "5s" }} />
-                  Auralis Engine
+                  Illustrative preview
                 </span>
                 <span className="flex items-center gap-1.5 border border-edge-hi bg-ink-950 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-bone-200">
                   <span className="h-1.5 w-1.5 rounded-full bg-bone-100 anim-blink" />
-                  OPUS · HIGH QUALITY
+                  AUDIO QUALITY VARIES
                 </span>
               </div>
 
@@ -155,7 +155,7 @@ export default function Hero() {
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between gap-2">
                     <h3 className="font-display text-base font-semibold tracking-tight text-bone-50 truncate">
-                      The Less I Know The Better
+                      Demo Track
                     </h3>
                     <button
                       type="button"
@@ -169,7 +169,7 @@ export default function Hero() {
                     </button>
                   </div>
                   <p className="font-mono text-[11px] text-bone-400 truncate">
-                    Tame Impala · Currents
+                    Auralis · UI preview
                   </p>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default function Hero() {
                 <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-bone-500">
                   <span className="flex items-center gap-1.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-bone-300 anim-blink" />
-                    WORD-BY-WORD LYRICS
+                    LYRICS PREVIEW
                   </span>
                   <span className="text-bone-300 tabnum">01:35 / 03:36</span>
                 </div>
@@ -213,7 +213,7 @@ export default function Hero() {
                 </div>
                 <div className="mt-1.5 flex justify-between font-mono text-[9px] uppercase tracking-wider text-bone-500">
                   <span>01:35</span>
-                  <span>Gapless Playback</span>
+                  <span>Illustrative UI</span>
                   <span>03:36</span>
                 </div>
               </div>
@@ -252,12 +252,13 @@ export default function Hero() {
                 {/* Listen Together Status Pill */}
                 <div className="flex items-center gap-2 border border-edge bg-ink-950 px-2.5 py-1 font-mono text-[10px] text-bone-400">
                   <Users className="h-3 w-3 text-bone-300" />
-                  <span className="text-bone-300 font-medium">#AUR-96</span>
+                  <span className="text-bone-300 font-medium">#ABC234</span>
                   <span className="text-bone-500">·</span>
                   <span className="text-bone-400">3 SYNCED</span>
                 </div>
               </div>
             </div>
+            <p className="mt-3 font-mono text-[10px] text-bone-500">Interactive layout preview. No audio plays on this page.</p>
           </Reveal>
         </div>
       </div>
