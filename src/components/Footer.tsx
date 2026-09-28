@@ -10,8 +10,8 @@ export default function Footer({
   onOpenLegal?: (doc: "privacy" | "terms") => void;
 }) {
   const { meta } = useApkMetadata();
-  const downloadUrl = meta?.downloadUrl || "/downloads/Auralis-v1.1.0-universal.apk";
-  const size = meta?.fileSizeFormatted || "43.34 MB";
+  const downloadUrl = meta?.downloadUrl || "/downloads/Auralis-v1.1.1-universal.apk";
+  const size = meta?.fileSizeFormatted || "24.95 MB";
 
   return (
     <footer className="relative border-t border-edge">
@@ -33,7 +33,7 @@ export default function Footer({
               <span className="inline-flex">
                 <a
                   href={downloadUrl}
-                  download="Auralis-v1.1.0-universal.apk"
+                  download={meta?.fileName || "Auralis-v1.1.1-universal.apk"}
                   data-cursor={size}
                   className="btn-solid"
                 >
