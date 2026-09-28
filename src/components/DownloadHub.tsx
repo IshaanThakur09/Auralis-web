@@ -47,12 +47,12 @@ export default function DownloadHub() {
         <Reveal className="lg:col-span-7">
           <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-bone-500">03 — Official Build</p>
           <h2 className="mt-3 font-display text-4xl font-semibold uppercase leading-[0.95] tracking-[-0.03em] text-bone-50 sm:text-6xl">
-            Signed Universal Build
+            Universal APK
           </h2>
         </Reveal>
         <Reveal delay={120} className="lg:col-span-5">
           <p className="max-w-sm text-[15px] leading-relaxed text-bone-300 lg:ml-auto lg:text-right">
-            Release build details, a SHA-256 checksum for checking your download, and declared Android permissions.
+            APK build details, a SHA-256 checksum for checking your download, and examples of declared Android permissions.
             Direct APK download. See the Privacy Policy for network and data handling details.
           </p>
         </Reveal>
@@ -217,7 +217,7 @@ export default function DownloadHub() {
 
               <div className="mt-6 border-t border-edge pt-4">
                 <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.12em] text-bone-500 break-words">
-                  Android Permissions: {auralis.permissions.join(" · ")}
+                  Selected Android permissions: {auralis.permissions.join(" · ")}
                 </p>
               </div>
             </div>

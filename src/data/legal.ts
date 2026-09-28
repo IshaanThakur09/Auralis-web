@@ -36,7 +36,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
   {
     "heading": "4. Listen Together",
     "parts": [
-      "When you create or join a Listen Together room, your display name, the room code, the song playing, playback position, the room's queue and any song recommendations are stored in Firebase and visible to everyone in the room. When the host closes a room, it's deleted along with its members and recommendations (Auralis 1.1.1 and later). A room that was never closed properly, for example because the app was force-stopped, may stay until we remove it."
+      "When you create or join a Listen Together room, your display name, the room code, the song playing, playback position, the room's queue and any song recommendations are stored in Firebase and visible to everyone in the room. In Auralis 1.1.1 and later, a successful room closure deletes the room, its members and recommendations. If the host app is force-stopped or a network failure prevents closure, that data may remain until a maintainer removes it."
     ]
   },
   {
@@ -52,7 +52,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
           "<strong class=\"text-bone-50\">Song recognition (optional):</strong> when you use it, a short acoustic fingerprint of what the microphone hears (not the recording itself) is sent to Shazam to identify the song.",
           "<strong class=\"text-bone-50\">Voice search (optional):</strong> speech is handled by the Android speech recognition service selected on your device. Depending on the device and service, recognition may happen on-device or through that provider's servers.",
           "<strong class=\"text-bone-50\">Discord (optional):</strong> if you connect Discord, the song you're playing is shown on your Discord profile. Discord sign-in is handled by Discord's official SDK.",
-          "<strong class=\"text-bone-50\">AI lyrics translation (optional):</strong> the song's lyrics are sent to the AI provider you choose (for example OpenAI, Anthropic, Google Gemini or DeepL), using your own API key. Your key is stored only on your phone.",
+          "<strong class=\"text-bone-50\">AI lyrics translation (optional):</strong> the song's lyrics and your API key are sent to the provider you choose (for example OpenAI, Anthropic, Google Gemini or DeepL) when you request translation. The app saves the key on your device and does not include it in your Auralis account backup.",
           "<strong class=\"text-bone-50\">Playlist import (optional):</strong> the Spotify or YouTube playlist links you paste are read from those services. For your own YouTube playlists, the app uses the Google access you grant, which you can revoke on your <a class=\"text-bone-50 underline underline-offset-4 hover:text-white\" href=\"https://myaccount.google.com/permissions\" target=\"_blank\" rel=\"noopener noreferrer\">Google Account permissions page</a>.",
           "<strong class=\"text-bone-50\">Updates:</strong> the app checks GitHub for new versions. Firebase Cloud Messaging registers an app/device token and subscribes to update and announcement topics, including before you sign in. Google processes the token to deliver notifications."
         ]

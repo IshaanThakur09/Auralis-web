@@ -42,12 +42,12 @@ export const APPS: App[] = [
     size: "24.95 MB",
     license: "GPL-3.0",
     summary:
-      "A YouTube Music player with word-by-word synced lyrics, Listen Together rooms, an offline song cache and listening stats that follow your account. Built to stay out of the way of the music.",
+      "A YouTube Music player with timed lyrics when available, Listen Together rooms, an offline song cache and optional account backup for listening stats. Built to stay out of the way of the music.",
     highlights: [
       "Timed word highlighting when lyrics are available",
       "Listen Together rooms with host controls",
-      "Offline replay of available cached tracks and gapless playback",
-      "Listening stats backed up to your account",
+      "Offline replay of fully cached tracks and optional gapless playback",
+      "Account backup for listening stats when signed in",
     ],
     permissions: ["INTERNET", "FOREGROUND_SERVICE", "WAKE_LOCK", "POST_NOTIFICATIONS", "RECORD_AUDIO", "REQUEST_INSTALL_PACKAGES"],
     builds: [
