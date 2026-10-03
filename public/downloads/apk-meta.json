@@ -1,12 +1,12 @@
 {
-  "fileName": "Auralis-v1.1.1-universal.apk",
+  "fileName": "Auralis-v1.1.1-rebuilt-universal.apk",
   "version": "1.1.1",
-  "releaseTag": "v1.1.1",
-  "fileSizeBytes": 24946549,
-  "fileSizeFormatted": "24.95 MB",
-  "sha256": "ce6ea028aa43f1545c7b4af2d3b8cb0f533ee865f60fc81232bc993af79b25d6",
-  "lastUpdated": "2026-09-28",
+  "releaseTag": "v1.1.1-rebuilt",
+  "fileSizeBytes": 24628921,
+  "fileSizeFormatted": "24.63 MB",
+  "sha256": "319b24743a681aa6c7992e6bcb4a9dd71a95393f694960e85af7cf23500be5dc",
+  "lastUpdated": "2026-10-03",
   "minAndroidVersion": "Android 7.0+",
-  "downloadUrl": "/downloads/Auralis-v1.1.1-universal.apk",
-  "releaseNotes": "Improved timed lyrics and search, safer playlist imports, and eligible playlists in Speed Dial."
+  "downloadUrl": "/downloads/Auralis-v1.1.1-rebuilt-universal.apk",
+  "releaseNotes": "Rebuilt 1.1.1: fixes for background and offline playback, lyrics timing and account cleanup; adds playlist downloads, order locking and a YouTube playlist picker."
 }

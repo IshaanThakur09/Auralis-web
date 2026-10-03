@@ -13,6 +13,13 @@ type Entry = {
 
 const LOG: Entry[] = [
   {
+    date: "2026-10-03",
+    app: "Auralis",
+    version: "1.1.1 rebuilt",
+    kind: "patch",
+    note: "Rebuilt 1.1.1 with background and offline playback fixes, improved lyrics and cloud cleanup, playlist downloads and order locking, and a YouTube account and playlist picker. Existing 1.1.1 users should install this APK manually.",
+  },
+  {
     date: "2026-09-28",
     app: "Auralis",
     version: "1.1.1",

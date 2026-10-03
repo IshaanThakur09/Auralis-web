@@ -1,7 +1,7 @@
 # APK Downloads Folder
 
 Hosted local APK:
-- `Auralis-v1.1.1-universal.apk`
+- `Auralis-v1.1.1-rebuilt-universal.apk` (identical bytes to the official `v1.1.1-rebuilt` release asset named `Auralis-v1.1.1-universal.apk`)
 
 The site reads version, size, SHA-256 and download link from `apk-meta.json`
 (`src/lib/useApkMetadata.ts`); `src/data/apps.ts` holds the same values as a fallback.

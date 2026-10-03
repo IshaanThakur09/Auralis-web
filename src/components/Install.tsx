@@ -22,14 +22,14 @@ const STEPS: Array<{ n: string; title: string; body: string }> = [
   {
     n: "04",
     title: "Install and update",
-    body: "Android checks the APK signature. This 1.1.1 build uses an Android Debug certificate; updates need the same signing certificate as your installed copy. Compare the SHA-256 here with your downloaded file.",
+    body: "Android checks the APK signature. The rebuilt 1.1.1 APK uses the same Android Debug certificate as the earlier hosted 1.1.1 build. Install this APK manually if you already have 1.1.1; the in-app updater may not detect a rebuild with the same version code.",
   },
 ];
 
 const TABS = [
-  { id: "linux", label: "Linux / macOS", cmd: "sha256sum Auralis-v1.1.1-universal.apk" },
-  { id: "win", label: "Windows", cmd: "certutil -hashfile Auralis-v1.1.1-universal.apk SHA256" },
-  { id: "adb", label: "adb", cmd: "adb install -r Auralis-v1.1.1-universal.apk" },
+  { id: "linux", label: "Linux / macOS", cmd: "sha256sum Auralis-v1.1.1-rebuilt-universal.apk" },
+  { id: "win", label: "Windows", cmd: "certutil -hashfile Auralis-v1.1.1-rebuilt-universal.apk SHA256" },
+  { id: "adb", label: "adb", cmd: "adb install -r Auralis-v1.1.1-rebuilt-universal.apk" },
 ];
 
 export default function Install() {

@@ -2,8 +2,8 @@
 export type LegalPart = string | { ul: string[] };
 export type LegalSection = { heading: string; parts: LegalPart[] };
 
-export const PRIVACY_DATE = "Effective Date: September 28, 2026";
-export const TERMS_DATE = "Last updated: September 28, 2026";
+export const PRIVACY_DATE = "Effective Date: October 3, 2026";
+export const TERMS_DATE = "Last updated: October 3, 2026";
 
 export const PRIVACY_SECTIONS: LegalSection[] = [
   {
@@ -36,7 +36,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
   {
     "heading": "4. Listen Together",
     "parts": [
-      "When you create or join a Listen Together room, your display name, the room code, the song playing, playback position, the room's queue and any song recommendations are stored in Firebase and visible to everyone in the room. In Auralis 1.1.1 and later, a successful room closure deletes the room, its members and recommendations. If the host app is force-stopped or a network failure prevents closure, that data may remain until a maintainer removes it."
+      "When you create or join a Listen Together room, your display name, the room code, the song playing, playback position, the room's queue, recommendations and votes are stored in Firebase and visible to everyone in the room. The rebuilt 1.1.1 app attempts to remove a listener's membership and votes when they leave, and to delete room data when the host closes the room; it retries some failed cleanup. If the app is force-stopped or a network failure prevents cleanup, room data may remain until a maintainer removes it."
     ]
   },
   {
@@ -88,7 +88,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
         "ul": [
           "<strong class=\"text-bone-50\">On your phone:</strong> clear your song cache and downloads in Settings › Storage, or remove everything by clearing the app's data or uninstalling it.",
           "<strong class=\"text-bone-50\">Listening stats:</strong> \"Clear stats\" in the Stats screen deletes your stats from your phone and, if you're signed in, from your account.",
-          "<strong class=\"text-bone-50\">Your account and backed-up library:</strong> signing out does not delete data stored in Firebase. In Auralis 1.1.1 and later, tap <strong class=\"text-bone-50\">Delete account</strong> in your Profile to permanently delete your account and everything backed up to it: playlists, liked songs, saved artists and listening stats. You'll confirm it's you first.",
+          "<strong class=\"text-bone-50\">Your account and backed-up library:</strong> signing out does not delete data stored in Firebase. In the rebuilt 1.1.1 app, tap <strong class=\"text-bone-50\">Delete account</strong> in your Profile to delete your account and associated cloud data, including backed-up playlists, liked songs, saved artists, listening stats and Listen Together references. You'll confirm it's you first. If deletion fails or you need help, contact us privately at the email below.",
           "<strong class=\"text-bone-50\">On older versions:</strong> email <a class=\"text-bone-50 underline underline-offset-4 hover:text-white\" href=\"mailto:auralis018@gmail.com\">auralis018@gmail.com</a> to request deletion. We will arrange a private way to verify the request."
         ]
       }
@@ -131,7 +131,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     "heading": "2. Content and Your Responsibility",
     "parts": [
       "Auralis does not host, upload or own any music, videos or lyrics. It streams music from YouTube Music and fetches lyrics and song information from third-party services. All content belongs to its respective rights holders.",
-      "Use of Auralis does not grant rights to third-party content. YouTube's terms restrict downloading content without authorization, and <a class=\"text-bone-50 underline underline-offset-4 hover:text-white\" href=\"https://developers.google.com/youtube/terms/developer-policies\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube's API policies</a> restrict audio-only downloads and background playback. Review the applicable service terms before using those features; availability of a feature in Auralis does not mean a service has authorized it."
+      "Use of Auralis does not grant rights to third-party content. YouTube's terms restrict downloading content without authorization, and <a class=\"text-bone-50 underline underline-offset-4 hover:text-white\" href=\"https://developers.google.com/youtube/terms/developer-policies\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube's API policies</a> restrict separating audio from video and background playback for API clients. Auralis offers background audio and offline downloads, including playlist downloads; these features may be restricted by the source's terms. Review the applicable service terms before using them. A feature's availability in Auralis does not mean a service has authorized it."
     ]
   },
   {

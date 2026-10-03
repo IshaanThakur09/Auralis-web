@@ -181,7 +181,7 @@ export default function Features() {
               Offline Song Cache
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-bone-300">
-              Fully cached tracks or downloads can replay offline while their files remain on your phone. Cache size and audio quality are configurable. Third-party content remains subject to its source's terms and rights.
+              Fully cached tracks or downloads, including playlist downloads, can replay offline while their files remain on your phone. Cache size and audio quality are configurable. Third-party content remains subject to its source's terms and rights.
             </p>
           </div>
           {/* Visual Demo */}

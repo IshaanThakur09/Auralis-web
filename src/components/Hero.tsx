@@ -21,8 +21,8 @@ export default function Hero() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isLiked, setIsLiked] = useState(false);
 
-  const downloadUrl = meta?.downloadUrl || "/downloads/Auralis-v1.1.1-universal.apk";
-  const apkSize = meta?.fileSizeFormatted || "24.95 MB";
+  const downloadUrl = meta?.downloadUrl || "/downloads/Auralis-v1.1.1-rebuilt-universal.apk";
+  const apkSize = meta?.fileSizeFormatted || "24.63 MB";
 
   useEffect(() => {
     if (!isPlaying) return;

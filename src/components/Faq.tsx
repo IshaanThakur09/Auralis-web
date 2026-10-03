@@ -19,11 +19,11 @@ const FAQS = [
   },
   {
     q: "How to update?",
-    a: "Use the in-app updater or download the latest APK. Android can install it over your current version when both builds use the same signing key; follow the installer prompts.",
+    a: "For the rebuilt 1.1.1 release, download the APK from this website and open it in Android's installer. It has the same version code as the earlier 1.1.1 build, so the in-app updater may not offer it. Android can install it over the earlier build because both use the same signing certificate; follow the installer prompts.",
   },
   {
     q: "Which certificate signs the current APK?",
-    a: "The 1.1.1 APK is a minified release build signed with an Android Debug certificate. Android updates require the same signing certificate; a differently signed build cannot install over it. The SHA-256 on this page identifies the APK file, not its signing key.",
+    a: "The rebuilt 1.1.1 APK is a minified release build signed with the same Android Debug certificate as the previous hosted 1.1.1 build. Android updates require the same signing certificate; a differently signed build cannot install over it. The SHA-256 on this page identifies the APK file, not its signing key.",
   },
   {
     q: "Can I log in with my Google account?",
@@ -39,7 +39,7 @@ const FAQS = [
   },
   {
     q: "Can I play music offline without an internet connection?",
-    a: "Fully cached or downloaded tracks can play offline while their files are available on your device. New searches and streams require a connection. Use of third-party content remains subject to its source's terms and rights.",
+    a: "Fully cached or downloaded tracks, including playlist downloads, can play offline while their files are available on your device. New searches and streams require a connection. Use of third-party content remains subject to its source's terms and rights.",
   },
   {
     q: "Does Auralis support Android lock-screen and Quick Settings media controls?",
