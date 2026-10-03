@@ -39,7 +39,7 @@ const FAQS = [
   },
   {
     q: "Can I play music offline without an internet connection?",
-    a: "Fully cached or downloaded tracks, including playlist downloads, can play offline while their files are available on your device. New searches and streams require a connection. Use of third-party content remains subject to its source's terms and rights.",
+    a: "Fully cached tracks and saved playlists can play offline while their files are available on your device. New searches and streams require a connection. Save and play content only where the source's terms and rights allow it.",
   },
   {
     q: "Does Auralis support Android lock-screen and Quick Settings media controls?",
